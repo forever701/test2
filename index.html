@@ -51,41 +51,48 @@
 <div class="cl"></div>
 <div class="cesu">
     <ul id="cesu">
-        <li>
-            <div class="miaoinpt miaoinpt1">1051ms</div>
-            <div class="miaoinpt miaoinpt2">8panda.vip</div>
-            <a href="./download.html" target="_blank" class="dw">点击进入</a>
-            <span style="display: none;"><em>1.051s</em></span></li>
-        <li>
-            <div class="miaoinpt miaoinpt1">75ms</div>
-            <div class="miaoinpt miaoinpt2">8panda.vip</div>
-            <a href="https://2mmlive.vip" target="_blank" class="dw">点击进入</a>
-            <span style="display: none;"><em>0.075s</em></span></li>
-        <li>
-            <div class="miaoinpt miaoinpt1">28ms</div>
-            <div class="miaoinpt miaoinpt2">8panda.vip</div>
-            <a href="https://3mmlive.vip" target="_blank" class="dw">点击进入</a>
-            <span style="display: none;"><em>0.028s</em></span></li>
-        <li>
-            <div class="miaoinpt miaoinpt1">75ms</div>
-            <div class="miaoinpt miaoinpt2">8panda.vip</div>
-            <a href="https://6mmlive.vip" target="_blank" class="dw">点击进入</a>
-            <span style="display: none;"><em>0.075s</em></span></li>
-        <li>
-            <div class="miaoinpt miaoinpt1">76ms</div>
-            <div class="miaoinpt miaoinpt2">8panda.vip</div>
-            <a href="https://8mmlive.vip" target="_blank" class="dw">点击进入</a>
-            <span style="display: none;"><em>0.076s</em></span></li>
-        <li>
-            <div class="miaoinpt miaoinpt1">...</div>
-            <div class="miaoinpt miaoinpt2">IOS下载</div>
-            <a class="dw down">点击进入</a>
-            <span style="display: none;">speedtest...<img src="" border="0" width="1" height="1" onerror="testresult(this)"></span></li>
-        <li>
-            <div class="miaoinpt miaoinpt1">...</div>
-            <div class="miaoinpt miaoinpt2">安卓下载</div>
-            <a class="dw down">点击进入</a>
-            <span style="display: none;">speedtest...<img src="" border="0" width="1" height="1" onerror="testresult(this)"></span></li>
+<!--        <li>-->
+<!--            <div class="miaoinpt miaoinpt1">1051ms</div>-->
+<!--            <div class="miaoinpt miaoinpt2">8panda.vip</div>-->
+<!--            <a href="./download.html" target="_blank" class="dw">点击进入</a>-->
+<!--            <span style="display: none;"><em>1.051s</em></span>-->
+<!--        </li>-->
+<!--        <li>-->
+<!--            <div class="miaoinpt miaoinpt1">75ms</div>-->
+<!--            <div class="miaoinpt miaoinpt2">8panda.vip</div>-->
+<!--            <a href="https://2mmlive.vip" target="_blank" class="dw">点击进入</a>-->
+<!--            <span style="display: none;"><em>0.075s</em></span>-->
+<!--        </li>-->
+<!--        <li>-->
+<!--            <div class="miaoinpt miaoinpt1">28ms</div>-->
+<!--            <div class="miaoinpt miaoinpt2">8panda.vip</div>-->
+<!--            <a href="https://3mmlive.vip" target="_blank" class="dw">点击进入</a>-->
+<!--            <span style="display: none;"><em>0.028s</em></span>-->
+<!--        </li>-->
+<!--        <li>-->
+<!--            <div class="miaoinpt miaoinpt1">75ms</div>-->
+<!--            <div class="miaoinpt miaoinpt2">8panda.vip</div>-->
+<!--            <a href="https://6mmlive.vip" target="_blank" class="dw">点击进入</a>-->
+<!--            <span style="display: none;"><em>0.075s</em></span>-->
+<!--        </li>-->
+<!--        <li>-->
+<!--            <div class="miaoinpt miaoinpt1">76ms</div>-->
+<!--            <div class="miaoinpt miaoinpt2">8panda.vip</div>-->
+<!--            <a href="https://8mmlive.vip" target="_blank" class="dw">点击进入</a>-->
+<!--            <span style="display: none;"><em>0.076s</em></span>-->
+<!--        </li>-->
+<!--        <li>-->
+<!--            <div class="miaoinpt miaoinpt1">...</div>-->
+<!--            <div class="miaoinpt miaoinpt2">IOS下载</div>-->
+<!--            <a class="dw down">点击进入</a>-->
+<!--            <span style="display: none;">speedtest...<img src="" border="0" width="1" height="1" onerror="testresult(this)"></span>-->
+<!--        </li>-->
+<!--        <li>-->
+<!--            <div class="miaoinpt miaoinpt1">...</div>-->
+<!--            <div class="miaoinpt miaoinpt2">安卓下载</div>-->
+<!--            <a class="dw down">点击进入</a>-->
+<!--            <span style="display: none;">speedtest...<img src="" border="0" width="1" height="1" onerror="testresult(this)"></span>-->
+<!--        </li>-->
     </ul>
     <script type="text/javascript">
         function test() {
@@ -166,13 +173,31 @@
     });
     // 获取支付状态
     function getPayStatus(){
-        $.post("http://18.142.91.190:8101/promotion-client/user/landingpage/list",
-            {
+        $.get("http://18.142.91.190:8101/config-client/config/landingpage/list", {},
+            function(res){
+            if(res.code === 0) {
+                //  data后台返回来的数据
+                let html = '',
+                    data=res.data;
+                if (data.length) {
+                    for(let a in data) {
+                        let record = data[a];
+                        html += '<li>\n' +
+                            '            <div class="miaoinpt miaoinpt1">'+ record.urlTime +'</div>\n' +
+                            '            <div class="miaoinpt miaoinpt2">'+record.urlName +'</div>\n' +
+                            '            <a href='+record.urlDown+' target="_blank" class="dw">点击进入</a>\n' +
+                            '            <span style="display: none;"><em>0.075s</em></span>\n' +
+                            ' </li>'
+                    }
+                }else {
+                    html +='<li>无数据</li>';
+                }
+                // append 结尾插入内容
+                $('#cesu').append(html);
+            } else {
 
-            },
-            function(data){
-                console.log(data)
-            });
+            }
+        });
     };
     getPayStatus()
 </script>
