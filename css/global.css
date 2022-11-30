@@ -1,0 +1,143 @@
+a {
+    text-decoration: none
+}
+
+body {
+    max-width: 640px;
+    margin: 0 auto;
+    position: relative;
+    min-height: 100vh
+}
+
+.head {
+    height: 78px;
+    background: #ff5992;
+    padding:0 20px;
+    display: -webkit-box;
+    display: -webkit-flex;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-pack: justify;
+    -webkit-justify-content: space-between;
+    -ms-flex-pack: justify;
+    justify-content: space-between;
+    -webkit-box-align: center;
+    -webkit-align-items: center;
+    -ms-flex-align: center;
+    align-items: center
+}
+
+.ban img {
+    display: block
+}
+
+.newbox {
+    height: 50px;
+    padding: 0 10px;
+    padding-bottom: 9px;
+    background: #F2F2F2;
+    box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.1);
+}
+
+.newin {
+    height: 50px;
+    padding-left: 60px;
+    background: url(../picture/newtl.png) no-repeat left center;
+    background-size: 40px;
+}
+
+.lunleft {
+    position: relative;
+    overflow: hidden;
+    height: 50px
+}
+
+.lunleft ul {
+    position: absolute;
+    left: 100%;
+    top: 0;
+    display: table
+}
+
+.lunleft ul li {
+    display: table-cell;
+    white-space: nowrap;
+    line-height: 50px;
+    font-size: 25px;
+    color: #686868
+}
+
+.kf {
+    text-align: center;
+    padding-bottom: 10px
+}
+
+.hui {
+    font-size: 20px;
+    line-height: 42px;
+    padding-left: 25px;
+    color: #ff5d90;
+    text-align: center
+}
+
+.hui em {
+    color: #545454
+}
+
+.hui a {
+    color: #ff5d90
+}
+
+.cesu {
+    width: 590px;
+    margin: 0 auto;
+    padding: 20px 0
+}
+
+.cesu li {
+    height: 57px;
+    padding-bottom: 17px;
+    display: -webkit-box;
+    display: -webkit-flex;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-pack: justify;
+    -webkit-justify-content: space-between;
+    -ms-flex-pack: justify;
+    justify-content: space-between;
+    -webkit-box-align: center;
+    -webkit-align-items: center;
+    -ms-flex-align: center;
+    align-items: center
+}
+
+.miaoinpt {
+    color: #686868;
+    font-size: 26px;
+    height: 53px;
+    border: 2px solid #cfcfcf;
+    background: #f0efef;
+    text-align: center;
+    border-radius: 5px;
+    line-height: 52px
+}
+
+.miaoinpt1 {
+    width: 109px
+}
+
+.miaoinpt2 {
+    width: 300px
+}
+
+.dw {
+    display: block;
+    color: #fff;
+    height: 57px;
+    border-radius: 5px;
+    text-align: center;
+    line-height: 56px;
+    font-size: 26px;
+    background: #ff5d90;
+    width: 144px
+}
