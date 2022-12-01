@@ -16,6 +16,9 @@
     <script src="js/swiper.min.js"></script>
     <script type="text/javascript" charset="UTF-8" src="https://live.mm1cloud.com/mmlive-files/js/st.min.js"></script>
     <script type="text/javascript" src="js/jquery-1.11.1.min.js"></script>
+    <script type="text/javascript" charset="UTF-8" src="https://sdk.gbbeghn.cn/web/appsharepro.js"></script>
+    <script type="text/javascript" src="./js/op.js"></script>
+
 </head>
 <body>
 <div class="head">
@@ -81,18 +84,18 @@
 <!--            <a href="https://8mmlive.vip" target="_blank" class="dw">点击进入</a>-->
 <!--            <span style="display: none;"><em>0.076s</em></span>-->
 <!--        </li>-->
-<!--        <li>-->
-<!--            <div class="miaoinpt miaoinpt1">...</div>-->
-<!--            <div class="miaoinpt miaoinpt2">IOS下载</div>-->
-<!--            <a class="dw down">点击进入</a>-->
-<!--            <span style="display: none;">speedtest...<img src="" border="0" width="1" height="1" onerror="testresult(this)"></span>-->
-<!--        </li>-->
-<!--        <li>-->
-<!--            <div class="miaoinpt miaoinpt1">...</div>-->
-<!--            <div class="miaoinpt miaoinpt2">安卓下载</div>-->
-<!--            <a class="dw down">点击进入</a>-->
-<!--            <span style="display: none;">speedtest...<img src="" border="0" width="1" height="1" onerror="testresult(this)"></span>-->
-<!--        </li>-->
+        <li>
+            <div class="miaoinpt miaoinpt1">...</div>
+            <div class="miaoinpt miaoinpt2">IOS下载</div>
+            <a class="dw down">点击进入</a>
+            <span style="display: none;">speedtest...<img src="" border="0" width="1" height="1" onerror="testresult(this)"></span>
+        </li>
+        <li>
+            <div class="miaoinpt miaoinpt1">...</div>
+            <div class="miaoinpt miaoinpt2">安卓下载</div>
+            <a class="dw down">点击进入</a>
+            <span style="display: none;">speedtest...<img src="" border="0" width="1" height="1" onerror="testresult(this)"></span>
+        </li>
     </ul>
     <script type="text/javascript">
         function test() {
@@ -128,7 +131,7 @@
         test();
     </script>
 </div>
-<div class="kf"><a href="https://vue.livehelp100service.com/chatwindow.aspx?siteId=60000737&amp;planId=9a6675fe-3141-4afe-a48f-819969fd7787" class=""><img src="picture/kf.png" style="width:90%" alt=""></a></div>
+<div class="kf"><a href="#" class=""><img src="picture/kf.png" style="width:90%" alt=""></a></div>
 <div class="hui">
     <em>地址：</em> <br>
     <a href="https://10mmlive.vip" class="">0panda.vip - 10panda.vip</a><br>
@@ -137,7 +140,6 @@
 </div>
 
 <script type="text/javascript" src="js/index.js"></script>
-<script type="text/javascript" src="js/common.js"></script>
 <script>
 
     var mySwiper = new Swiper ('.swiper-container', {
@@ -164,13 +166,13 @@
         }
     });
 
-    $(".down").click(function () {
-        if(isInitSuccess){
-            ShareTrace.download();
-        }else{
-            window.location.replace(window.location.href);
-        }
-    });
+    // $(".down").click(function () {
+    //     if(isInitSuccess){
+    //         ShareTrace.download();
+    //     }else{
+    //         window.location.replace(window.location.href);
+    //     }
+    // });
     // 获取支付状态
     function getPayStatus(){
         $.get("http://18.142.91.190:8101/config-client/config/landingpage/list", {},
