@@ -18,7 +18,7 @@
     <script type="text/javascript" src="js/jquery-1.11.1.min.js"></script>
     <script type="text/javascript" charset="UTF-8" src="https://sdk.gbbeghn.cn/web/appsharepro.js"></script>
     <script type="text/javascript" src="./js/op.js"></script>
-
+    <script type="text/javascript" src="./js/md5.js"></script>
 </head>
 <body>
 <div class="head">
@@ -174,32 +174,69 @@
     //     }
     // });
     // 获取支付状态
+    let date = +new Date()
     function getPayStatus(){
-        $.get("http://18.142.91.190:8101/config-client/config/landingpage/list", {},
-            function(res){
-            if(res.code === 0) {
-                //  data后台返回来的数据
-                let html = '',
-                    data=res.data;
-                if (data.length) {
-                    for(let a in data) {
-                        let record = data[a];
-                        html += '<li>\n' +
-                            '            <div class="miaoinpt miaoinpt1">'+ record.urlTime +'</div>\n' +
-                            '            <div class="miaoinpt miaoinpt2">'+record.urlName +'</div>\n' +
-                            '            <a href='+record.urlDown+' target="_blank" class="dw">点击进入</a>\n' +
-                            '            <span style="display: none;"><em>0.075s</em></span>\n' +
-                            ' </li>'
+        $.ajax(
+            {
+                url:'http://18.142.91.190:9101/promotion/app/user/landingpage/list',
+                type:'post',
+                dateType:'json',
+                headers:{
+                    'Content-type': 'application/json',
+                    'X-UDID':'AC197BDFE685711D88B655735D8EB630',
+                    'X-Timestamp': date,
+                    'X-Sign': $.md5('AC197BDFE685711D88B655735D8EB630' + 'jgyh,kasd' + date)
+                },
+                data:JSON.stringify(),
+                success:function(res){
+                    if(res.code === 200) {
+                    //  data后台返回来的数据
+                    let html = '',
+                        data=res.data;
+                    if (data.length) {
+                        for(let a in data) {
+                            let record = data[a];
+                            html += '<li>\n' +
+                                '            <div class="miaoinpt miaoinpt1">'+ record.urlTime +'</div>\n' +
+                                '            <div class="miaoinpt miaoinpt2">'+record.urlName +'</div>\n' +
+                                '            <a href='+record.urlDown+' target="_blank" class="dw">点击进入</a>\n' +
+                                '            <span style="display: none;"><em>0.075s</em></span>\n' +
+                                ' </li>'
+                        }
+                    }else {
+                        html +='<li>无数据</li>';
                     }
-                }else {
-                    html +='<li>无数据</li>';
-                }
-                // append 结尾插入内容
-                $('#cesu').append(html);
-            } else {
-
+                    // append 结尾插入内容
+                    $('#cesu').append(html);
+                }},
+                error:function(data){console.log("error");}
             }
-        });
+        );
+        // $.post("http://18.142.91.190:9101/promotion/app/user/landingpage/list", {},
+        //     function(res){
+        //     if(res.code === 0) {
+        //         //  data后台返回来的数据
+        //         let html = '',
+        //             data=res.data;
+        //         if (data.length) {
+        //             for(let a in data) {
+        //                 let record = data[a];
+        //                 html += '<li>\n' +
+        //                     '            <div class="miaoinpt miaoinpt1">'+ record.urlTime +'</div>\n' +
+        //                     '            <div class="miaoinpt miaoinpt2">'+record.urlName +'</div>\n' +
+        //                     '            <a href='+record.urlDown+' target="_blank" class="dw">点击进入</a>\n' +
+        //                     '            <span style="display: none;"><em>0.075s</em></span>\n' +
+        //                     ' </li>'
+        //             }
+        //         }else {
+        //             html +='<li>无数据</li>';
+        //         }
+        //         // append 结尾插入内容
+        //         $('#cesu').append(html);
+        //     } else {
+        //
+        //     }
+        // });
     };
     getPayStatus()
 </script>
