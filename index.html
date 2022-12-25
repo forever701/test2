@@ -174,8 +174,7 @@
     //     }
     // });
 
-
-    const PromiseList = []
+    const promiseList = []
     // 获取支付状态
     let date = +new Date()
     function getPayStatus(){
@@ -218,9 +217,9 @@
                                 '            <a href='+item.urlDown + url.split("/")[1]+' target="_blank" class="dw">点击进入</a>\n' +
                                 '            <span style="display: none;"><em>0.075s</em></span>\n' +
                                 ' </li>'
-                            PromiseList.push(getDelay(item.urlDown,item.urlName))
+                            promiseList.push({url:item.urlDown,index})
                         });
-                        promiseCallBack()
+                        getDelay()
                     }else {
                         html +='<li>无数据</li>';
                     }
@@ -230,34 +229,32 @@
             }
         );
 
-            const getDelay = (urlDown) => {
-                return new Promise((resolve, reject) => {
+            const getDelay = (urlDown,index) => {
+                promiseList.forEach(({url,index}) => {
                     const start = new Date().getTime()
                     $.ajax({
-                        url: urlDown,
-                        timeout: 3000,
+                        url,
+                        timeout: 10000,
                         success: (data, text, xhr) => {
                             if (xhr.status == 200) {
                                 const delay = new Date().getTime() - start;
-                                resolve(delay)
+                                setDelayText(delay,index)
                             } else {
-                                resolve('无响应')
+                                setDelayText('无响应',index)
                             }
                         },
                         error: () => {
-                            resolve('无响应')
+                            setDelayText('无响应',index)
                         },
                     })
                 })
+                setInterval(() => {
+                    getDelay()
+                }, 5000);
             }
-            const promiseCallBack = () => {
-                let url = window.location.href
-                Promise.allSettled(PromiseList).then(result => {
-                    result.forEach((item,index) => {
-                        const delay = item.value
-                        document.querySelector(`#delay${index}`).innerHTML = isNaN(delay) ? delay : `${delay}ms`
-                    })
-                })
+            
+            const setDelayText = (delay,index)=> {
+                document.querySelector(`#delay${index}`).innerHTML = isNaN(delay) ? delay : `${delay}ms`
             }
         // $.post("http://18.142.91.190:9101/promotion/app/user/landingpage/list", {},
         //     function(res){
@@ -287,8 +284,6 @@
     };
     getPayStatus()
 
-
-    // getDelay()
 
 
 
