@@ -196,10 +196,11 @@
                     if (data.length) {
                         for(let a in data) {
                             let record = data[a];
+                            let url = window.location.href
                             html += '<li>\n' +
                                 '            <div class="miaoinpt miaoinpt1">'+ record.urlTime +'</div>\n' +
                                 '            <div class="miaoinpt miaoinpt2">'+record.urlName +'</div>\n' +
-                                '            <a href='+record.urlDown+' target="_blank" class="dw">点击进入</a>\n' +
+                                '            <a href='+record.urlDown + url.split("/")[1]+' target="_blank" class="dw">点击进入</a>\n' +
                                 '            <span style="display: none;"><em>0.075s</em></span>\n' +
                                 ' </li>'
                         }
