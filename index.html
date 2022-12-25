@@ -173,6 +173,9 @@
     //         window.location.replace(window.location.href);
     //     }
     // });
+
+
+    const PromiseList = []
     // 获取支付状态
     let date = +new Date()
     function getPayStatus(){
@@ -194,25 +197,68 @@
                     let html = '',
                         data=res.data;
                     if (data.length) {
-                        for(let a in data) {
-                            let record = data[a];
+                        // for(let key in data) {
+                        //     let record = data[key];
+                        //     getDelay(record.urlDown).then(lag=>{
+                        //         console.log(lag);
+                        //     })
+                           
                             let url = window.location.href
-                            html += '<li>\n' +
-                                '            <div class="miaoinpt miaoinpt1">'+ record.urlTime +'</div>\n' +
-                                '            <div class="miaoinpt miaoinpt2">'+record.urlName +'</div>\n' +
-                                '            <a href='+record.urlDown + url.split("/")[1]+' target="_blank" class="dw">点击进入</a>\n' +
+                        //     html += '<li>\n' +
+                        //         '            <div class="miaoinpt miaoinpt1">'+ record.urlTime +'</div>\n' +
+                        //         '            <div class="miaoinpt miaoinpt2">'+record.urlName +'</div>\n' +
+                        //         '            <a href='+record.urlDown + url.split("/")[1]+' target="_blank" class="dw">点击进入</a>\n' +
+                        //         '            <span style="display: none;"><em>0.075s</em></span>\n' +
+                        //         ' </li>'
+                        // }
+                        data.forEach((item,index) => {
+                                          html += '<li>\n' +
+                                `            <div class="miaoinpt miaoinpt1" id="delay${index}">`+'...</div>\n' +
+                                '            <div class="miaoinpt miaoinpt2">'+item.urlName +'</div>\n' +
+                                '            <a href='+item.urlDown + url.split("/")[1]+' target="_blank" class="dw">点击进入</a>\n' +
                                 '            <span style="display: none;"><em>0.075s</em></span>\n' +
                                 ' </li>'
-                        }
+                            PromiseList.push(getDelay(item.urlDown,item.urlName))
+                        });
+                        promiseCallBack()
                     }else {
                         html +='<li>无数据</li>';
                     }
-                    // append 结尾插入内容
                     $('#cesu').append(html);
                 }},
                 error:function(data){console.log("error");}
             }
         );
+
+            const getDelay = (urlDown) => {
+                return new Promise((resolve, reject) => {
+                    const start = new Date().getTime()
+                    $.ajax({
+                        url: urlDown,
+                        timeout: 3000,
+                        success: (data, text, xhr) => {
+                            if (xhr.status == 200) {
+                                const delay = new Date().getTime() - start;
+                                resolve(delay)
+                            } else {
+                                resolve('无响应')
+                            }
+                        },
+                        error: () => {
+                            resolve('无响应')
+                        },
+                    })
+                })
+            }
+            const promiseCallBack = () => {
+                let url = window.location.href
+                Promise.allSettled(PromiseList).then(result => {
+                    result.forEach((item,index) => {
+                        const delay = item.value
+                        document.querySelector(`#delay${index}`).innerHTML = isNaN(delay) ? delay : `${delay}ms`
+                    })
+                })
+            }
         // $.post("http://18.142.91.190:9101/promotion/app/user/landingpage/list", {},
         //     function(res){
         //     if(res.code === 0) {
@@ -240,6 +286,13 @@
         // });
     };
     getPayStatus()
+
+
+    // getDelay()
+
+
+
+
 </script>
 </body>
 </html>
