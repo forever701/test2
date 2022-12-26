@@ -215,8 +215,7 @@
                                 //         console.log(lag);
                                 //     })
 
-                                let url = window.location.href
-                                console.warn(url, url.split("/"), "url");
+                                let url = window.location.href;
                                 //     html += '<li>\n' +
                                 //         '            <div class="miaoinpt miaoinpt1">'+ record.urlTime +'</div>\n' +
                                 //         '            <div class="miaoinpt miaoinpt2">'+record.urlName +'</div>\n' +
@@ -308,7 +307,6 @@
         getPayStatus();
 
         function downloadApp(url) {
-            console.log('事件属性', url)
             $.ajax({
                 method: 'get',
                 url,
@@ -319,15 +317,9 @@
                     'X-Sign': $.md5('AC197BDFE685711D88B655735D8EB630' + 'jgyh,kasd' + date)
                 }
             }).then(res => {
-                console.warn(res, "res");
                 if (res.data) {
                     location.href = res.data;
                 }
-                return;
-                let content = res.headers['content-disposition'];
-                let name = content && content.split(';')[1].split('filename=')[1];
-                let fileName = decodeURIComponent(name)
-                downloadFile(res.data, fileName)
             })
         }
 
