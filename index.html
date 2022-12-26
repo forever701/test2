@@ -229,7 +229,7 @@
                                     html += '<li>\n' +
                                         `<div class="miaoinpt miaoinpt1" id="delay${index}">` + '...</div>\n' +
                                         '<div class="miaoinpt miaoinpt2">' + item.urlName + '</div>\n' +
-                                        (item.position == 1 ? `<a class="dw downloadApp" onclick="downloadApp('${item.urlDown + url.split("/")[3]}')">点击下载</a>\n` : `<a href='${item.urlDown.indexOf("?") !== -1 ? item.urlDown + url.split("/")[3] : item.urlDown}' target="_blank" class="dw">点击下载</a>\n`) +
+                                        (item.position == 1 ? `<a class="dw downloadApp" onclick="downloadApp('${item.urlDown + url.split("/")[3]}')">点击下载</a>\n` : `<a href='${item.urlDown.indexOf("?") !== -1 ? item.urlDown + url.split("/")[3] : item.urlDown}' target="_blank" class="dw">点击进入</a>\n`) +
                                         '<span style="display: none;"><em>0.075s</em></span>\n' +
                                         ' </li>'
                                     promiseList.push({ url: item.urlDown, index })
