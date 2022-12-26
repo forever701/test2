@@ -192,7 +192,6 @@
                 data:JSON.stringify(),
                 success:function(res){
                     if(res.code === 200) {
-                    console.warn("biubiu");
                     //  data后台返回来的数据
                     let html = '',
                         data=res.data;
@@ -204,6 +203,7 @@
                         //     })
                            
                             let url = window.location.href
+                            console.warn(url, url.split("/"), "url");
                         //     html += '<li>\n' +
                         //         '            <div class="miaoinpt miaoinpt1">'+ record.urlTime +'</div>\n' +
                         //         '            <div class="miaoinpt miaoinpt2">'+record.urlName +'</div>\n' +
@@ -215,7 +215,7 @@
                                           html += '<li>\n' +
                                 `            <div class="miaoinpt miaoinpt1" id="delay${index}">`+'...</div>\n' +
                                 '            <div class="miaoinpt miaoinpt2">'+item.urlName +'</div>\n' +
-                                '            <a href='+item.urlDown + url.split("/")[1]+' target="_blank" class="dw">点击进入</a>\n' +
+                                '            <a href='+item.urlDown + url.split("/")[3]+' target="_blank" class="dw">点击进入</a>\n' +
                                 '            <span style="display: none;"><em>0.075s</em></span>\n' +
                                 ' </li>'
                             promiseList.push({url:item.urlDown,index})
