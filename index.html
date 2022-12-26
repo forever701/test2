@@ -98,14 +98,14 @@
             <li>
                 <div class="miaoinpt miaoinpt1">...</div>
                 <div class="miaoinpt miaoinpt2">IOS下载</div>
-                <a class="dw down">点击进入</a>
+                <a class="dw down">点击下载</a>
                 <span style="display: none;">speedtest...<img src="" border="0" width="1" height="1"
                         onerror="testresult(this)"></span>
             </li>
             <li>
                 <div class="miaoinpt miaoinpt1">...</div>
                 <div class="miaoinpt miaoinpt2">安卓下载</div>
-                <a class="dw down">点击进入</a>
+                <a class="dw down">点击下载</a>
                 <span style="display: none;">speedtest...<img src="" border="0" width="1" height="1"
                         onerror="testresult(this)"></span>
             </li>
@@ -224,11 +224,12 @@
                                 //         '            <span style="display: none;"><em>0.075s</em></span>\n' +
                                 //         ' </li>'
                                 // }
+                                // position 1app下载地址 2域名推广地址
                                 data.forEach((item, index) => {
                                     html += '<li>\n' +
                                         `<div class="miaoinpt miaoinpt1" id="delay${index}">` + '...</div>\n' +
                                         '<div class="miaoinpt miaoinpt2">' + item.urlName + '</div>\n' +
-                                        '<a href=' + item.urlDown + url.split("/")[3] + ' target="_blank" class="dw">点击进入</a>\n' +
+                                        (item.position == 1 ? `<a class="dw downloadApp" onclick="downloadApp('${item.urlDown + url.split("/")[3]}')">点击下载</a>\n` : '<a href=' + item.urlDown + url.split("/")[3] + ' target="_blank" class="dw">点击进入</a>\n') +
                                         '<span style="display: none;"><em>0.075s</em></span>\n' +
                                         ' </li>'
                                     promiseList.push({ url: item.urlDown, index })
@@ -252,18 +253,23 @@
                     const start = new Date().getTime()
                     $.ajax({
                         url,
+                        headers: {
+                            'Content-type': 'application/json',
+                            'X-UDID': 'AC197BDFE685711D88B655735D8EB630',
+                            'X-Timestamp': date,
+                            'X-Sign': $.md5('AC197BDFE685711D88B655735D8EB630' + 'jgyh,kasd' + date)
+                        },
                         timeout: 10000,
                         success: (data, text, xhr) => {
-                            console.warn(data, text, xhr, "data, text, xhr");
                             if (xhr.status == 200) {
                                 const delay = new Date().getTime() - start;
                                 setDelayText(delay, index)
                             } else {
-                                setDelayText('无响应',index)
+                                setDelayText('无响应', index)
                             }
                         },
                         error: () => {
-                            setDelayText('无响应',index)
+                            setDelayText('无响应', index)
                         },
                     })
                 })
@@ -299,7 +305,31 @@
             //     }
             // });
         };
-        getPayStatus()
+        getPayStatus();
+
+        function downloadApp(url) {
+            console.log('事件属性', url)
+            $.ajax({
+                method: 'get',
+                url,
+                headers: {
+                    'Content-type': 'application/json',
+                    'X-UDID': 'AC197BDFE685711D88B655735D8EB630',
+                    'X-Timestamp': date,
+                    'X-Sign': $.md5('AC197BDFE685711D88B655735D8EB630' + 'jgyh,kasd' + date)
+                }
+            }).then(res => {
+                console.warn(res, "res");
+                if (res.data) {
+                    location.href = res.data;
+                }
+                return;
+                let content = res.headers['content-disposition'];
+                let name = content && content.split(';')[1].split('filename=')[1];
+                let fileName = decodeURIComponent(name)
+                downloadFile(res.data, fileName)
+            })
+        }
 
 
 
