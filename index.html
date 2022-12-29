@@ -95,7 +95,8 @@
             <!--            <a href="https://8mmlive.vip" target="_blank" class="dw">点击进入</a>-->
             <!--            <span style="display: none;"><em>0.076s</em></span>-->
             <!--        </li>-->
-            <li>
+            <!-- 下面两个写死的下载不要了，隐藏 -->
+            <!-- <li>
                 <div class="miaoinpt miaoinpt1">...</div>
                 <div class="miaoinpt miaoinpt2">IOS下载</div>
                 <a class="dw down">点击下载</a>
@@ -108,7 +109,7 @@
                 <a class="dw down">点击下载</a>
                 <span style="display: none;">speedtest...<img src="" border="0" width="1" height="1"
                         onerror="testresult(this)"></span>
-            </li>
+            </li> -->
         </ul>
         <script type="text/javascript">
             function test() {
@@ -268,7 +269,9 @@
                             }
                         },
                         error: () => {
-                            setDelayText('无响应', index)
+                            // setDelayText('无响应', index)
+                            const delay = new Date().getTime() - start;
+                            setDelayText(delay, index)
                         },
                     })
                 })
