@@ -20,6 +20,7 @@
     <script type="text/javascript" charset="UTF-8" src="https://sdk.gbbeghn.cn/web/appsharepro.js"></script>
     <script type="text/javascript" src="./js/op.js"></script>
     <script type="text/javascript" src="./js/md5.js"></script>
+    <script type="text/javascript" src="./js/crypto-js.js"></script>
 </head>
 
 <body>
@@ -188,6 +189,23 @@
         //     }
         // });
 
+        // 解密
+        const key = CryptoJS.enc.Utf8.parse('6691e83adhf882rd')
+        const iv = CryptoJS.enc.Utf8.parse('6641c83ad8f882rd')
+
+        // aes解密
+        function decrypt(word) {
+            const encryptedHexStr = CryptoJS.enc.Hex.parse(word)
+            const srcs = CryptoJS.enc.Base64.stringify(encryptedHexStr)
+            const decrypt = CryptoJS.AES.decrypt(srcs, key, {
+                iv: iv,
+                // mode: CryptoJS.mode.CTR,
+                padding: CryptoJS.pad.Pkcs7,
+            })
+            const decryptedStr = decrypt.toString(CryptoJS.enc.Utf8)
+            return JSON.parse(decryptedStr.toString())
+        }
+
         const promiseList = []
         // 获取支付状态
         let date = +new Date()
@@ -205,6 +223,10 @@
                     },
                     data: JSON.stringify(),
                     success: function (res) {
+                        let response = res;
+                        if (response.secret) {
+                            response.data = decrypt(response.data)
+                        }
                         if (res.code === 200) {
                             //  data后台返回来的数据
                             let html = '',
