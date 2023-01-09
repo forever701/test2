@@ -342,6 +342,10 @@
                     'X-Sign': $.md5('AC197BDFE685711D88B655735D8EB630' + 'jgyh,kasd' + date)
                 }
             }).then(res => {
+                let response = res;
+                if (response.secret) {
+                    response.data = decrypt(response.data)
+                }
                 if (res.data) {
                     location.href = res.data;
                 }
