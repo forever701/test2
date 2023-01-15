@@ -75,13 +75,20 @@ body {
 .hui {
     font-size: 20px;
     line-height: 42px;
-    padding-left: 25px;
     color: #ff5d90;
     text-align: center
 }
 
 .hui em {
     color: #545454
+}
+
+.hui .alternate {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 10px;
+    font-size: 20px;
+    padding: 10px 40px;
 }
 
 .hui a {
