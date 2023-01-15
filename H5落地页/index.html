@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="./js/index.js"></script>
+    <script type="text/javascript" src="./js/jquery-1.11.1.min.js"></script>
+    <script type="text/javascript" src="./js/md5.js"></script>
+    <link rel="stylesheet" href="./css/index.css">
+</head>
+
+<body>
+    <div class="page-wrap">
+        <img class="banner-img" src="./img/banner.gif" alt="">
+        <div class="tip1">panda直播有稳定的运营收入，绝不含恶意程序，请放心使用</div>
+        <img class="download-img" src="./img/btn.png" alt="">
+        <div class="title-wrap">
+            <span class="left-title">热门直播</span>
+            <img class="beat-img" src="./img/beat.gif" alt="">
+        </div>
+        <img class="live-img1" src="./img/live-img1.gif" alt="">
+        <img class="live-img2" src="./img/live-img2.png" alt="">
+        <div class="more-live" style="margin-top:.21rem">更多直播</div>
+        <div class="title-wrap">
+            <span class="left-title">热门评论</span>
+            <img class="beat-img" src="./img/beat.gif" alt="">
+        </div>
+        <div class="comment">
+            <div class="comment-wrap">
+                <img class="avatar" src="./img/avatar1.png" alt="">
+                <div>
+                    <div class="name">挪威的森林</div>
+                    <div class="comment-info">这个时间点看这APP，让我想到一首歌"想要，想要，我快要受不了"</div>
+                </div>
+                <div class="time">15秒前</div>
+            </div>
+            <div class="comment-wrap">
+                <img class="avatar" src="./img/avatar2.png" alt="">
+                <div>
+                    <div class="name">黄药师</div>
+                    <div class="comment-info">我的挺好的呀，妳要放哪都可以，还会时不时上点润滑，有时如铁一般硬，有时又如水一样柔软，可以搭配妳的需求使用～～</div>
+                </div>
+                <div class="time">15秒前</div>
+            </div>
+            <div class="comment-wrap">
+                <img class="avatar" src="./img/avatar3.png" alt="">
+                <div>
+                    <div class="name">天道酬勤</div>
+                    <div class="comment-info">一日之际在于晨，上班前看下小姐姐，会带来美好的一天</div>
+                </div>
+                <div class="time">15秒前</div>
+            </div>
+            <div class="comment-wrap">
+                <img class="avatar" src="./img/avatar4.png" alt="">
+                <div>
+                    <div class="name">山街十二少</div>
+                    <div class="comment-info">女主播质量都很高啊，有望接班传奇猫先生，建议学学猫先生的拍摄角度，加油兄弟，支持</div>
+                </div>
+                <div class="time">15秒前</div>
+            </div>
+            <div class="comment-wrap">
+                <img class="avatar" src="./img/avatar5.png" alt="">
+                <div>
+                    <div class="name">江森先生</div>
+                    <div class="comment-info">关键时候还得看少妇，有气质，有韵味，身材也不错，动起来的能力很强呀！！！</div>
+                </div>
+                <div class="time">15秒前</div>
+            </div>
+            <div class="comment-wrap">
+                <img class="avatar" src="./img/avatar6.png" alt="">
+                <div>
+                    <div class="name">铁棍山药</div>
+                    <div class="comment-info">点赞(´｡✪ω✪｡｀)，还是原创直播更爽呀，下次让主播去 户外试试...</div>
+                </div>
+                <div class="time">15秒前</div>
+            </div>
+            <div class="comment-wrap">
+                <img class="avatar" src="./img/avatar7.png" alt="">
+                <div>
+                    <div class="name">深井冰1号</div>
+                    <div class="comment-info">男主比我太弱了，可惜了这么好的奶牛，哎</div>
+                </div>
+                <div class="time">15秒前</div>
+            </div>
+            <div class="comment-wrap" style="border: none;">
+                <img class="avatar" src="./img/avatar8.png" alt="">
+                <div>
+                    <div class="name">大王下山</div>
+                    <div class="comment-info">女主播说受不了了要喷了，各位看官快来瞧瞧</div>
+                </div>
+                <div class="time">15秒前</div>
+            </div>
+        </div>
+        <div class="more-live">加入官方群组，一起畅聊</div>
+        <div class="tip2">
+            如果您未满18岁或当地法律未允许成人内容
+            请停止访问此网站
+        </div>
+        <div class="tip3">
+            panda直播 2008-2023
+        </div>
+        <img class="bottom-img" src="./img/bottom.gif" alt="">
+    </div>
+    <script>
+        // if(judgeClient()==='Android'){
+        //     // IOS
+        // }
+        let date = +new Date()
+       $.ajax(
+            {
+                url:'http://18.142.91.190:9101/promotion/app/user/landingpage/list',
+                type:'post',
+                dateType:'json',
+                headers:{
+                    'Content-type': 'application/json',
+                    'X-UDID':'AC197BDFE685711D88B655735D8EB630',
+                    'X-Timestamp': date,
+                    'X-Sign': $.md5('AC197BDFE685711D88B655735D8EB630' + 'jgyh,kasd' + date)
+                },
+                data:JSON.stringify(),
+                success:function(res){
+                    
+                }
+            })
+    </script>
+</body>
+
+</html>
