@@ -106,13 +106,14 @@
         <img class="bottom-img download" src="./img/bottom.gif" alt="">
     </div>
     <script>
+        let askUrl = 'https://api.c4prfy.com'
         let ios = {}
         let Android = {}
         let h5 = {}
         let date = +new Date()
        $.ajax(
             {
-                url: window.location.href + '/promotion/app/user/landingpage/list',
+                url: askUrl + '/promotion/app/user/landingpage/list',
                 type:'post',
                 dateType:'json',
                 headers:{
@@ -135,7 +136,7 @@
             })
 
         function statistics(id) {
-            let url = window.location.href + '/promotion/app/user/saveLoadingRecord?sideCode=' + id;
+            let url = askUrl + '/promotion/app/user/saveLoadingRecord?sideCode=' + id;
             $.ajax({
                 method: 'get',
                 url,
