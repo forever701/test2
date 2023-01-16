@@ -106,9 +106,9 @@
         <img class="bottom-img download" src="./img/bottom.gif" alt="">
     </div>
     <script>
-        let ios = ''
-        let Android = ''
-        let h5 = ''
+        let ios = {}
+        let Android = {}
+        let h5 = {}
         let date = +new Date()
        $.ajax(
             {
@@ -153,6 +153,7 @@
         function downloadApp(item) {
             let url = window.location.href;
             let newUrl = item.urlDown + url.split("/")[3]
+            console.log(newUrl, 'newUrl newUrl newUrl');
             $.ajax({
                 method: 'get',
                 newUrl,
@@ -182,7 +183,7 @@
                 }
             })
             $('.more-live').click(function (e) {
-                location.href = h5
+                location.href = h5.urlDown
             })
         })
     </script>
