@@ -112,7 +112,7 @@
         let date = +new Date()
        $.ajax(
             {
-                url:'http://13.214.191.197:9101/promotion/app/user/landingpage/list',
+                url: window.location.href + '/promotion/app/user/landingpage/list',
                 type:'post',
                 dateType:'json',
                 headers:{
