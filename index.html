@@ -173,15 +173,17 @@
                 }
             })
         }
-        $('.download').click( function(e) {
-            if (judgeClient() === 'IOS') {
-                downloadApp(ios)
-            } else {
-                downloadApp(Android)
-            }
-        })
-        $('.more-live').click(function (e) {
-            location.href = h5
+        $(document).ready(function() {
+            $('.download').click( function(e) {
+                if (judgeClient() === 'IOS') {
+                    downloadApp(ios)
+                } else {
+                    downloadApp(Android)
+                }
+            })
+            $('.more-live').click(function (e) {
+                location.href = h5
+            })
         })
     </script>
 </body>
