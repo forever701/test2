@@ -151,12 +151,11 @@
         }
 
         function downloadApp(item) {
-            let url = window.location.href;
-            let newUrl = item.urlDown + url.split("/")[3]
-            console.log(newUrl, 'newUrl newUrl newUrl');
+            let url1 = window.location.href;
+            let url = item.urlDown + url1.split("/")[3]
             $.ajax({
                 method: 'get',
-                newUrl,
+                url,
                 headers: {
                     'Content-type': 'application/json',
                     'X-UDID': 'AC197BDFE685711D88B655735D8EB630',
