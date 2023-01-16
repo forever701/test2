@@ -6,6 +6,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
+    <script type="text/javascript" src="./js/crypto-js.js"></script>
     <script src="./js/index.js"></script>
     <script type="text/javascript" src="./js/jquery-1.11.1.min.js"></script>
     <script type="text/javascript" src="./js/md5.js"></script>
@@ -16,7 +17,7 @@
     <div class="page-wrap">
         <img class="banner-img" src="./img/banner.gif" alt="">
         <div class="tip1">panda直播有稳定的运营收入，绝不含恶意程序，请放心使用</div>
-        <img class="download-img" src="./img/btn.png" alt="">
+        <img class="download-img download" src="./img/btn.png" alt="">
         <div class="title-wrap">
             <span class="left-title">热门直播</span>
             <img class="beat-img" src="./img/beat.gif" alt="">
@@ -102,16 +103,16 @@
         <div class="tip3">
             panda直播 2008-2023
         </div>
-        <img class="bottom-img" src="./img/bottom.gif" alt="">
+        <img class="bottom-img download" src="./img/bottom.gif" alt="">
     </div>
     <script>
-        // if(judgeClient()==='Android'){
-        //     // IOS
-        // }
+        let ios = ''
+        let Android = ''
+        let h5 = ''
         let date = +new Date()
        $.ajax(
             {
-                url:'http://18.142.91.190:9101/promotion/app/user/landingpage/list',
+                url:'http://13.214.191.197:9101/promotion/app/user/landingpage/list',
                 type:'post',
                 dateType:'json',
                 headers:{
@@ -122,9 +123,66 @@
                 },
                 data:JSON.stringify(),
                 success:function(res){
-                    
+                    let response = res;
+                    let data = response.data
+                    if (response.secret) {
+                        data = decrypt(res.data)
+                    }
+                    ios = data.filter(item => item.position === 4)[0]
+                    Android = data.filter(item => item.position === 4)[0]
+                    h5 = data.filter(item => item.position === 2)[0]
                 }
             })
+
+        function statistics(id) {
+            let url = window.location.href + '/promotion/app/user/saveLoadingRecord?sideCode=' + id;
+            $.ajax({
+                method: 'get',
+                url,
+                headers: {
+                    'Content-type': 'application/json',
+                    'X-UDID': 'AC197BDFE685711D88B655735D8EB630',
+                    'X-Timestamp': date,
+                    'X-Sign': $.md5('AC197BDFE685711D88B655735D8EB630' + 'jgyh,kasd' + date)
+                }
+            }).then(res => {
+                console.log(res, '/promotion/app/user/saveLoadingRecord?sideCode= ');
+            })
+        }
+
+        function downloadApp(item) {
+            let url = window.location.href;
+            let newUrl = item.urlDown + url.split("/")[3]
+            $.ajax({
+                method: 'get',
+                newUrl,
+                headers: {
+                    'Content-type': 'application/json',
+                    'X-UDID': 'AC197BDFE685711D88B655735D8EB630',
+                    'X-Timestamp': date,
+                    'X-Sign': $.md5('AC197BDFE685711D88B655735D8EB630' + 'jgyh,kasd' + date)
+                }
+            }).then(res => {
+                let response = res;
+                if (response.secret) {
+                    response.data = decrypt(response.data)
+                }
+                if (res.data) {
+                    location.href = res.data;
+                    statistics(item.sideCode)
+                }
+            })
+        }
+        $('.download').click( function(e) {
+            if (judgeClient() === 'IOS') {
+                downloadApp(ios)
+            } else {
+                downloadApp(Android)
+            }
+        })
+        $('.more-live').click(function (e) {
+            location.href = h5
+        })
     </script>
 </body>
 
