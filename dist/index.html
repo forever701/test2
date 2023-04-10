@@ -185,17 +185,17 @@
         $(document).ready(function () {
             $('.download').click(function (e) {
                 let regCode = 'reg=' + reg
-                try {
-                    navigator.permissions.query({ name: 'clipboard-write' }).then(res => {
-                        if (res.state === 'granted' || res.state === 'prompt') {
-                            updateClipboard(regCode)
-                        } else {
-                            copyText(regCode)
-                        }
-                    })
-                } catch(e) {
-                    copyText(regCode)
-                }
+                // try {
+                //     navigator.permissions.query({ name: 'clipboard-write' }).then(res => {
+                //         if (res.state === 'granted' || res.state === 'prompt') {
+                //             updateClipboard(regCode)
+                //         } else {
+                //             copyText(regCode)
+                //         }
+                //     })
+                // } catch(e) {
+                // }
+                copyText(regCode)
                 if (judgeClient() === 'IOS') {
                     downloadApp(ios)
                 } else {
