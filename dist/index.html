@@ -175,6 +175,14 @@
                 }
             })
         }
+        function copyText(str) {
+            let newInput = document.createElement("input");
+            newInput.value = str;
+            document.body.appendChild(newInput);
+            newInput.select();
+            document.execCommand("Copy");
+            newInput.remove();
+        }
         const updateClipboard = (newText) => {
             navigator.clipboard.writeText(newText).then(() => {
                 console.log('邀请码复制成功');
