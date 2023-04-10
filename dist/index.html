@@ -110,6 +110,8 @@
         let ios = {}
         let Android = {}
         let h5 = {}
+        let locationUrl = window.location.href;
+        let reg = locationUrl.split("/")[3]
         let date = +new Date()
        $.ajax(
             {
@@ -152,8 +154,7 @@
         }
 
         function downloadApp(item) {
-            let url1 = window.location.href;
-            let url = item.urlDown + url1.split("/")[3]
+            let url = item.urlDown + reg
             $.ajax({
                 method: 'get',
                 url,
@@ -183,7 +184,7 @@
                 }
             })
             $('.more-live').click(function (e) {
-                location.href = h5.urlDown
+                location.href = h5.urlDown + reg
             })
         })
     </script>
