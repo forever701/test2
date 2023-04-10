@@ -14,9 +14,9 @@ function judgeClient() {
     let isAndroid = u.indexOf('Android') > -1 || u.indexOf('Adr') > -1 //判断是否是 android终端
     let isIOS = !!u.match(/\(i[^;]+;( U;)? CPU.+Mac OS X/) //判断是否是 iOS终端
     if (isAndroid) {
-      return 'Android'
+        return 'Android'
     } else if (isIOS) {
-      return 'IOS'
+        return 'IOS'
     }
 }
 
@@ -45,4 +45,13 @@ function downFile(url) {
     document.body.appendChild(el);
     el.click();
     document.body.removeChild(el);
+}
+
+function copyText(str) {
+    let newInput = document.createElement("input");
+    newInput.value = str;
+    document.body.appendChild(newInput);
+    newInput.select();
+    document.execCommand("Copy");
+    newInput.remove();
 }
