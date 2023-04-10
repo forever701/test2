@@ -111,29 +111,29 @@
         let Android = {}
         let h5 = {}
         let locationUrl = window.location.href;
-        let reg = locationUrl.split("/")[3]
+        let reg = locationUrl.split("/")[ 3 ]
         let date = +new Date()
-       $.ajax(
+        $.ajax(
             {
                 url: apiUrl + '/promotion/app/user/landingpage/list',
-                type:'post',
-                dateType:'json',
-                headers:{
+                type: 'post',
+                dateType: 'json',
+                headers: {
                     'Content-type': 'application/json',
-                    'X-UDID':'AC197BDFE685711D88B655735D8EB630',
+                    'X-UDID': 'AC197BDFE685711D88B655735D8EB630',
                     'X-Timestamp': date,
                     'X-Sign': $.md5('AC197BDFE685711D88B655735D8EB630' + 'jgyh,kasd' + date)
                 },
-                data:JSON.stringify(),
-                success:function(res){
+                data: JSON.stringify(),
+                success: function (res) {
                     let response = res;
                     let data = response.data
                     if (response.secret) {
                         data = decrypt(res.data)
                     }
-                    ios = data.filter(item => item.position === 4)[0]
-                    Android = data.filter(item => item.position === 1)[0]
-                    h5 = data.filter(item => item.position === 2)[0]
+                    ios = data.filter(item => item.position === 4)[ 0 ]
+                    Android = data.filter(item => item.position === 1)[ 0 ]
+                    h5 = data.filter(item => item.position === 2)[ 0 ]
                 }
             })
 
@@ -175,8 +175,23 @@
                 }
             })
         }
-        $(document).ready(function() {
-            $('.download').click( function(e) {
+        const updateClipboard = (newText) => {
+            navigator.clipboard.writeText(newText).then(() => {
+                console.log('邀请码复制成功');
+            }, () => {
+                console.log('邀请码复制失败');
+            })
+        }
+        $(document).ready(function () {
+            $('.download').click(function (e) {
+                let regCode = 'reg=' + reg
+                navigator.permissions.query({ name: 'clipboard-write' }).then(res => {
+                    if (res.state === 'granted' || res.state === 'prompt') {
+                        updateClipboard(regCode)
+                    } else {
+                        copyText(regCode)
+                    }
+                })
                 if (judgeClient() === 'IOS') {
                     downloadApp(ios)
                 } else {
