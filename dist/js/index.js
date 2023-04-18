@@ -22,8 +22,8 @@ function judgeClient() {
 
 
 // 解密
-const key = CryptoJS.enc.Utf8.parse('6691e83adhf882rd')
-const iv = CryptoJS.enc.Utf8.parse('6641c83ad8f882rd')
+const key = CryptoJS.enc.Utf8.parse('6633e83adhf992rd')
+const iv = CryptoJS.enc.Utf8.parse('6633e83adhf992rd')
 
 // aes解密
 function decrypt(word) {
