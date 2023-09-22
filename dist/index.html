@@ -36,7 +36,7 @@
                     <div></div>
                 </div>
                 <div class="live_foot pos-ab">
-                    <div>
+                    <div :class="{'f-y-center':lang==='zh'}">
                         <div>{{item.name}}</div>
                         <div>{{item.age}}</div>
                     </div>
@@ -71,7 +71,7 @@
         new Vue({
             el: '#app',
             data: {
-                lang: 'vi',
+                lang: 'zh',
                 langs: ['zh', 'vi'],
                 code: '',
                 reg: '',

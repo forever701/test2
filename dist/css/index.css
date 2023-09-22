@@ -169,13 +169,19 @@ div{
     align-items: center;
     justify-content: space-between;
     /* flex-wrap: wrap; */
-    height: .8rem;
+    padding: .1rem;
     bottom: 0;
     left: 0;
     right: 0;
     font-size: .22rem;
     background: rgba(0, 0, 0, 0.45);
     color: #ccc;
+}
+
+.f-y-center{
+    display: flex;
+    align-items: center;
+    /* justify-content: center; */
 }
 
 .live_foot div{
