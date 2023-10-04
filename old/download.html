@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1,user-scalable=0,viewport-fit=cover">
+    <title>下载页面</title>
+    <meta property="og:image" content="https://live.mm1cloud.com/images/show-logo.png">
+    <meta property="og:title" content="下载页面">
+    <meta property="og:description" content="下载页面">
+    <link rel="stylesheet" href="css/app.css">
+    <script src="js/flexible.js"></script>
+    <style>html{font-size:36.111111111111114px!important;}</style>
+    <script src="js/jquery-3.4.1.min.js"></script>
+    <script type="text/javascript" charset="UTF-8" src="https://live.mm1cloud.com/mmlive-files/js/st.min.js"></script>
+    <script type="text/javascript" charset="UTF-8" src="https://sdk.gbbeghn.cn/web/appsharepro.js"></script>
+    <script type="text/javascript" src="./js/op.js"></script>
+</head>
+<body style="font-size: 16px;">
+<div class="top"></div>
+<div class="download-cells">
+    <div class="wx-box"><img src="picture/panda_logo.png">
+    </div>
+    <div class="btn-group">
+        <a class="btn btn-anzhuo down an"></a>
+        <a class="btn btn-ios down ios" target="_block"></a>
+
+    </div>
+    <a class="btn-kefu" href="#"></a>
+    <div class="content">
+        <div class="text">
+            <p>注意事项️️</p>
+            <p>如果网络不稳定，点击下载后，请稍候片刻（15秒）， 直到下载窗口出现。</p>
+            <p class="ios">*IOS分为多个备份版本，如果遇到问题，您可以卸载并 用其他应用程序替换它。</p>
+        </div>
+        <div class="text an" style="color: #FF4747">
+            <p>*安装国内的每个Android机型都将提到病毒，特洛伊木马和危险，都是错误的警告。请放心下载使用。</p>
+        </div>
+        <div class="text an" >
+            <p>在Android手机上安装的解决方案受到限制：</p>
+            <p>1.-对于vivo手机，请转到设置-隐私-关闭vivo的系统检查功能，可以正常安装。</p>
+            <p>2.-其他Android机器可以进入“设置”-“其他设置”，“安全”，“关闭来源不明”进行下载和安装。</p>
+        </div>
+        <div class="text ios" style="color: #FF4747">
+            <p>适用于Apple手机的可靠解决方案：</p>
+            <p>转到“通用设置-管理设备”，然后单击“信任”页。</p>
+        </div>
+        <div class="text ios">
+            <p>苹果手机出现页面错误时的解决方案:</p>
+            <p>1. -打开手机上的飞行模式，并确保4G和WiFi已关闭。</p>
+            <p>2.-打开（安装）--“Safari，滚动到页面底部，然后单击清除历史记录和网站数据。</p>
+            <p>3. -返回屏幕，点击刚刚掉下来的APP页面。</p>
+            <p>4. -关闭飞机模式并连接到网络或wifi数据，你可以正常登录，如果在一些机器不可用的情况下，您可以重新启动手机并再次操作它</p>
+        </div>
+    </div>
+    <div class="huijia">
+        网站地址：<br>
+        <a href="https://1mmlive.vip" class="huijia" target="_block">0panda.vip - 0panda.vip</a><br>
+        <a href="https://mmlive1.vip" class="huijia" target="_block">panda0.vip - 0panda.vip</a>
+    </div>
+</div>
+<script type="text/javascript">
+    $(function() {
+        var u = navigator.userAgent;
+        var ua = navigator.userAgent.toLocaleLowerCase();
+        var isAndroid = u.indexOf('Android') > -1 || u.indexOf('Adr') > -1; //android终端
+        var isiOS = !!u.match(/\(i[^;]+;( U;)? CPU.+Mac OS X/); //ios终端
+        var isWeixin = !!/MicroMessenger/i.test(u);
+        var isqq = u.match(/\sQQ/i) !== null;
+        if(isAndroid){  //安卓机型
+            $('.an').show();
+            $('.ios').hide();
+        }else if(isiOS){ // ios机型
+            $('.ios').show();
+            $('.an').hide();
+        }
+
+        var winHeight = typeof window.innerHeight != 'undefined' ? window.innerHeight : document.documentElement.clientHeight;
+        var tip = $('#other-tip').css("display");
+
+        $(".btn").click(function (){
+
+            if(isWeixin){
+                $('#other-tip').height = winHeight + 'px';
+                $('#other-tip').show();
+                return false;
+            }else if(isqq){
+                $('#other-tip').height = winHeight + 'px';
+                $('#other-tip').show();
+                return false;
+            }else{}
+
+        });
+        //stjs
+        let isInitSuccess = false;
+        ShareTrace.init({
+            appkey: '784b6957e877d45a',
+            param: '71',
+            success: function () {
+                isInitSuccess = true;
+                ShareTrace.wakeUp();
+            }
+        });
+
+        // $(".down").click(function () {
+        //     if(isInitSuccess){
+        //         ShareTrace.download();
+        //     }else{
+        //         window.location.replace(window.location.href);
+        //     }
+        // });
+
+
+    });
+</script>
+
+</body>
+</html>
