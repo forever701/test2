@@ -55,3 +55,15 @@ function copyText(str) {
     document.execCommand("Copy");
     newInput.remove();
 }
+
+function getCurrentLanguage() {
+    const language = navigator.language || navigator.userLanguage;
+
+    if (language.includes('zh')) {
+        return ['zh',0];
+    } else if (language.includes('vi')) {
+        return ['vi',1];
+    } else {
+        return ['vi',1];
+    }
+}

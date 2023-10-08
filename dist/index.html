@@ -145,10 +145,8 @@
                 if (this.reg && this.reg.length >= 7) {
                     this.lang = this.langs[this.reg.slice(0, -6)] || 'zh';
                 } else {
-                    this.lang = navigator.language.slice(0, 2);
-                    if (this.langs.includes(this.lang)) {
-                        this.lang = 'zh'
-                    }
+                    console.log(getCurrentLanguage())
+                    this.lang = getCurrentLanguage()[0]
                 }
                 document.title = this.allData[this.lang].appName
             },
@@ -160,6 +158,12 @@
         let locationUrl = window.location.href;
         let reg = locationUrl.split("/")[3]
         let sideCode = reg.slice(0, -6) || 0
+        if (reg.length >= 7) {
+            sideCode = reg.slice(0, -6)
+        } else {
+            sideCode = getCurrentLanguage()[1]
+        }
+
         let date = +new Date()
         $.ajax(
             {
