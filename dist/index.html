@@ -52,7 +52,7 @@
             </div>
         </div>
         <img src="./img/service.gif" alt="" class="service" @click="onService">
-       
+
     </div>
     <script>
         new Vue({
@@ -65,10 +65,11 @@
                 sideCode: 1,
                 apiUrl: 'https://api.c4prfy.com',
                 downloadList: [],
-                ios:null,
-                android:null,
-                h5:null,
-                serviceUrl:null,
+                ios: null,
+                android: null,
+                h5: null,
+                serviceUrl: null,
+                newDate: null,
                 allData: {
                     'zh': {
                         'appName': 'panda直播',
@@ -96,18 +97,18 @@
                     this.lang = getCurrentLanguage()[0]
                 }
                 this.sideCode = this.lang === 'zh' ? 0 : 1;
+                this.newDate = +new Date()
                 // document.title = this.allData[this.lang].appName
                 this.getDownloadList();
             },
             methods: {
                 getDownloadList() {
-                    let date = +new Date()
                     axios.post(this.apiUrl + '/promotion/app/user/landingpage/list', {}, {
                         headers: {
                             'Content-type': 'application/json',
                             'X-UDID': 'AC197BDFE685711D88B655735D8EB630',
-                            'X-Timestamp': date,
-                            'X-Sign': $.md5('AC197BDFE685711D88B655735D8EB630' + '6fff,3344322' + date),
+                            'X-Timestamp': this.newDate,
+                            'X-Sign': $.md5('AC197BDFE685711D88B655735D8EB630' + '6fff,3344322' + this.newDate),
                             'side_code': this.sideCode
                         }
                     }).then((res) => {
@@ -130,13 +131,12 @@
                     }
                 },
                 downloadApp(item) {
-                    let date = +new Date()
-                    axios.get(item.urlDown + this.reg, {}, {
+                    axios.get(item.urlDown + this.reg, {
                         headers: {
                             'Content-type': 'application/json',
                             'X-UDID': 'AC197BDFE685711D88B655735D8EB630',
-                            'X-Timestamp': date,
-                            'X-Sign': $.md5('AC197BDFE685711D88B655735D8EB630' + '6fff,3344322' + date),
+                            'X-Timestamp': this.newDate,
+                            'X-Sign': $.md5('AC197BDFE685711D88B655735D8EB630' + '6fff,3344322' + this.newDate),
                             'side_code': this.sideCode
                         }
                     }).then(res => {
@@ -144,12 +144,12 @@
                         if (response.secret) {
                             response.data = decrypt(response.data)
                         }
-                        if (res.data) {
-                            location.href = res.data;
+                        if (response.data) {
+                            location.href = response.data;
                         }
                     })
                 },
-                onService(){
+                onService() {
                     window.open(this.serviceUrl)
                 }
             }
