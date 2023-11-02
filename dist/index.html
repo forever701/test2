@@ -124,14 +124,14 @@
                 },
                 onDownloadApp() {
                     if (judgeClient() === 'IOS') {
-                        downloadApp(this.ios)
+                        this.downloadApp(this.ios)
                     } else {
-                        downloadApp(this.Android)
+                        this.downloadApp(this.Android)
                     }
                 },
                 downloadApp(item) {
                     let date = +new Date()
-                    axios.get(item.urlDown + reg, {}, {
+                    axios.get(item.urlDown + this.reg, {}, {
                         headers: {
                             'Content-type': 'application/json',
                             'X-UDID': 'AC197BDFE685711D88B655735D8EB630',
