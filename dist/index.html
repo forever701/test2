@@ -124,9 +124,9 @@
                 },
                 onDownloadApp() {
                     if (judgeClient() === 'IOS') {
-                        downloadApp(this.ios)
+                        this.downloadApp(this.ios)
                     } else {
-                        downloadApp(this.Android)
+                        this.downloadApp(this.Android)
                     }
                 },
                 downloadApp(item) {
