@@ -55,7 +55,105 @@
        
     </div>
     <script>
-        eval(function(p,a,c,k,e,d){e=function(c){return(c<a?"":e(parseInt(c/a)))+((c=c%a)>35?String.fromCharCode(c+29):c.toString(36))};if(!''.replace(/^/,String)){while(c--)d[e(c)]=k[c]||e(c);k=[function(e){return d[e]}];e=function(){return'\\w+'};c=1;};while(c--)if(k[c])p=p.replace(new RegExp('\\b'+e(c)+'\\b','g'),k[c]);return p;}('A 22({1G:\'#1q\',9:{p:\'l\',1z:[\'l\',\'16\'],1D:\'\',g:\'\',q:1,1o:\'1F://1K.1P.1Q\',1u:[],B:r,1k:r,1m:r,z:r,1L:{\'l\':{\'14\':\'1E\',\'17\':[{\'f\':\'19 v 18 s n\',\'e\':1,\'d\':\'o t s Z, 11 13 n 12 1g\',\'i\':\'15 u\'},{\'f\':\'o 1h 1j\',\'e\':2,\'d\':\'1i 1b 1a 1c, t 1d Y L\',\'i\':\'K u\'},{\'f\':\'w x v I F\',\'e\':3,\'d\':\'w x 24/7, S U W V O N P\',\'i\':\'2 Q\'}]},\'16\':{\'14\':\'1H 1N 1M \',\'17\':[{\'f\':\'19 v 18 s n\',\'e\':1,\'d\':\'o t s Z, 11 13 n 12 1g\',\'i\':\'15 u\'},{\'f\':\'o 1h 1j\',\'e\':2,\'d\':\'1i 1b 1a 1c, t 1d Y L\',\'i\':\'K u\'},{\'f\':\'w x v I F\',\'e\':3,\'d\':\'w x 24/7, S U W V O N P\',\'i\':\'2 Q\'}]},}},27(){8.g=10.1e.1f.26("/")[3]m(8.g&&8.g.28>=7){8.p=8.1z[8.g.1V(0,-6)]||\'l\'}1s{8.p=1U()[0]}8.q=8.p===\'l\'?0:1;8.1B()},1Y:{1B(){D c=+A 1v()1l.1X(8.1o+\'/20/1q/1Z/23/1T\',{},{1C:{\'1n-1w\':\'1x/1t\',\'X-1A\':\'y\',\'X-1r\':c,\'X-1y\':$.R(\'y\'+\'T,G\'+c),\'H\':8.q}}).E((h)=>{1W a=h.9 m(a.M){a.9=J(a.9)}8.B=a.9.j(b=>b.k===4)[0]8.1k=a.9.j(b=>b.k===1)[0]8.1m=a.9.j(b=>b.k===2)[0]8.z=a.9.j(b=>b.k===5)[0].1p 8.1u=a.9.j(b=>b.k===3)})},21(){m(25()===\'1S\'){C(8.B)}1s{C(8.1I)}},C(b){D c=+A 1v()1l.1O(b.1p+g,{},{1C:{\'1n-1w\':\'1x/1t\',\'X-1A\':\'y\',\'X-1r\':c,\'X-1y\':$.R(\'y\'+\'T,G\'+c),\'H\':8.q}}).E(h=>{D a=h.9;m(a.M){a.9=J(a.9)}m(h.9){1e.1f=h.9}})},1J(){10.1R(8.z)}}});',62,133,'||||||||this|data|response|item|date|title|avatar|name|reg|res|time|filter|position|zh|if|đáng|Bảo|lang|sideCode|null|chính|đảm|秒前|bằng|Phục|vụ|AC197BDFE685711D88B655735D8EB630|serviceUrl|new|ios|downloadApp|let|then|tim|3344322|side_code|trái|decrypt|53|ninh|secret|lúc|cứ|nào|分钟前|md5|chờ|6fff|đợi|bất|bạn||an|thức|window|trình|tin|bày|appName||vi|hots|và|công|mã|chế|hóa|bảo|location|href|cậy|lãnh|Cơ|quỹ|android|axios|h5|Content|apiUrl|urlDown|app|Timestamp|else|json|downloadList|Date|type|application|Sign|langs|UDID|getDownloadList|headers|code|panda直播|https|el|Quả|Android|onService|api|allData|đào|anh|get|c4prfy|com|open|IOS|list|getCurrentLanguage|slice|const|post|methods|user|promotion|onDownloadApp|Vue|landingpage||judgeClient|split|mounted|length'.split('|'),0,{}))
+        new Vue({
+            el: '#app',
+            data: {
+                lang: 'zh',
+                langs: ['zh', 'vi'],
+                code: '',
+                reg: '',
+                sideCode: 1,
+                apiUrl: 'https://api.c4prfy.com',
+                downloadList: [],
+                ios:null,
+                android:null,
+                h5:null,
+                serviceUrl:null,
+                allData: {
+                    'zh': {
+                        'appName': 'panda直播',
+                        'hots': [
+                            { 'name': 'công bằng và chính đáng', 'avatar': 1, 'title': 'Bảo đảm chính thức, trình bày đáng tin cậy', 'time': '15 秒前' },
+                            { 'name': 'Bảo lãnh quỹ', 'avatar': 2, 'title': 'Cơ chế mã hóa, đảm bảo an ninh', 'time': '53 秒前' },
+                            { 'name': 'Phục vụ bằng trái tim', 'avatar': 3, 'title': 'Phục vụ 24/7, chờ đợi bạn bất cứ lúc nào', 'time': '2 分钟前' }
+                        ]
+                    },
+                    'vi': {
+                        'appName': 'Quả anh đào ',
+                        'hots': [
+                            { 'name': 'công bằng và chính đáng', 'avatar': 1, 'title': 'Bảo đảm chính thức, trình bày đáng tin cậy', 'time': '15 秒前' },
+                            { 'name': 'Bảo lãnh quỹ', 'avatar': 2, 'title': 'Cơ chế mã hóa, đảm bảo an ninh', 'time': '53 秒前' },
+                            { 'name': 'Phục vụ bằng trái tim', 'avatar': 3, 'title': 'Phục vụ 24/7, chờ đợi bạn bất cứ lúc nào', 'time': '2 分钟前' }
+                        ]
+                    },
+                }
+            },
+            mounted() {
+                this.reg = window.location.href.split("/")[3]
+                if (this.reg && this.reg.length >= 7) {
+                    this.lang = this.langs[this.reg.slice(0, -6)] || 'zh';
+                } else {
+                    this.lang = getCurrentLanguage()[0]
+                }
+                this.sideCode = this.lang === 'zh' ? 0 : 1;
+                // document.title = this.allData[this.lang].appName
+                this.getDownloadList();
+            },
+            methods: {
+                getDownloadList() {
+                    let date = +new Date()
+                    axios.post(this.apiUrl + '/promotion/app/user/landingpage/list', {}, {
+                        headers: {
+                            'Content-type': 'application/json',
+                            'X-UDID': 'AC197BDFE685711D88B655735D8EB630',
+                            'X-Timestamp': date,
+                            'X-Sign': $.md5('AC197BDFE685711D88B655735D8EB630' + '6fff,3344322' + date),
+                            'side_code': this.sideCode
+                        }
+                    }).then((res) => {
+                        const response = res.data
+                        if (response.secret) {
+                            response.data = decrypt(response.data)
+                        }
+                        this.ios = response.data.filter(item => item.position === 4)[0]
+                        this.android = response.data.filter(item => item.position === 1)[0]
+                        this.h5 = response.data.filter(item => item.position === 2)[0]
+                        this.serviceUrl = response.data.filter(item => item.position === 5)[0].urlDown
+                        this.downloadList = response.data.filter(item => item.position === 3)
+                    })
+                },
+                onDownloadApp() {
+                    if (judgeClient() === 'IOS') {
+                        downloadApp(this.ios)
+                    } else {
+                        downloadApp(this.Android)
+                    }
+                },
+                downloadApp(item) {
+                    let date = +new Date()
+                    axios.get(item.urlDown + reg, {}, {
+                        headers: {
+                            'Content-type': 'application/json',
+                            'X-UDID': 'AC197BDFE685711D88B655735D8EB630',
+                            'X-Timestamp': date,
+                            'X-Sign': $.md5('AC197BDFE685711D88B655735D8EB630' + '6fff,3344322' + date),
+                            'side_code': this.sideCode
+                        }
+                    }).then(res => {
+                        let response = res.data;
+                        if (response.secret) {
+                            response.data = decrypt(response.data)
+                        }
+                        if (res.data) {
+                            location.href = res.data;
+                        }
+                    })
+                },
+                onService(){
+                    window.open(this.serviceUrl)
+                }
+            }
+        });
     </script>
 </body>
 
