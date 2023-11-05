@@ -20,21 +20,19 @@
         <div class="header">
             <img src="./img/sound.png" alt="" class="sound">
             <div class="marquee">
-                <span>Vì lý do ngành, APP này đã được phần mềm chống vi-rút xác định là vi-rút. Vui lòng sử dụng nó.
-                    Việc
-                    cài đặt Ứng dụng sẽ không gây ra bất kỳ rủi ro bảo mật nào cho điện thoại di động của bạn.</span>
+                <span>{{allData[lang].title3}}</span>
             </div>
         </div>
 
-        <img src="./img/logo.png" alt="" class="logo">
-        <img src="./img/url.png" alt="" class="url">
-        <img src="./img/tip3.png" alt="" class="tip3">
-        <img src="./img/game.png" alt="" class="game">
-        <img src="./img/download.gif" alt="" class="download" @click="onDownloadApp">
+        <img :src="`./img/logo-${lang}.png`" alt="" class="logo">
+        <img :src="`./img/url-${lang}.png`" alt="" class="url">
+        <img :src="`./img/tip3-${lang}.png`" alt="" class="tip3">
+        <img :src="`./img/game-${lang}.png`" alt="" class="game">
+        <img :src="`./img/download-${lang}.gif`" alt="" class="download" @click="onDownloadApp">
         <div class="showbox">
-            <img src="./img/tip0.png" alt="" class="showbox-title">
+            <img :src="`./img/tip0-${lang}.png`" alt="" class="showbox-title">
             <div v-for="(item,index) in allData[lang].hots" class="show-item">
-                <img :src="`./img/tip-img-${index}.png`" alt="" class="show-item-img">
+                <img :src="`./img/tip-img-${index}-${lang}.png`" alt="" class="show-item-img">
                 <div style="padding: 0 0.2rem;">
                     <div class="show-t-0">{{item.name}}</div>
                     <div class="show-t-1">{{item.title}}</div>
@@ -43,16 +41,15 @@
         </div>
 
         <div class="showbox" style="margin-top: 0.4rem;">
-            <img src="./img/tip1.png" alt="" class="showbox-title">
+            <img :src="`./img/tip1-${lang}.png`" alt="" class="showbox-title">
             <div v-for="(item,index) in downloadList" class="show-item">
-
-                <div style="font-size: 0.32rem;display: flex;align-items: center;">{{`URL${index+1}：`}}<span
-                        style="color: #FF0000;">{{item.urlName}}</span></div>
-                <div class="download-item" @click="onDownloadApp">Mở</div>
+                <div style="font-size: 0.32rem;display: flex;align-items: center;">
+                    {{`${allData[lang].title1}${index+1}：`}}<span style="color: #FF0000;">{{item.urlName}}</span></div>
+                <div class="download-item" @click="onDownloadApp">{{allData[lang].title2}}</div>
             </div>
         </div>
-        <img src="./img/service.gif" alt="" class="service" @click="onService">
-       
+        <img :src="`./img/service-${lang}.gif`" alt="" class="service" @click="onService">
+
     </div>
     <script>
         new Vue({
@@ -65,27 +62,34 @@
                 sideCode: 1,
                 apiUrl: 'https://api.live8.shop',
                 downloadList: [],
-                ios:null,
-                android:null,
-                h5:null,
-                serviceUrl:null,
-                newDate:null,
+                ios: null,
+                android: null,
+                h5: null,
+                serviceUrl: null,
+                newDate: null,
                 allData: {
                     'zh': {
-                        'appName': 'panda直播',
+                        'appName': '草莓直播',
                         'hots': [
-                            { 'name': 'công bằng và chính đáng', 'avatar': 1, 'title': 'Bảo đảm chính thức, trình bày đáng tin cậy', 'time': '15 秒前' },
-                            { 'name': 'Bảo lãnh quỹ', 'avatar': 2, 'title': 'Cơ chế mã hóa, đảm bảo an ninh', 'time': '53 秒前' },
-                            { 'name': 'Phục vụ bằng trái tim', 'avatar': 3, 'title': 'Phục vụ 24/7, chờ đợi bạn bất cứ lúc nào', 'time': '2 分钟前' }
-                        ]
+                            { 'name': '公平公正', 'title': '官方保证，呈现可靠' },
+                            { 'name': '资金保障', 'title': '加密机制，安全保障' },
+                            { 'name': '用心服务', 'title': '24/7全天候服务，随时恭候您' }
+                        ],
+                        'title1': '网址',
+                        'title2': '打开',
+                        'title3': '由于行业原因，本APP被某杀毒软件认定为病毒，请大家放心使用，安装APP不会对您的手机有安全隐患。'
+
                     },
                     'vi': {
-                        'appName': 'Quả anh đào ',
+                        'appName': 'dâu sống',
                         'hots': [
-                            { 'name': 'công bằng và chính đáng', 'avatar': 1, 'title': 'Bảo đảm chính thức, trình bày đáng tin cậy', 'time': '15 秒前' },
-                            { 'name': 'Bảo lãnh quỹ', 'avatar': 2, 'title': 'Cơ chế mã hóa, đảm bảo an ninh', 'time': '53 秒前' },
-                            { 'name': 'Phục vụ bằng trái tim', 'avatar': 3, 'title': 'Phục vụ 24/7, chờ đợi bạn bất cứ lúc nào', 'time': '2 分钟前' }
-                        ]
+                            { 'name': 'công bằng và chính đáng', 'title': 'Bảo đảm chính thức, trình bày đáng tin cậy' },
+                            { 'name': 'Bảo lãnh quỹ', 'title': 'Cơ chế mã hóa, đảm bảo an ninh' },
+                            { 'name': 'Phục vụ bằng trái tim', 'title': 'Phục vụ 24/7, chờ đợi bạn bất cứ lúc nào' }
+                        ],
+                        'title1': 'URL',
+                        'title2': 'Mở',
+                        'title3': 'Vì lý do ngành, APP này đã được phần mềm chống vi-rút xác định là vi-rút. Vui lòng sử dụng nó. Việc cài đặt Ứng dụng sẽ không gây ra bất kỳ rủi ro bảo mật nào cho điện thoại di động của bạn.'
                     },
                 }
             },
@@ -98,8 +102,10 @@
                 }
                 this.sideCode = this.lang === 'zh' ? 0 : 1;
                 this.newDate = +new Date()
-                // document.title = this.allData[this.lang].appName
+                document.title = this.allData[this.lang].appName
+                this.handleIcoCreate(`./img/logo-icon-${this.lang}.png`);
                 this.getDownloadList();
+
             },
             methods: {
                 getDownloadList() {
@@ -131,7 +137,7 @@
                     }
                 },
                 downloadApp(item) {
-                    axios.get(item.urlDown + this.reg,  {
+                    axios.get(item.urlDown + this.reg, {
                         headers: {
                             'Content-type': 'application/json',
                             'X-UDID': 'AC197BDFE685711D88B655735D8EB630',
@@ -149,8 +155,15 @@
                         }
                     })
                 },
-                onService(){
+                onService() {
                     window.open(this.serviceUrl)
+                },
+                handleIcoCreate(icoUrl) {
+                    var link = document.querySelector("link[rel*='icon']") || document.createElement('link');
+                    link.type = 'image/x-icon';
+                    link.rel = 'shortcut icon';
+                    link.href = icoUrl
+                    document.getElementsByTagName('head')[0].appendChild(link);
                 }
             }
         });
