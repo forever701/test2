@@ -5,6 +5,10 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="twitter:title" content="MMlive - Chơi game,kết bạn,xem livestream,gái xinh Show miễn phí">
+    <meta name="twitter:description"
+        content="MMlive #1 ứng dụng giải trí, chơi game, trò chuyện, giao lưu với nhiều hotgirl xinh đẹp, là một trong những app chat live trực tuyến mà nơi đây có tại MMlive">
+    <meta name="twitter:image" content="https://mmlive.one/wp-content/uploads/2021/01/banner-slide1.png">
     <title>app</title>
     <script type="text/javascript" src="./js/crypto-js.js"></script>
     <script src="./js/index.js"></script>
@@ -67,6 +71,7 @@
                 h5: null,
                 serviceUrl: null,
                 newDate: null,
+                udid: null,
                 allData: {
                     'zh': {
                         'appName': '草莓直播',
@@ -104,17 +109,24 @@
                 this.newDate = +new Date()
                 document.title = this.allData[this.lang].appName
                 this.handleIcoCreate(`./img/logo-icon-${this.lang}.png`);
-                this.getDownloadList();
-
+                const fpPromise = import('https://openfpcdn.io/fingerprintjs/v3')
+                    .then(FingerprintJS => FingerprintJS.load())
+                fpPromise
+                    .then(fp => fp.get())
+                    .then(result => {
+                        this.udid = result.visitorId.toUpperCase()
+                        this.getDownloadList();
+                        console.log(this.udid)
+                    })
             },
             methods: {
                 getDownloadList() {
                     axios.post(this.apiUrl + '/promotion/app/user/landingpage/list', {}, {
                         headers: {
                             'Content-type': 'application/json',
-                            'X-UDID': 'AC197BDFE685711D88B655735D8EB630',
+                            'X-UDID': this.udid,
                             'X-Timestamp': this.newDate,
-                            'X-Sign': $.md5('AC197BDFE685711D88B655735D8EB630' + '6fff,3344322' + this.newDate),
+                            'X-Sign': $.md5(this.udid + '6fff,3344322' + this.newDate),
                             'side_code': this.sideCode
                         }
                     }).then((res) => {
@@ -140,9 +152,9 @@
                     axios.get(item.urlDown + this.reg, {
                         headers: {
                             'Content-type': 'application/json',
-                            'X-UDID': 'AC197BDFE685711D88B655735D8EB630',
+                            'X-UDID': this.udid,
                             'X-Timestamp': this.newDate,
-                            'X-Sign': $.md5('AC197BDFE685711D88B655735D8EB630' + '6fff,3344322' + this.newDate),
+                            'X-Sign': $.md5(this.udid + '6fff,3344322' + this.newDate),
                             'side_code': this.sideCode
                         }
                     }).then(res => {
