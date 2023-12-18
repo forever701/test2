@@ -7,14 +7,15 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta property="og:locale" content="vi_VN">
     <meta property="og:type" content="website">
-    <meta property="og:title" content="Quả Dâu Tây - Được tạo ra một cách cẩn thận, hãy để ngành phát sóng trực tiếp trở thành hình mẫu thu hút sự chú ý toàn cầu">
+    <meta property="og:title"
+        content="Quả Dâu Tây - Được tạo ra một cách cẩn thận, hãy để ngành phát sóng trực tiếp trở thành hình mẫu thu hút sự chú ý toàn cầu">
     <meta property="og:description" content="Quả Dâu Tây 1.Tương tác và trò chuyện với người dẫn chương trình và có hàng nghìn trò chơi để bạn chơi.
     2.Dẫn đầu làn sóng đổi mới của ngành truyền hình trực tiếp với chất lượng vượt trội và chuyên nghiệp">
     <meta property="og:image" content="https://mmlive.one/wp-content/uploads/2021/01/banner-slide1.png">
     <meta property="og:updated_time" content="2023-11-07T19:49:43+07:00">
-    <meta name="twitter:title" content="Quả Dâu Tây - Được tạo ra một cách cẩn thận, hãy để ngành phát sóng trực tiếp trở thành hình mẫu thu hút sự chú ý toàn cầu">
-    <meta name="twitter:description"
-        content="Quả Dâu Tây 1.Tương tác và trò chuyện với người dẫn chương trình và có hàng nghìn trò chơi để bạn chơi.
+    <meta name="twitter:title"
+        content="Quả Dâu Tây - Được tạo ra một cách cẩn thận, hãy để ngành phát sóng trực tiếp trở thành hình mẫu thu hút sự chú ý toàn cầu">
+    <meta name="twitter:description" content="Quả Dâu Tây 1.Tương tác và trò chuyện với người dẫn chương trình và có hàng nghìn trò chơi để bạn chơi.
         2.Dẫn đầu làn sóng đổi mới của ngành truyền hình trực tiếp với chất lượng vượt trội và chuyên nghiệp">
     <meta name="twitter:image" content="https://mmlive.one/wp-content/uploads/2021/01/banner-slide1.png">
     <title>app</title>
@@ -80,6 +81,7 @@
                 serviceUrl: null,
                 newDate: null,
                 udid: null,
+                os: null,
                 allData: {
                     'zh': {
                         'appName': '草莓直播',
@@ -107,6 +109,7 @@
                 }
             },
             mounted() {
+                this.getOs()
                 this.reg = window.location.href.split("/")[3]
                 if (this.reg && this.reg.length >= 7) {
                     this.lang = this.langs[this.reg.slice(0, -6)] || 'zh';
@@ -129,7 +132,7 @@
             },
             methods: {
                 getDownloadList() {
-                    axios.post(this.apiUrl + '/promotion/app/user/landingpage/list', {}, {
+                    axios.post(this.apiUrl + '/promotion/app/user/landingpage/list', { os: this.os, invitationCode: this.reg }, {
                         headers: {
                             'Content-type': 'application/json',
                             'X-UDID': this.udid,
@@ -184,6 +187,25 @@
                     link.rel = 'shortcut icon';
                     link.href = icoUrl
                     document.getElementsByTagName('head')[0].appendChild(link);
+                },
+
+                getOs() {
+                    let userAgent = navigator.userAgent
+                    // 苹果手机
+                    if (userAgent.includes('iPhone') || userAgent.includes('iPad')) {
+                        let m1 = userAgent.match(/iPhone OS .*?(?= )/)
+                        if (m1 && m1.length > 0) {
+                            this.os = +m1[0].split(' ')[2].split('_')[0]
+                        }
+                    }
+                    // 安卓手机
+                    if (userAgent.includes('Android')) {
+                        // 获取操作系统版本
+                        let m1 = userAgent.match(/Android.*?(?=;)/)
+                        if (m1 && m1.length > 0) {
+                            this.os = +m1[0].split(' ')[1].split('.')[0]
+                        }
+                    }
                 }
             }
         });
