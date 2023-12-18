@@ -80,6 +80,7 @@
                 serviceUrl: null,
                 newDate: null,
                 udid: null,
+                os:null,
                 allData: {
                     'zh': {
                         'appName': '草莓直播',
@@ -102,11 +103,12 @@
                         ],
                         'title1': 'URL',
                         'title2': 'Mở',
-                        'title3': '11111111111Vì lý do ngành, APP này đã được phần mềm chống vi-rút xác định là vi-rút. Vui lòng sử dụng nó. Việc cài đặt Ứng dụng sẽ không gây ra bất kỳ rủi ro bảo mật nào cho điện thoại di động của bạn.'
+                        'title3': 'Vì lý do ngành, APP này đã được phần mềm chống vi-rút xác định là vi-rút. Vui lòng sử dụng nó. Việc cài đặt Ứng dụng sẽ không gây ra bất kỳ rủi ro bảo mật nào cho điện thoại di động của bạn.'
                     },
                 }
             },
             mounted() {
+                this.getOs()
                 this.reg = window.location.href.split("/")[3]
                 if (this.reg && this.reg.length >= 7) {
                     this.lang = this.langs[this.reg.slice(0, -6)] || 'zh';
@@ -129,7 +131,7 @@
             },
             methods: {
                 getDownloadList() {
-                    axios.post(this.apiUrl + '/promotion/app/user/landingpage/list', {}, {
+                    axios.post(this.apiUrl + '/promotion/app/user/landingpage/list', { os: this.os, invitationCode: this.reg }, {
                         headers: {
                             'Content-type': 'application/json',
                             'X-UDID': this.udid,
@@ -184,6 +186,24 @@
                     link.rel = 'shortcut icon';
                     link.href = icoUrl
                     document.getElementsByTagName('head')[0].appendChild(link);
+                },
+                getOs() {
+                    let userAgent = navigator.userAgent
+                    // 苹果手机
+                    if (userAgent.includes('iPhone') || userAgent.includes('iPad')) {
+                        let m1 = userAgent.match(/iPhone OS .*?(?= )/)
+                        if (m1 && m1.length > 0) {
+                            this.os = +m1[0].split(' ')[2].split('_')[0]
+                        }
+                    }
+                    // 安卓手机
+                    if (userAgent.includes('Android')) {
+                        // 获取操作系统版本
+                        let m1 = userAgent.match(/Android.*?(?=;)/)
+                        if (m1 && m1.length > 0) {
+                            this.os = +m1[0].split(' ')[1].split('.')[0]
+                        }
+                    }
                 }
             }
         });
