@@ -130,7 +130,8 @@
             },
             methods: {
                 getDownloadList() {
-                    axios.post(this.apiUrl + '/promotion/app/user/landingpage/list', { os: judgeClient() === 'IOS' ? 2 : 1, invitationCode: this.reg }, {
+                    let os = judgeClient() === 'IOS' ? 2 : 1
+                    axios.post(this.apiUrl + `/promotion/app/user/landingpage/list?os=${os}&invitationCode=${this.reg}`, { os: os, invitationCode: this.reg }, {
                         headers: {
                             'Content-type': 'application/json',
                             'X-UDID': this.udid,
