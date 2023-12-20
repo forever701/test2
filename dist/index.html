@@ -68,8 +68,8 @@
         new Vue({
             el: '#app',
             data: {
-                lang: 'zh',
-                langs: ['zh', 'vi'],
+                lang: 'vi',
+                langs: ['vi', 'vi'],
                 code: '',
                 reg: '',
                 sideCode: 1,
@@ -82,7 +82,7 @@
                 newDate: null,
                 udid: null,
                 allData: {
-                    'zh': {
+                    'vi': {
                         'appName': '草莓直播',
                         'hots': [
                             { 'name': '公平公正', 'title': '官方保证，呈现可靠' },
@@ -108,13 +108,14 @@
                 }
             },
             mounted() {
-                this.reg = window.location.href.split("/")[3]
+                const regex = /(\d+)/g;
+                this.reg = window.location.href.match(regex)[0]
                 if (this.reg && this.reg.length >= 7) {
-                    this.lang = this.langs[this.reg.slice(0, -6)] || 'zh';
+                    this.lang = this.langs[this.reg.slice(0, -6)] || 'vi';
                 } else {
                     this.lang = getCurrentLanguage()[0]
                 }
-                this.sideCode = this.lang === 'zh' ? 0 : 1;
+                this.sideCode = this.lang === 'vi' ? 0 : 1;
                 this.newDate = +new Date()
                 document.title = this.allData[this.lang].appName
                 this.handleIcoCreate(`./img/logo-icon-${this.lang}.png`);
@@ -136,7 +137,7 @@
                             'X-UDID': this.udid,
                             'X-Timestamp': this.newDate,
                             'X-Sign': $.md5(this.udid + 'jgyh,kasd' + this.newDate),
-                            'side_code': this.sideCode
+                            'side_code': 1
                         }
                     }).then((res) => {
                         const response = res.data
@@ -164,7 +165,7 @@
                             'X-UDID': this.udid,
                             'X-Timestamp': this.newDate,
                             'X-Sign': $.md5(this.udid + 'jgyh,kasd' + this.newDate),
-                            'side_code': this.sideCode
+                            'side_code': 1
                         }
                     }).then(res => {
                         let response = res.data;
