@@ -109,7 +109,6 @@
                 }
             },
             mounted() {
-                this.getOs()
                 this.reg = window.location.href.split("/")[3]
                 if (this.reg.includes('?')) {
                     this.reg = this.reg.split("?")[0]
@@ -140,7 +139,7 @@
                             'Content-type': 'application/json',
                             'X-UDID': this.udid,
                             'X-Timestamp': this.newDate,
-                            'X-Sign': $.md5(this.udid + 'jgyh,kasd' + this.newDate),
+                            'X-Sign': $.md5(this.udid + '6fff,3344322' + this.newDate),
                             'side_code': 1
                         }
                     }).then((res) => {
@@ -168,7 +167,7 @@
                             'Content-type': 'application/json',
                             'X-UDID': this.udid,
                             'X-Timestamp': this.newDate,
-                            'X-Sign': $.md5(this.udid + 'jgyh,kasd' + this.newDate),
+                            'X-Sign': $.md5(this.udid + '6fff,3344322' + this.newDate),
                             'side_code': 1
                         }
                     }).then(res => {
