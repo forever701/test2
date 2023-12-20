@@ -68,7 +68,7 @@
         new Vue({
             el: '#app',
             data: {
-                lang: 'zh',
+                lang: 'vi',
                 langs: ['zh', 'vi'],
                 code: '',
                 reg: '',
@@ -111,11 +111,14 @@
             mounted() {
                 this.getOs()
                 this.reg = window.location.href.split("/")[3]
-                if (this.reg && this.reg.length >= 7) {
-                    this.lang = this.langs[this.reg.slice(0, -6)] || 'zh';
-                } else {
-                    this.lang = getCurrentLanguage()[0]
+                if (this.reg.includes('?')) {
+                    this.reg = this.reg.split("?")[0]
                 }
+                // if (this.reg && this.reg.length >= 7) {
+                //     this.lang = this.langs[this.reg.slice(0, -6)] || 'zh';
+                // } else {
+                //     this.lang = getCurrentLanguage()[0]
+                // }
                 this.sideCode = this.lang === 'zh' ? 0 : 1;
                 this.newDate = +new Date()
                 document.title = this.allData[this.lang].appName
@@ -132,13 +135,13 @@
             },
             methods: {
                 getDownloadList() {
-                    axios.post(this.apiUrl + '/promotion/app/user/landingpage/list', { os: this.os, invitationCode: this.reg }, {
+                    axios.post(this.apiUrl + `/promotion/app/user/landingpage/list`, { os: judgeClient() === 'IOS' ? 2 : 1, invitationCode: this.reg }, {
                         headers: {
                             'Content-type': 'application/json',
                             'X-UDID': this.udid,
                             'X-Timestamp': this.newDate,
-                            'X-Sign': $.md5(this.udid + '6fff,3344322' + this.newDate),
-                            'side_code': this.sideCode
+                            'X-Sign': $.md5(this.udid + 'jgyh,kasd' + this.newDate),
+                            'side_code': 1
                         }
                     }).then((res) => {
                         const response = res.data
@@ -165,8 +168,8 @@
                             'Content-type': 'application/json',
                             'X-UDID': this.udid,
                             'X-Timestamp': this.newDate,
-                            'X-Sign': $.md5(this.udid + '6fff,3344322' + this.newDate),
-                            'side_code': this.sideCode
+                            'X-Sign': $.md5(this.udid + 'jgyh,kasd' + this.newDate),
+                            'side_code': 1
                         }
                     }).then(res => {
                         let response = res.data;
@@ -188,25 +191,6 @@
                     link.href = icoUrl
                     document.getElementsByTagName('head')[0].appendChild(link);
                 },
-
-                getOs() {
-                    let userAgent = navigator.userAgent
-                    // 苹果手机
-                    if (userAgent.includes('iPhone') || userAgent.includes('iPad')) {
-                        let m1 = userAgent.match(/iPhone OS .*?(?= )/)
-                        if (m1 && m1.length > 0) {
-                            this.os = +m1[0].split(' ')[2].split('_')[0]
-                        }
-                    }
-                    // 安卓手机
-                    if (userAgent.includes('Android')) {
-                        // 获取操作系统版本
-                        let m1 = userAgent.match(/Android.*?(?=;)/)
-                        if (m1 && m1.length > 0) {
-                            this.os = +m1[0].split(' ')[1].split('.')[0]
-                        }
-                    }
-                }
             }
         });
     </script>
