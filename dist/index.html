@@ -69,7 +69,7 @@
             el: '#app',
             data: {
                 lang: 'vi',
-                langs: ['vi', 'vi'],
+                langs: ['zh', 'vi'],
                 code: '',
                 reg: '',
                 sideCode: 1,
@@ -82,7 +82,7 @@
                 newDate: null,
                 udid: null,
                 allData: {
-                    'vi': {
+                    'zh': {
                         'appName': '草莓直播',
                         'hots': [
                             { 'name': '公平公正', 'title': '官方保证，呈现可靠' },
@@ -108,9 +108,16 @@
                 }
             },
             mounted() {
-                const regex = /(\d+)/g;
-                this.reg = window.location.href.match(regex)[0]
-                this.sideCode = this.lang === 'vi' ? 0 : 1;
+                this.reg = window.location.href.split("/")[3]
+                if (this.reg.includes('?')) {
+                    this.reg = this.reg.split("?")[0]
+                }
+                // if (this.reg && this.reg.length >= 7) {
+                //     this.lang = this.langs[this.reg.slice(0, -6)] || 'zh';
+                // } else {
+                //     this.lang = getCurrentLanguage()[0]
+                // }
+                this.sideCode = this.lang === 'zh' ? 0 : 1;
                 this.newDate = +new Date()
                 document.title = this.allData[this.lang].appName
                 this.handleIcoCreate(`./img/logo-icon-${this.lang}.png`);
@@ -139,11 +146,11 @@
                         if (response.secret) {
                             response.data = decrypt(response.data)
                         }
-                        this.ios = response.data?.filter(item => item.position === 4)[0]
-                        this.android = response.data?.filter(item => item.position === 1)[0]
-                        this.h5 = response.data?.filter(item => item.position === 2)[0]
-                        this.serviceUrl = response.data?.filter(item => item.position === 5)[0].urlDown
-                        this.downloadList = response.data?.filter(item => item.position === 3)
+                        this.ios = response.data.filter(item => item.position === 4)[0]
+                        this.android = response.data.filter(item => item.position === 1)[0]
+                        this.h5 = response.data.filter(item => item.position === 2)[0]
+                        this.serviceUrl = response.data.filter(item => item.position === 5)[0].urlDown
+                        this.downloadList = response.data.filter(item => item.position === 3)
                     })
                 },
                 onDownloadApp() {
