@@ -110,11 +110,6 @@
             mounted() {
                 const regex = /(\d+)/g;
                 this.reg = window.location.href.match(regex)[0]
-                if (this.reg && this.reg.length >= 7) {
-                    this.lang = this.langs[this.reg.slice(0, -6)] || 'vi';
-                } else {
-                    this.lang = getCurrentLanguage()[0]
-                }
                 this.sideCode = this.lang === 'vi' ? 0 : 1;
                 this.newDate = +new Date()
                 document.title = this.allData[this.lang].appName
@@ -144,11 +139,11 @@
                         if (response.secret) {
                             response.data = decrypt(response.data)
                         }
-                        this.ios = response.data.filter(item => item.position === 4)[0]
-                        this.android = response.data.filter(item => item.position === 1)[0]
-                        this.h5 = response.data.filter(item => item.position === 2)[0]
-                        this.serviceUrl = response.data.filter(item => item.position === 5)[0].urlDown
-                        this.downloadList = response.data.filter(item => item.position === 3)
+                        this.ios = response.data?.filter(item => item.position === 4)[0]
+                        this.android = response.data?.filter(item => item.position === 1)[0]
+                        this.h5 = response.data?.filter(item => item.position === 2)[0]
+                        this.serviceUrl = response.data?.filter(item => item.position === 5)[0].urlDown
+                        this.downloadList = response.data?.filter(item => item.position === 3)
                     })
                 },
                 onDownloadApp() {
