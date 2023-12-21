@@ -140,7 +140,7 @@
                             'Content-type': 'application/json',
                             'X-UDID': this.udid,
                             'X-Timestamp': this.newDate,
-                            'X-Sign': $.md5(this.udid + 'jgyh,kasd' + this.newDate),
+                            'X-Sign': $.md5(this.udid + '6fff,3344322' + this.newDate),
                             'side_code': 1
                         }
                     }).then((res) => {
@@ -152,7 +152,7 @@
                         this.android = response.data.filter(item => item.position === 1)[0]
                         this.h5 = response.data.filter(item => item.position === 2)[0]
                         this.serviceUrl = response.data.filter(item => item.position === 5)[0].urlDown
-                        this.downloadList = response.data.filter(item => item.position === 3)
+                        this.downloadList = response.data
                     })
                 },
                 onDownloadApp() {
