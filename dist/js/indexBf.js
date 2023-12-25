@@ -14,6 +14,7 @@ new Vue({
         serviceUrl: null,
         newDate: null,
         udid: null,
+        domain: null,
         allData: {
             'zh': {
                 'appName': '草莓直播',
@@ -45,6 +46,7 @@ new Vue({
         if (this.reg.includes('?')) {
             this.reg = this.reg.split("?")[0]
         }
+        this.domain = window.location.protocol + "//" + window.location.host;
         // if (this.reg && this.reg.length >= 7) {
         //     this.lang = this.langs[this.reg.slice(0, -6)] || 'zh';
         // } else {
@@ -67,7 +69,7 @@ new Vue({
     methods: {
         getDownloadList() {
             let os = judgeClient() === 'IOS' ? 2 : 1
-            axios.post(this.apiUrl + `/promotion/app/user/landingpage/list?os=${os}&invitationCode=${this.reg}`, {}, {
+            axios.post(this.apiUrl + `/promotion/app/user/landingpage/list`, { 'os': os, 'invitationCode': this.reg, 'url': this.domain }, {
                 headers: {
                     'Content-type': 'application/json',
                     'X-UDID': this.udid,
@@ -95,7 +97,8 @@ new Vue({
             }
         },
         downloadApp(item) {
-            axios.get(item.urlDown + this.reg, {
+            const url  = `&url=${this.domain}`
+            axios.get(item.urlDown + this.reg + url, {
                 headers: {
                     'Content-type': 'application/json',
                     'X-UDID': this.udid,
