@@ -1,11 +1,15 @@
 new Vue({
     el: '#app',
     data: {
-        lang: 'zn',
+        lang: 'vi',
         langs: ['zh', 'vi'],
         code: '',
         reg: '',
         sideCode: 1,
+        // 是否是移动端，默认为true
+        isMobile: true,
+        // 浏览器高度
+        screenHeight: 0,
         apiUrl: 'https://api.c4prfy.com',
         downloadList: [],
         ios: null,
@@ -42,7 +46,8 @@ new Vue({
         }
     },
     mounted() {
-        this.reg = window.location.href.split("/")[3]
+        this.screenHeight = document.body.clientHeight 
+        this.reg = window.location.href.split("/")
         if (this.reg.includes('?')) {
             this.reg = this.reg.split("?")[0]
         }
@@ -51,6 +56,11 @@ new Vue({
         // } else {
         //     this.lang = getCurrentLanguage()[0]
         // }
+        // 判断当前访问设备是PC还是移动端，有两种方法
+        // 1. 使用User-Agent字符串
+        this.isMobile = /iPhone|iPad|iPod|Android|Windows Phone/i.test(navigator.userAgent);
+        // 2. 使用媒体查询 使用CSS的媒体查询来检测屏幕大小，从而判断用户是在PC端还是移动端访问。媒体查询是CSS中的一种语法，可以根据屏幕大小、屏幕比例、设备方向等条件来选择应用不同的样式。
+        // this.isMobile = window.matchMedia('(max-width: 768px)').matches;
         this.sideCode = this.lang === 'zh' ? 0 : 1;
         this.newDate = +new Date()
         document.title = this.allData[this.lang].appName
