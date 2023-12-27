@@ -28,25 +28,20 @@
 		<!-- <script charset="UTF-8" id="LA_COLLECT" src="//sdk.51.la/js-sdk-pro.min.js"></script> -->
 		<!-- <script>LA.init({ id: "3GvcwDP0AUhX1gXM", ck: "3GvcwDP0AUhX1gXM" })</script> -->
 		<link rel="stylesheet" href="./css/index.css">
-		<script charset="UTF-8" id="LA_COLLECT" src="//sdk.51.la/js-sdk-pro.min.js"></script>
-		<script>LA.init({id:"3GvcwDP0AUhX1gXM",ck:"3GvcwDP0AUhX1gXM"})</script>
-		<!-- Google Tag Manager -->
-		<script>
-			(function(w, d, s, l, i) {
-				w[l] = w[l] || [];
-				w[l].push({
-					'gtm.start': new Date().getTime(),
-					event: 'gtm.js'
-				});
-				var f = d.getElementsByTagName(s)[0],
-					j = d.createElement(s),
-					dl = l != 'dataLayer' ? '&l=' + l : '';
-				j.async = true;
-				j.src =
-					'https://www.googletagmanager.com/gtm.js?id=' + i + dl;
-				f.parentNode.insertBefore(j, f);
-			})(window, document, 'script', 'dataLayer', 'GTM-54W4K5BH');
+		<!-- <script charset="UTF-8" id="LA_COLLECT" src="//sdk.51.la/js-sdk-pro.min.js"></script>
+		<script>LA.init({id:"3GvcwDP0AUhX1gXM",ck:"3GvcwDP0AUhX1gXM"})</script> -->
+		<!-- Google tag (gtag.js) --> 
+		<script async src="https://www.googletagmanager.com/gtag/js?id=G-XSLPFH4MWH"></script> 
+		<script> 
+			window.dataLayer = window.dataLayer || []; 
+			function gtag(){
+				dataLayer.push(arguments);
+			} 
+			gtag('js', new Date()); 
+			gtag('config', 'G-XSLPFH4MWH'); 
 		</script>
+
+ 
 		<!-- End Google Tag Manager -->
 
 	</head>
@@ -61,11 +56,18 @@
 			</div>
 
 			<img :src="`./img/logo-${lang}.png`" alt="" class="logo">
+			<img :src="`./img/limit-tip-${lang}.png`" alt="" class="limit-tip">
 			<img :src="`./img/url-${lang}.png`" alt="" class="url" @click="onDownloadApp">
-			<img :src="`./img/tip3-${lang}.png`" alt="" class="tip3">
-			<img :src="`./img/game-${lang}.png`" alt="" class="game">
-			<img :src="`./img/download-${lang}.gif`" alt="" class="download" @click="onDownloadApp">
-			<div class="showbox">
+			<img :src="`./img/content.png`" alt="" class="content">
+			<img :src="`./img/limit-tip-detail-${lang}.png`" alt="" class="tip-detail">
+			<div class="showBox2">
+				<img :src="`./img/enter-web-${lang}.png`" alt="" class="enter"  @click="onDownloadApp">
+				<div class="enterDiv"></div>
+				<img :src="`./img/leave-web-${lang}.png`" alt="" class="enter"  @click="onDownloadApp">
+			</div>
+			<!-- <img :src="`./img/game-${lang}.png`" alt="" class="game"> -->
+			<!-- <img :src="`./img/download-${lang}.gif`" alt="" class="download" @click="onDownloadApp"> -->
+			<!-- <div class="showbox">
 				<img :src="`./img/tip0-${lang}.png`" alt="" class="showbox-title">
 				<div v-for="(item,index) in allData[lang].hots" class="show-item">
 					<img :src="`./img/tip-img-${index}-${lang}.png`" alt="" class="show-item-img">
@@ -84,8 +86,8 @@
 					</div>
 					<div class="download-item" @click="onDownloadApp">{{allData[lang].title2}}</div>
 				</div>
-			</div>
-			<img :src="`./img/service-${lang}.gif`" alt="" class="service" @click="onService">
+			</div> -->
+			<!-- <img :src="`./img/service-${lang}.gif`" alt="" class="service" @click="onService"> -->
 
 		</div>
 		<script src="./js/indexHx.js"></script>

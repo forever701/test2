@@ -21,10 +21,10 @@ div {
 
 .page-wrap {
     width: 100vw;
-    padding-bottom: 2rem;
+    padding-bottom: 1rem;
     background-image: url(../img/bg.png);
     background-repeat: no-repeat;
-    background-size: 100% auto;
+    background-size: cover;
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -35,12 +35,37 @@ div {
     height: 1.5rem;
     margin-top: 0.2rem;
 }
+.limit-tip {
+    height: 0.6rem;
+    margin-top: 0.1rem;
+}
+.tip-detail {
+    margin-top: 0.1rem;
+    margin-bottom: 0.3rem;
+    height: 1.15rem;
 
+}
+.showBox2 {
+    display: flex;
+}
+.enterDiv {
+    width: 0.1rem;
+}
+.enter {
+    flex: 1;
+    height: 1.25rem;
+    background-size: cover;
+}
 .url {
     height: 1.2em;
     margin-top: 0.2rem;
 }
 
+.content {
+    width: 100vw;
+    object-fit: cover;
+
+}
 .tip3 {
     height: 2rem;
     margin-top: 7rem;

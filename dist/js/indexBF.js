@@ -1,7 +1,7 @@
 new Vue({
     el: '#app',
     data: {
-        lang: 'vi',
+        lang: 'zn',
         langs: ['zh', 'vi'],
         code: '',
         reg: '',
