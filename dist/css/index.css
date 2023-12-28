@@ -11,7 +11,7 @@ html {
 }
 
 
-/* 这个是51统计中有样式问题，https://js.users.51.la/21835481.js  如果去掉这个统计，就可以把这个样式删除掉，以免引起不必要的麻烦 */
+/* 这个是51统计中有样式问题，https://js.users.51.la/21836125.js  如果去掉这个统计，就可以把这个样式删除掉，以免引起不必要的麻烦 */
 body a {
     display: none;
     visibility: hidden;
