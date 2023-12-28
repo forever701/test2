@@ -10,10 +10,17 @@ html {
     padding: 0;
 }
 
+
+/* 这个是51统计中有样式问题，https://js.users.51.la/21835481.js  如果去掉这个统计，就可以把这个样式删除掉，以免引起不必要的麻烦 */
+body a {
+    display: none;
+    visibility: hidden;
+}
+
 img {
     vertical-align: text-bottom;
     object-fit: cover;
-}
+}                          
 
 div {
     box-sizing: border-box;
@@ -82,7 +89,16 @@ div {
     height: 240px;
     margin-left: 110px;
     margin-top: 50px;
+    
 }
+
+#qrCodeDiv {
+  background-color: white;
+  padding: 10px;
+  border-radius: 20px;
+}
+
+
 .qr-remark-pc {
     width: 202px;
     margin-top: 20px;

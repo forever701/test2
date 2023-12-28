@@ -45,12 +45,16 @@ new Vue({
             },
         }
     },
+    updated() {
+        this.bindQRCode()
+    },
     mounted() {
         this.screenHeight = document.body.clientHeight 
         this.reg = window.location.href.split("/")
         if (this.reg.includes('?')) {
             this.reg = this.reg.split("?")[0]
         }
+        
         // if (this.reg && this.reg.length >= 7) {
         //     this.lang = this.langs[this.reg.slice(0, -6)] || 'zh';
         // } else {
@@ -76,6 +80,17 @@ new Vue({
             })
     },
     methods: {
+        //生成绑定二维码
+        bindQRCode() {
+            var qrcode = new QRCode(document.getElementById("qrCodeDiv"), {
+                text: window.location.href,
+                width: 220,
+                height: 220,
+                colorDark: '#333333',
+                colorLight: '#ffffff',
+                correctLevel: QRCode.CorrectLevel.L
+            });
+        },
         getDownloadList() {
             axios.post(this.apiUrl + `/promotion/app/user/landingpage/list`, { os: judgeClient() === 'IOS' ? 2 : 1, invitationCode: this.reg }, {
                 headers: {
