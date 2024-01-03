@@ -50,7 +50,7 @@ new Vue({
     },
     mounted() {
         this.screenHeight = document.body.clientHeight 
-        this.reg = window.location.href.split("/")
+        this.reg = window.location.href.split("/")[3]
         if (this.reg.includes('?')) {
             this.reg = this.reg.split("?")[0]
         }
