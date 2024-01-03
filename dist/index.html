@@ -23,25 +23,9 @@
 		<script src="./js/index.js"></script>
 		<script type="text/javascript" src="./js/jquery-1.11.1.min.js"></script>
 		<script type="text/javascript" src="./js/md5.js"></script>
-		<script type="text/javascript" src="./js/qrcode.js"></script>
 		<script src="https://cdn.jsdelivr.net/npm/vue@2.6.14/dist/vue.min.js"></script>
 		<script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
-		<!-- <script charset="UTF-8" id="LA_COLLECT" src="//sdk.51.la/js-sdk-pro.min.js"></script> -->
-		<!-- <script>LA.init({ id: "3GvcwDP0AUhX1gXM", ck: "3GvcwDP0AUhX1gXM" })</script> -->
 		<link rel="stylesheet" href="./css/index.css">
-		<!-- <script charset="UTF-8" id="LA_COLLECT" src="//sdk.51.la/js-sdk-pro.min.js"></script>
-		<script>LA.init({id:"3GvcwDP0AUhX1gXM",ck:"3GvcwDP0AUhX1gXM"})</script> -->
-		<!-- Google tag (gtag.js) --> 
-		<!-- <script async src="https://www.googletagmanager.com/gtag/js?id=G-XSLPFH4MWH"></script>  -->
-<!--		<script type="text/javascript" src="https://js.users.51.la/21836125.js"></script>-->
-		<!-- <script> 
-			window.dataLayer = window.dataLayer || []; 
-			function gtag(){
-				dataLayer.push(arguments);
-			} 
-			gtag('js', new Date()); 
-			gtag('config', 'G-XSLPFH4MWH'); 
-		</script> -->
 		<script charset="UTF-8" id="LA_COLLECT" src="//sdk.51.la/js-sdk-pro.min.js"></script>
 		<script>LA.init({id:"3GvcwDP0AUhX1gXM",ck:"3GvcwDP0AUhX1gXM"})</script>
 
@@ -49,80 +33,27 @@
 
 	<body>
 		<div id="app">
-			<div class="page-pc" v-if="!isMobile">
-				<div class="header-pc">
-					<img src="./img/sound.png" alt="" class="sound-pc">
-					<div class="marquee-pc">
-						<span>{{allData[lang].title3}}</span>
-					</div>
-				</div>
-				<div class="content-pc">
-					<div class="content-pc-left">
-						<img :src="`./img/logo-${lang}.png`" alt="" class="logo-pc">
-						<img :src="`./img/limit-tip-pc-${lang}.png`" alt="" class="limit-tip-pc">
-						<img :src="`./img/url-pc-${lang}.png`" alt="" class="url-pc" @click="onDownloadApp">
-						<!-- <img :src="`./img/qr-pc-${lang}.png`" alt="" class="qr-pc"> -->
-						<div class="qr-pc">
-							<div id="qrCodeDiv"></div>
-						</div>
-						<img :src="`./img/qr-remark-pc-${lang}.png`" alt="" class="qr-remark-pc">
-					</div>
-					<img :src="`./img/content.png`" alt="" class="content-pc-right">
-				</div>
-				<div class="footer-pc">
-				</div>
-			</div>
-			<div class="page-wrap" v-else>
-				<div class="header">
+			<div class="page-wrap">
+				<!-- <div class="header">
 					<img src="./img/sound.png" alt="" class="sound">
 					<div class="marquee">
 						<span>{{allData[lang].title3}}</span>
 					</div>
-				</div>
+				</div> -->
 	
 				<img :src="`./img/logo-${lang}.png`" alt="" class="logo">
-				<img :src="`./img/limit-tip-${lang}.png`" alt="" class="limit-tip">
-				<img :src="`./img/url-${lang}.png`" alt="" class="url" @click="onDownloadApp">
+				<!-- <img :src="`./img/limit-tip-${lang}.gif`" alt="" class="limit-tip">
+				<img :src="`./img/limit-tip-2-${lang}.png`" alt="" class="limit-tip-2"> -->
+				<img :src="`./img/banner-${lang}.png`" alt="" class="banner">
+				<img :src="`./img/banner-2-${lang}.png`" alt="" class="banner-2">
+				<img :src="`./img/url-${lang}.gif`" alt="" class="url" @click="onDownloadApp">
 				<img :src="`./img/content.png`" alt="" class="content">
-				<img :src="`./img/limit-tip-detail-${lang}.png`" alt="" class="tip-detail">
-				<div class="showBox2">
-					<img :src="`./img/enter-web-${lang}.png`" alt="" class="enter"  @click="onDownloadApp">
-					<div class="enterDiv"></div>
-					<img :src="`./img/leave-web-${lang}.png`" alt="" class="enter"  @click="onDownloadApp">
-				</div>
-				<!-- <img :src="`./img/game-${lang}.png`" alt="" class="game"> -->
-				<!-- <img :src="`./img/download-${lang}.gif`" alt="" class="download" @click="onDownloadApp"> -->
-				<!-- <div class="showbox">
-					<img :src="`./img/tip0-${lang}.png`" alt="" class="showbox-title">
-					<div v-for="(item,index) in allData[lang].hots" class="show-item">
-						<img :src="`./img/tip-img-${index}-${lang}.png`" alt="" class="show-item-img">
-						<div style="padding: 0 0.2rem;">
-							<div class="show-t-0">{{item.name}}</div>
-							<div class="show-t-1">{{item.title}}</div>
-						</div>
-					</div>
-				</div>
-	
-				<div class="showbox" style="margin-top: 0.4rem;">
-					<img :src="`./img/tip1-${lang}.png`" alt="" class="showbox-title">
-					<div v-for="(item,index) in downloadList" class="show-item">
-						<div style="font-size: 0.32rem;display: flex;align-items: center;">
-							{{`${allData[lang].title1}${index+1}：`}}<span style="color: #FF0000;">{{item.urlName}}</span>
-						</div>
-						<div class="download-item" @click="onDownloadApp">{{allData[lang].title2}}</div>
-					</div>
-				</div> -->
-				<!-- <img :src="`./img/service-${lang}.gif`" alt="" class="service" @click="onService"> -->
-	
+			
 			</div>
 		</div>
 		
 		<script src="./js/indexBF.js"></script>
-		<!-- Google Tag Manager (noscript) -->
-		<!-- <noscript>
-			<iframe src="https://www.googletagmanager.com/ns.html?id=GTM-54W4K5BH" height="0" width="0" style="display:none;visibility:hidden"></iframe>
-		</noscript> -->
-		<!-- End Google Tag Manager (noscript) -->
+
 
 	</body>
 
