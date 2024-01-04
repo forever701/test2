@@ -1,5 +1,5 @@
 html {
-    font-size: 100px;
+    font-size: 50px;
 }
 
 *,
@@ -10,248 +10,70 @@ html {
     padding: 0;
 }
 
-
-/* 这个是51统计中有样式问题，https://js.users.51.la/21836125.js  如果去掉这个统计，就可以把这个样式删除掉，以免引起不必要的麻烦 */
-body a {
-    display: none;
-    visibility: hidden;
-}
-
-img {
-    vertical-align: text-bottom;
-    object-fit: cover;
-}                          
-
-div {
-    box-sizing: border-box;
-}
 .page-wrap {
     width: 100vw;
     padding-bottom: 2rem;
-    background-image: url(../img/bg.png);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+.top {
+    display: flex;
+    flex-direction: column;
+    width: 100vw;
+    height: 13.34rem;
+    background-image: url(../img/top-bg.jpg);
     background-repeat: no-repeat;
     background-size: cover;
+
+    
+}
+
+.white-top {
+    flex: 1;
+}
+
+.btn-Android {
+    width: 6rem;
+    height: 1.68rem;
+    align-self: center;
+
+}
+
+.btn-kefu {
+    height: 1.4rem;
+    width: 6rem;
+    margin-bottom: 0.4rem;
+    align-self: center;
+
+}
+
+.tip { 
+    margin-left: 0.4rem;
+    margin-bottom: 0.22rem;
+    color: #000;
+    font-family: Inter;
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: 22px; /* 137.5% */
+    text-transform: uppercase;
+}
+
+.bottom {
     display: flex;
     flex-direction: column;
-    align-items: center;
-    justify-content: center;
-}
-
-.logo {
-    height: 1rem;
-    margin-top: 0.2rem;
-}
-.limit-tip {
-    width: 100%;
-    margin-top: 0.15rem;
-}
-.limit-tip-2 {
-    width: 90%;
-    margin-top: 0.15rem;
-}
-.tip-detail {
-    margin-top: 0.1rem;
-    margin-bottom: 0.3rem;
-    height: 1.15rem;
-
-}
-.showBox2 {
-    position: fixed;
-    display: flex;
-    bottom: 0.5rem;
-}
-.enterDiv {
-    width: 0.1rem;
-}
-.enter {
-    flex: 1;
-    height: 1.25rem;
+    width: calc(100% - 0.8rem);
+    height: 17.32rem;
+    margin-left: 0.4rem;
+    margin-right: 0.4rem;
+    background-image: url(../img/bottom-bg.png);
+    background-repeat: no-repeat;
     background-size: cover;
-}
-.banner {
-    width: 92%;
-    margin-top: 0.2rem;
-}
-.banner-2 {
-    width: 89%;
-    margin-top: 0.2rem;
-}
-.url {
-    height: 1.2em;
-    margin-top: 0.2rem;
-}
 
-.content {
-    width: 100vw;
-    object-fit: cover;
-    margin-top: -10px;
-
-}
-.tip3 {
-    height: 2rem;
-    margin-top: 7rem;
-}
-
-.game {
-    height: 0.5rem;
-    margin-top: 0.5rem;
-}
-
-.download {
-    position: fixed;
-    bottom: 0;
-    height: 2em;
-    z-index: 100;
-}
-
-.showbox {
-    margin-top: 0.3rem;
-    position: relative;
-    width: 95%;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    flex-direction: column;
-    background-color: #FFF8F6;
-    border-radius: 0.1rem;
-    padding: 1rem 0 0.4rem;
+    
 }
 
 
-.showbox-title {
-    position: absolute;
-    height: 0.72rem;
-    top: -0.1rem;
-
-}
-
-.show-item {
-    display: flex;
-    background-color: #FFFFFF;
-    padding: 0.2rem;
-    border-radius: 1.2rem;
-    width: 95%;
-    margin-bottom: 0.2rem;
-}
-
-.show-item:last-child {
-    margin-bottom: 0rem;
-}
-
-.show-item-img {
-    height: 1.2rem;
-}
-
-.show-t-0 {
-    font-family: PingFang SC;
-    font-size: 0.35rem;
-    font-weight: 400;
-    line-height: 0.5rem;
-    letter-spacing: 0px;
-    text-align: left;
-
-}
-
-.show-t-1 {
-    font-family: PingFang SC;
-    font-size: 0.25rem;
-    font-weight: 400;
-    line-height: 0.4rem;
-    letter-spacing: 0px;
-    color: #666666;
-    text-align: left;
-
-}
-
-.download-item {
-    background: linear-gradient(180deg, #F525E2 0%, #DB3581 100%);
-    color: #ffffff;
-    width: 1.6rem;
-    height: 0.8rem;
-    padding: 0.2rem 0;
-    border-radius: 0.6rem;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    font-size: 0.32rem;
-    margin-left: auto;
-}
-
-.sound {
-    width: 0.4rem;
-    height: 0.4rem;
-    margin: 0.2rem 0.08rem 0.2rem 0.2rem;
-}
-
-.header {
-    background: #FFFFFF59;
-    display: flex;
-    width: 100%;
-}
-
-.marquee {
-    overflow: hidden;
-    white-space: nowrap;
-    height: 0.8rem;
-    flex: 1;
-    display: flex;
-    align-items: center;
-}
-
-.marquee span {
-    animation: marquee 20s linear infinite;
-    /* 跑马灯动画的持续时间和速度 */
-    display: inline-block;
-    padding-left: 100%;
-    /* 初始位置在容器右侧 */
-    font-size: 0.24rem;
-    font-weight: 400;
-    animation-play-state: running;
-    /* 动画播放状态 */
-}
-
-@keyframes marquee {
-    0% {
-        transform: translateX(0);
-        /* 初始位置在容器右侧 */
-    }
-
-    100% {
-        transform: translateX(-100%);
-        /* 最终位置在容器左侧 */
-    }
-}
-
-
-.marquee-pc span {
-    animation: marquee 20s linear infinite;
-    /* 跑马灯动画的持续时间和速度 */
-    display: inline-block;
-    padding-left: 100%;
-    /* 初始位置在容器右侧 */
-    font-size: 14px;
-    font-weight: 400;
-    animation-play-state: running;
-    /* 动画播放状态 */
-}
-
-@keyframes marquee-pc {
-    0% {
-        transform: translateX(0);
-        /* 初始位置在容器右侧 */
-    }
-
-    100% {
-        transform: translateX(-100%);
-        /* 最终位置在容器左侧 */
-    }
-}
-
-
-.service{
-    position: fixed;
-    z-index: 100;
-    bottom: 2.5rem;
-    right: 0.1rem;
-    height: 2rem;
-}
