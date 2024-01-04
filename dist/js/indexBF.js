@@ -39,11 +39,20 @@ new Vue({
                 'title2': 'Mở',
                 'title3': 'Vì lý do ngành, APP này đã được phần mềm chống vi-rút xác định là vi-rút. Vui lòng sử dụng nó. Việc cài đặt Ứng dụng sẽ không gây ra bất kỳ rủi ro bảo mật nào cho điện thoại di động của bạn.'
             },
-        }
+        },
+        urlList: [
+            '5580a.tv',
+            '5580c.tv',
+            '5580v.tv',
+            '5580x.tv',
+            'TẢI XUỐNG BẰNG IOS',
+            'TẢI ANDROID'
+
+        ],
     },
     updated() {
-        this.bindQRCode()
-        this.bindSwiper()
+       
+         
     },
     mounted() {
         this.reg = window.location.href.split("/")[3]
@@ -68,25 +77,22 @@ new Vue({
                 this.udid = result.visitorId.toUpperCase()
                 this.getDownloadList();
                 console.log(this.udid)
-            })
+            });
+        this.bindSwiper()
     },
     methods: {
         bindSwiper() {
-            var mySwiper = new Swiper (document.getElementById("slides"), {
-                direction: 'vertical',
+            var mySwiper = new Swiper (document.getElementById("swiper-container"), {
                 loop: true,
-              })        
-        },
-        //生成绑定二维码
-        bindQRCode() {
-            var qrcode = new QRCode(document.getElementById("qrCodeDiv"), {
-                text: window.location.href,
-                width: 220,
-                height: 220,
-                colorDark: '#333333',
-                colorLight: '#ffffff',
-                correctLevel: QRCode.CorrectLevel.L
-            });
+                autoplay: true,
+                speed:3000,
+                nextButton: 'null',
+                prevButton: 'null',
+                slidesPerView : "auto",
+                observer:true,
+                observeParents:true,
+
+              });     
         },
         getDownloadList() {
             axios.post(this.apiUrl + `/promotion/app/user/landingpage/list`, { os: judgeClient() === 'IOS' ? 2 : 1, invitationCode: this.reg }, {

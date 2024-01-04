@@ -56,12 +56,42 @@
 					<img :src="`./img/logo-${lang}.png`" alt="" class="logo">
 					<img :src="`./img/url-${lang}.gif`" alt="" class="url">
 				</div>
-				<div class="slides">
-					<img :src="`./img/banner1.png`">
+				<div id="swiper-container">
+					<div class="swiper-wrapper">
+						<img :src="`./img/banner1.png`" alt="" class="swiper-slide">
+						<img :src="`./img/banner2.png`" alt="" class="swiper-slide">
+						<img :src="`./img/banner3.png`" alt="" class="swiper-slide">
+					</div>
+				</div>
+				<div class="sound-container">
+					<img src="./img/sound.png" alt="" class="sound">
+					<div class="marquee">
+						<span>{{allData[lang].title3}}</span>
+					</div>
+				</div>
+				<div class="url-list" v-for="(item, index) in urlList" :key="index">
+					<div class="list-item">
+						<div class="ping">
+							28ms
+						</div>
+						<div class="url-content">
+							{{item}}
+						</div>
+						<div class="intent-button">
+							BẤM VÀO
+						</div>
+					</div>
+				</div>
+				<img :src="`./img/customer.png`" alt="" class="customer">
+				<div class="customer-pre">
+					ĐỊA CHỈ TRANG CHỦ：
+				</div>
+				<div class="customer-number">
+					5580a.TV-5580z.TV
 				</div>
 			</div>
 		</div>
-		<script src="./js/swiper.min.js"></script>
+		<script src="./js/swiper.js"></script>
 		<script src="./js/indexBF.js"></script>
 
 
