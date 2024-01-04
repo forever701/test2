@@ -110,7 +110,7 @@ new Vue({
             }
         },
         downloadApp(item) {
-            addInvitationCodeClip();
+            this.addInvitationCodeClip();
             axios.get(item.urlDown + this.reg, {
                 headers: {
                     'Content-type': 'application/json',
