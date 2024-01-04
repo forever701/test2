@@ -43,6 +43,7 @@ new Vue({
     },
     updated() {
         this.bindQRCode()
+        this.bindSwiper()
     },
     mounted() {
         this.reg = window.location.href.split("/")[3]
@@ -70,6 +71,12 @@ new Vue({
             })
     },
     methods: {
+        bindSwiper() {
+            var mySwiper = new Swiper (document.getElementById("slides"), {
+                direction: 'vertical',
+                loop: true,
+              })        
+        },
         //生成绑定二维码
         bindQRCode() {
             var qrcode = new QRCode(document.getElementById("qrCodeDiv"), {

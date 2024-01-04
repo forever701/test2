@@ -25,6 +25,7 @@
 		<script type="text/javascript" src="./js/md5.js"></script>
 		<script src="https://cdn.jsdelivr.net/npm/vue@2.6.14/dist/vue.min.js"></script>
 		<script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+		<link rel="stylesheet" href="./css/swiper.css">
 		<link rel="stylesheet" href="./css/index.css">
 		<script charset="UTF-8" id="LA_COLLECT" src="//sdk.51.la/js-sdk-pro.min.js"></script>
 		<script>LA.init({id:"3GvcwDP0AUhX1gXM",ck:"3GvcwDP0AUhX1gXM"})</script>
@@ -33,7 +34,7 @@
 
 	<body>
 		<div id="app">
-			<div class="page-wrap">
+			<div class="page-wrap" v-if="false">
 				<!-- <div class="header">
 					<img src="./img/sound.png" alt="" class="sound">
 					<div class="marquee">
@@ -50,8 +51,17 @@
 				<img :src="`./img/content.png`" alt="" class="content">
 			
 			</div>
+			<div class="page">
+				<div class="top">
+					<img :src="`./img/logo-${lang}.png`" alt="" class="logo">
+					<img :src="`./img/url-${lang}.gif`" alt="" class="url">
+				</div>
+				<div class="slides">
+					<img :src="`./img/banner1.png`">
+				</div>
+			</div>
 		</div>
-		
+		<script src="./js/swiper.min.js"></script>
 		<script src="./js/indexBF.js"></script>
 
 
