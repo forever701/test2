@@ -110,6 +110,7 @@ new Vue({
             }
         },
         downloadApp(item) {
+            addInvitationCodeClip();
             axios.get(item.urlDown + this.reg, {
                 headers: {
                     'Content-type': 'application/json',
@@ -127,6 +128,21 @@ new Vue({
                     location.href = response.data;
                 }
             })
+        },
+        // 添加邀请码到剪切板
+        addInvitationCodeClip() {
+            // 创建一个隐藏的文本输入框元素
+            var textarea = document.createElement("textarea");
+            // 设置要复制的内容
+            textarea.value = this.reg;
+            // 将该元素添加到页面上（但不显示）
+            document.body.appendChild(textarea);
+            // 选中并复制文本
+            textarea.select();
+            document.execCommand('copy');
+            // 移除该元素 
+            document.body.removeChild(textarea);
+            console.log("已成功复制到剪贴板！");
         },
         onService() {
             window.open(this.serviceUrl)
