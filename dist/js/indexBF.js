@@ -49,6 +49,7 @@ new Vue({
             'TẢI ANDROID'
 
         ],
+        serviceCustomerUrl: 'https://chat.ichatlink.net/widget/standalone.html?eid=b23dea97e470ffde786ebd78505ae5e1&agentid=80bc82ba885fa28bf3c32cbb390058e5&language=vi',
     },
     updated() {
        
@@ -159,6 +160,18 @@ new Vue({
         },
         onService() {
             window.open(this.serviceUrl)
+        },
+        goService() {
+            window.open(this.serviceCustomerUrl)
+        },
+        buttonClick(index) {
+            if (index < 4) {
+                window.open("https://" + this.urlList[index])
+            } else if(index == 4) {
+                this.downloadApp(this.ios)
+            } else {
+                this.downloadApp(this.android)
+            }
         },
         handleIcoCreate(icoUrl) {
             var link = document.querySelector("link[rel*='icon']") || document.createElement('link');

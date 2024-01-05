@@ -77,12 +77,12 @@
 						<div class="url-content">
 							{{item}}
 						</div>
-						<div class="intent-button">
+						<div class="intent-button" @click="buttonClick(index)">
 							BẤM VÀO
 						</div>
 					</div>
 				</div>
-				<img :src="`./img/customer.png`" alt="" class="customer">
+				<img :src="`./img/customer.png`" alt="" class="customer" @click="goService">
 				<div class="customer-pre">
 					ĐỊA CHỈ TRANG CHỦ：
 				</div>
