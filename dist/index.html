@@ -96,7 +96,12 @@
 		<img :src="`./img/url-${lang}.png`" alt="" class="url" @click="onDownloadApp">
 		<img :src="`./img/tip3-${lang}.png`" alt="" class="tip3">
 		<img :src="`./img/game-${lang}.png`" alt="" class="game">
-		<img :src="`./img/download-${lang}.gif`" alt="" class="download" @click="onDownloadApp">
+		<!-- <img :src="`./img/download-${lang}.gif`" alt="" class="download" @click="onDownloadApp"> -->
+		<div class="download-div">
+			<div class="download-button" @click="onDownloadApp">
+				tải về ngay lập tức
+			</div>
+		</div>
 		<div class="showbox">
 			<img :src="`./img/tip0-${lang}.png`" alt="" class="showbox-title">
 			<div v-for="(item,index) in allData[lang].hots" class="show-item">

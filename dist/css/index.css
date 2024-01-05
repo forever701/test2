@@ -51,12 +51,40 @@ div {
     margin-top: 0.5rem;
 }
 
-.download {
+/* .download {
     position: fixed;
     bottom: 0;
     height: 2em;
     z-index: 100;
+} */
+
+.download-div {
+    position: fixed;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    bottom: 0;
+    height: 1.8rem;
+    width: 100%;
+    z-index: 100;
+    background-color: white;
 }
+
+.download-button {
+    height: 1.12rem;
+    width: 91%;
+    line-height: 1.12rem;
+    border-radius: 28px;
+    background: linear-gradient(0deg, #FF0048 0%, #FF6A94 100%);
+    color: white;
+    text-align: center;
+    font-family: Chonburi;
+    font-size: 24px;
+    font-style: normal;
+    font-weight: 400;
+    text-transform: capitalize;
+}
+
 
 .showbox {
     margin-top: 0.3rem;
