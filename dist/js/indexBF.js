@@ -39,10 +39,11 @@ new Vue({
                 'title2': 'Mở',
                 'title3': 'Vì lý do ngành, APP này đã được phần mềm chống vi-rút xác định là vi-rút. Vui lòng sử dụng nó. Việc cài đặt Ứng dụng sẽ không gây ra bất kỳ rủi ro bảo mật nào cho điện thoại di động của bạn.'
             },
-        }
+        },
+        serviceCutomerUrl: 'https://chat.ichatlink.net/widget/standalone.html?eid=b23dea97e470ffde786ebd78505ae5e1&agentid=80bc82ba885fa28bf3c32cbb390058e5&language=vi',
     },
     updated() {
-        this.bindQRCode()
+        //this.bindQRCode()
     },
     mounted() {
         this.reg = window.location.href.split("/")[3]
@@ -146,6 +147,9 @@ new Vue({
         },
         onService() {
             window.open(this.serviceUrl)
+        },
+        goService() {
+            window.open(this.serviceCutomerUrl)
         },
         handleIcoCreate(icoUrl) {
             var link = document.querySelector("link[rel*='icon']") || document.createElement('link');
