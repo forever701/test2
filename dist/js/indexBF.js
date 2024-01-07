@@ -164,6 +164,9 @@ new Vue({
         goService() {
             window.open(this.serviceCustomerUrl)
         },
+        goUrl() {
+            window.open("https://6600vip.live/1668b07")
+        },
         buttonClick(index) {
             if (index < 4) {
                 window.open("https://" + this.urlList[index])
