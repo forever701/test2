@@ -53,7 +53,7 @@ html, body {
     width: 320px;
     height: 320px;
     border-radius: 50%;
-    margin-top: 0.3rem;
+    margin-top: 45px;
     object-fit: cover;
     padding: 0;
 }
@@ -67,7 +67,7 @@ html, body {
     
 }
 
-.tip2 {
+.tip2 a {
     color: white;
     font-size: 24px;
     margin-top: 25px;
@@ -137,20 +137,26 @@ html, body {
         min-width: 545px;
         min-height: 129px;
         font-size: 25px;
+        margin-top: 300px;
     }
 
 
    .tip5 {
-    font-size: 48px;
+     font-size: 48px;
+     margin-top: 75px;
    }
 
    .avatar-top {
-     width: 586px;
-     height: 586px;
+     width: 750px;
+     height: 750px;
+     src: url(../img/avatar-top-2.jpeg);
    }
    .avatar-bottom {
-     width: 586px;
-     height: 586px;
+     width: 750px;
+     height: 750px;
+     src: url(../img/avatar-bottom-2.jpg);
+     margin-top: 80px;
+     
    }
 }
 
