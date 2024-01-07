@@ -149,12 +149,10 @@ html, body {
    .avatar-top {
      width: 750px;
      height: 750px;
-     src: url(../img/avatar-top-2.jpeg);
    }
    .avatar-bottom {
      width: 750px;
      height: 750px;
-     src: url(../img/avatar-bottom-2.jpg);
      margin-top: 80px;
      
    }
