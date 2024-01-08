@@ -63,7 +63,7 @@ div {
 .content {
     width: 100%;
     object-fit: cover;
-    margin-top: -30px;
+    margin-top: -35px;
     margin-bottom: 1.5rem;
     z-index: 1;
 }
