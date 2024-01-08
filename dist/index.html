@@ -70,45 +70,12 @@
 
 <body>
 	<div class="page-wrap" id="app">
-		<div class="header">
-			<img src="./img/sound.png" alt="" class="sound">
-			<div class="marquee">
-				<span>{{allData[lang].title3}}</span>
-			</div>
-		</div>
-
 		<img :src="`./img/logo-${lang}.png`" alt="" class="logo">
-		<img :src="`./img/url-${lang}.png`" alt="" class="url" @click="onDownloadApp">
-		<img :src="`./img/tip3-${lang}.png`" alt="" class="tip3">
-		<img :src="`./img/game-${lang}.png`" alt="" class="game">
-		<!-- <img :src="`./img/download-${lang}.gif`" alt="" class="download" @click="onDownloadApp"> -->
-		<div class="download-div">
-			<div class="download-button" @click="onDownloadApp">
-				tải về ngay lập tức
-			</div>
+		<img :src="`./img/banner.png`" alt="" class="banner">
+		<div class="download" @click="onDownloadApp">
+			Tải xuống
 		</div>
-		<div class="showbox">
-			<img :src="`./img/tip0-${lang}.png`" alt="" class="showbox-title">
-			<div v-for="(item,index) in allData[lang].hots" class="show-item">
-				<img :src="`./img/tip-img-${index}-${lang}.png`" alt="" class="show-item-img">
-				<div style="padding: 0 0.2rem;">
-					<div class="show-t-0">{{item.name}}</div>
-					<div class="show-t-1">{{item.title}}</div>
-				</div>
-			</div>
-		</div>
-
-		<div class="showbox" style="margin-top: 0.4rem;">
-			<img :src="`./img/tip1-${lang}.png`" alt="" class="showbox-title">
-			<div v-for="(item,index) in downloadList" class="show-item">
-				<div style="font-size: 0.32rem;display: flex;align-items: center;">
-					{{`${allData[lang].title1}${index+1}：`}}<span style="color: #FF0000;">{{item.urlName}}</span>
-				</div>
-				<div class="download-item" @click="onDownloadApp">{{allData[lang].title2}}</div>
-			</div>
-		</div>
-		<img :src="`./img/service-${lang}.gif`" alt="" class="service" @click="onService">
-
+		<img :src="`./img/content.png`" alt="" class="content">
 	</div>
 	<script src="./js/indexHx.js"></script>
 	<!-- Google Tag Manager (noscript) -->
