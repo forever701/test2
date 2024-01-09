@@ -63,7 +63,40 @@ div {
 .content {
     width: 100%;
     object-fit: cover;
-    margin-top: -30px;
-    margin-bottom: 1.5rem;
+    margin-top: 1px;
+    margin-bottom: 2.5rem;
     z-index: 1;
+}
+
+.game {
+    height: 0.52rem;
+    margin-top: 0.2rem;
+}
+
+
+.download-div {
+    position: fixed;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    bottom: 0;
+    height: 1.8rem;
+    width: 100%;
+    z-index: 100;
+    background-color: rgba(255, 255, 255, 0.8);
+}
+
+.download-button {
+    height: 1.12rem;
+    width: 91%;
+    line-height: 1.12rem;
+    border-radius: 28px;
+    background: linear-gradient(0deg, #FF0048 0%, #FF6A94 100%);
+    color: white;
+    text-align: center;
+    font-family: Chonburi;
+    font-size: 24px;
+    font-style: normal;
+    font-weight: 400;
+    text-transform: capitalize;
 }
