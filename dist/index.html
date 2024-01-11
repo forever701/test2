@@ -39,8 +39,7 @@
 				var m = this, buttons = document.getElementsByName("downloadButton");//为button对象绑定对应id的元素
 				for(var i = 0; i < buttons.length; i++) {
 					buttons[i].onclick = function() {//对应button的点击事件
-						// m.wakeupOrInstall();//此方法为scheme、Universal Link唤醒以及引导下载的作用（必须调用且不可额外自行跳转下载）
-						m.schemeWakeup();
+						m.wakeupOrInstall();//此方法为scheme、Universal Link唤醒以及引导下载的作用（必须调用且不可额外自行跳转下载）
 						return false;
 					}
 				}
