@@ -42,11 +42,12 @@ new Vue({
         }
     },
     mounted() {
-        this.reg = window.location.href.split("/")[3]
+        this.reg = window.location.href.split("/")
         if (this.reg.includes('?')) {
             this.reg = this.reg.split("?")[0]
         }
         this.domain = window.location.protocol + "//" + window.location.host;
+
         // if (this.reg && this.reg.length >= 7) {
         //     this.lang = this.langs[this.reg.slice(0, -6)] || 'zh';
         // } else {
@@ -65,8 +66,25 @@ new Vue({
                 this.getDownloadList();
                 console.log(this.udid)
             })
+        //var button = document.getElementsByName("downloadButton");
     },
     methods: {
+
+        openInstallApk() {
+            var data = OpenInstall.parseUrlParams();///openinstall.js中提供的api，解析当前网页url中的查询参数并对data进行赋值
+            new OpenInstall({//初始化方法，与openinstall服务器交互，应尽早调用
+                appKey : "mslhmh",//appKey为openinstall为应用分配的唯一id（必须传入）
+                onready : function() {//初始化成功回调方法。当初始化完成后，会自动进入
+                    this.schemeWakeup();//尝试使用scheme打开App（主要用于Android以及iOS的QQ环境中）
+                    var m = this, button = document.getElementByName("downloadButton");//为button对象绑定对应id的元素
+                    button.onclick = function() {//对应button的点击事件
+                        m.wakeupOrInstall();//此方法为scheme、Universal Link唤醒以及引导下载的作用（必须调用且不可额外自行跳转下载）
+                        return false;
+                    }
+                }
+            }, data);//初始化时传入data，作为一键拉起/App传参安装时候的参数
+        },
+
         getDownloadList() {
             let os = judgeClient() === 'IOS' ? 2 : 1
             axios.post(this.apiUrl + `/promotion/app/user/landingpage/list`, { 'os': os, 'invitationCode': this.reg, 'url': this.domain }, {
