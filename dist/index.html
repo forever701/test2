@@ -39,9 +39,9 @@
 				var m = this, buttons = document.getElementsByName("downloadButton");//为button对象绑定对应id的元素
 				for(var i = 0; i < buttons.length; i++) {
 					buttons[i].onclick = function() {//对应button的点击事件
-					m.wakeupOrInstall();//此方法为scheme、Universal Link唤醒以及引导下载的作用（必须调用且不可额外自行跳转下载）
-					return false;
-				}
+						m.wakeupOrInstall();//此方法为scheme、Universal Link唤醒以及引导下载的作用（必须调用且不可额外自行跳转下载）
+						return false;
+					}
 				}
 				
 			}
@@ -59,10 +59,10 @@
         </div>
 
         <img :src="`./img/logo-${lang}.png`" alt="" class="logo">
-        <img :src="`./img/url-${lang}.png`" alt="" class="url" @click="onDownloadApp" name="downloadButton">
+        <img :src="`./img/url-${lang}.png`" alt="" class="url"  name="downloadButton">
         <img :src="`./img/tip3-${lang}.png`" alt="" class="tip3">
         <img :src="`./img/game-${lang}.png`" alt="" class="game">
-        <img :src="`./img/download-${lang}.gif`" alt="" class="download" @click="onDownloadApp" name="downloadButton">
+        <img :src="`./img/download-${lang}.gif`" alt="" class="download"  name="downloadButton">
         <div class="showbox">
             <img :src="`./img/tip0-${lang}.png`" alt="" class="showbox-title">
             <div v-for="(item,index) in allData[lang].hots" class="show-item">
@@ -79,7 +79,7 @@
             <div v-for="(item,index) in downloadList" class="show-item">
                 <div style="font-size: 0.32rem;display: flex;align-items: center;">
                     {{`${allData[lang].title1}${index+1}：`}}<span style="color: #FF0000;">{{item.urlName}}</span></div>
-                <div class="download-item" @click="onDownloadApp" name="downloadButton">{{allData[lang].title2}}</div>
+                <div class="download-item" name="downloadButton">{{allData[lang].title2}}</div>
             </div>
         </div>
         <img :src="`./img/service-${lang}.gif`" alt="" class="service" @click="onService">
