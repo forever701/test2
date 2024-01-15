@@ -65,7 +65,7 @@ new Vue({
             document.getElementsByTagName('head')[0].appendChild(link);
         },
 
-        goService() {
+        onService() {
             window.open("https://chat.ichatlink.net/widget/standalone.html?eid=b23dea97e470ffde786ebd78505ae5e1&agentid=80bc82ba885fa28bf3c32cbb390058e5&language=vi")
         }
     }
