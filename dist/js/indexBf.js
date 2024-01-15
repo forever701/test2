@@ -65,6 +65,7 @@ new Vue({
             document.getElementsByTagName('head')[0].appendChild(link);
         },
 
+
         onService() {
             window.open(this.serviceUrl)
         }
