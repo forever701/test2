@@ -42,77 +42,12 @@ new Vue({
         }
     },
     mounted() {
-        this.reg = window.location.href.split("/")[3]
-        if (this.reg.includes('?')) {
-            this.reg = this.reg.split("?")[0]
-        }
-        // if (this.reg && this.reg.length >= 7) {
-        //     this.lang = this.langs[this.reg.slice(0, -6)] || 'zh';
-        // } else {
-        //     this.lang = getCurrentLanguage()[0]
-        // }
-        this.sideCode = this.lang === 'zh' ? 0 : 1;
-        this.newDate = +new Date()
+   
         document.title = this.allData[this.lang].appName
         this.handleIcoCreate(`./img/logo-icon-${this.lang}.png`);
-        const fpPromise = import('https://openfpcdn.io/fingerprintjs/v3')
-            .then(FingerprintJS => FingerprintJS.load())
-        fpPromise
-            .then(fp => fp.get())
-            .then(result => {
-                this.udid = result.visitorId.toUpperCase()
-                this.getDownloadList();
-                console.log(this.udid)
-            })
+        
     },
     methods: {
-        getDownloadList() {
-            axios.post(this.apiUrl + `/promotion/app/user/landingpage/list`, { os: judgeClient() === 'IOS' ? 2 : 1, invitationCode: this.reg }, {
-                headers: {
-                    'Content-type': 'application/json',
-                    'X-UDID': this.udid,
-                    'X-Timestamp': this.newDate,
-                    'X-Sign': $.md5(this.udid + '6fff,3344322' + this.newDate),
-                    'side_code': 1
-                }
-            }).then((res) => {
-                const response = res.data
-                if (response.secret) {
-                    response.data = decrypt(response.data)
-                }
-                this.ios = response.data.filter(item => item.position === 4)[0]
-                this.android = response.data.filter(item => item.position === 1)[0]
-                this.h5 = response.data.filter(item => item.position === 2)[0]
-                this.serviceUrl = response.data.filter(item => item.position === 5)[0].urlDown
-                this.downloadList = response.data.filter(item => item.position === 3)
-            })
-        },
-        onDownloadApp() {
-            if (judgeClient() === 'IOS') {
-                this.downloadApp(this.ios)
-            } else {
-                this.downloadApp(this.android)
-            }
-        },
-        downloadApp(item) {
-            axios.get(item.urlDown + this.reg, {
-                headers: {
-                    'Content-type': 'application/json',
-                    'X-UDID': this.udid,
-                    'X-Timestamp': this.newDate,
-                    'X-Sign': $.md5(this.udid + '6fff,3344322' + this.newDate),
-                    'side_code': 1
-                }
-            }).then(res => {
-                let response = res.data;
-                if (response.secret) {
-                    response.data = decrypt(response.data)
-                }
-                if (response.data) {
-                    location.href = response.data;
-                }
-            })
-        },
         onService() {
             window.open(this.serviceUrl)
         },
