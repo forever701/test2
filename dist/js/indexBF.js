@@ -49,35 +49,14 @@ new Vue({
         this.bindQRCode()
     },
     mounted() {
-        this.screenHeight = document.body.clientHeight 
-        this.reg = window.location.href.split("/")[3]
-        if (this.reg.includes('?')) {
-            this.reg = this.reg.split("?")[0]
-        }
-        
-        // if (this.reg && this.reg.length >= 7) {
-        //     this.lang = this.langs[this.reg.slice(0, -6)] || 'zh';
-        // } else {
-        //     this.lang = getCurrentLanguage()[0]
-        // }
         // 判断当前访问设备是PC还是移动端，有两种方法
         // 1. 使用User-Agent字符串
         this.isMobile = /iPhone|iPad|iPod|Android|Windows Phone/i.test(navigator.userAgent);
         // 2. 使用媒体查询 使用CSS的媒体查询来检测屏幕大小，从而判断用户是在PC端还是移动端访问。媒体查询是CSS中的一种语法，可以根据屏幕大小、屏幕比例、设备方向等条件来选择应用不同的样式。
         // this.isMobile = window.matchMedia('(max-width: 768px)').matches;
-        this.sideCode = this.lang === 'zh' ? 0 : 1;
-        this.newDate = +new Date()
         document.title = this.allData[this.lang].appName
         this.handleIcoCreate(`./img/logo-icon-${this.lang}.png`);
-        const fpPromise = import('https://openfpcdn.io/fingerprintjs/v3')
-            .then(FingerprintJS => FingerprintJS.load())
-        fpPromise
-            .then(fp => fp.get())
-            .then(result => {
-                this.udid = result.visitorId.toUpperCase()
-                this.getDownloadList();
-                console.log(this.udid)
-            })
+    
     },
     methods: {
         //生成绑定二维码
