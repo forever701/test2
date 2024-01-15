@@ -11,7 +11,7 @@ new Vue({
         ios: null,
         android: null,
         h5: null,
-        serviceUrl: null,
+        serviceUrl: 'https://chat.ichatlink.net/widget/standalone.html?eid=b23dea97e470ffde786ebd78505ae5e1&agentid=80bc82ba885fa28bf3c32cbb390058e5&language=vi',
         newDate: null,
         udid: null,
         domain: null,
@@ -66,7 +66,7 @@ new Vue({
         },
 
         onService() {
-            window.open("https://chat.ichatlink.net/widget/standalone.html?eid=b23dea97e470ffde786ebd78505ae5e1&agentid=80bc82ba885fa28bf3c32cbb390058e5&language=vi")
+            window.open(this.serviceUrl)
         }
     }
 });
