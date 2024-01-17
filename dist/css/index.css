@@ -148,6 +148,15 @@ html, body {
     word-wrap: normal;
 }
 
+.ios-remark {
+    color: #FF0000;
+    font-weight: 700;
+    font-size: 14px;
+    text-transform: uppercase;
+    width: 88%;
+
+}
+
 .customer {
     height: 1.74rem;
     margin-top: 0.6rem;
