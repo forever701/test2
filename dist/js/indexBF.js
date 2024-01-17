@@ -61,8 +61,22 @@ new Vue({
         document.title = this.allData[this.lang].appName
         this.handleIcoCreate(`./img/logo-icon-${this.lang}.png`);
         this.getQueryStringByName("channelCode")
+        this.bindSwiper()
     },
     methods: {
+        bindSwiper() {
+            var mySwiper = new Swiper (document.getElementById("swiper-container"), {
+                loop: true,
+                autoplay: true,
+                speed:3000,
+                nextButton: 'null',
+                prevButton: 'null',
+                slidesPerView : "auto",
+                observer:true,
+                observeParents:true,
+
+              });     
+        },
         
         // 添加邀请码到剪切板
         addInvitationCodeClip() {
