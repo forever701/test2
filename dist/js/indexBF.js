@@ -67,13 +67,16 @@ new Vue({
         bindSwiper() {
             var mySwiper = new Swiper (document.getElementById("swiper-container"), {
                 loop: true,
-                autoplay: true,
-                speed:3000,
+                autoplay: {
+                    delay: 1500
+                },
+                speed:1500,
                 nextButton: 'null',
                 prevButton: 'null',
                 slidesPerView : "auto",
                 observer:true,
                 observeParents:true,
+            
 
               });     
         },
