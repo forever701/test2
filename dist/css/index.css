@@ -29,6 +29,7 @@ div {
     align-items: center;
     justify-content: center;
     z-index: 1;
+    position: relative;
 }
 
 .logo {
@@ -70,7 +71,15 @@ div {
 
 .game {
     height: 0.52rem;
-    margin-top: 0.2rem;
+    margin-top: 0.4rem;
+}
+
+.service {
+    width: 35px;
+    height: 35px;
+    position: absolute;
+    right: 0.2rem;
+    top: 1.0rem;
 }
 
 

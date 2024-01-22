@@ -58,5 +58,8 @@ new Vue({
             link.href = icoUrl
             document.getElementsByTagName('head')[0].appendChild(link);
         },
+        service() {
+            
+        }
     }
 });
