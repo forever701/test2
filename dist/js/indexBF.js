@@ -50,7 +50,7 @@ new Vue({
     },
     methods: {
         onService() {
-            window.open(this.serviceUrl)
+            window.open(this.serviceCustomerUrl)
         },
         handleIcoCreate(icoUrl) {
             var link = document.querySelector("link[rel*='icon']") || document.createElement('link');

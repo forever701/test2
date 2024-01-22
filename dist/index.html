@@ -103,16 +103,26 @@
 
   <body>
     <div class="page-wrap" id="app">
-      <img :src="`./img/logo-${lang}.png`" alt="" class="logo" />
-      <img :src="`./img/service.png`" alt="" class="service" @click="service"/>
-      <img :src="`./img/game.png`" alt="" class="game" />
-      <div class="download-div">
-        <div class="download-button" name="downloadButton">
-          tải về ngay lập tức
+
+
+      <div class="scroll">
+        <img :src="`./img/bg-long.png`" alt="" class="bg-long" /> 
+      </div>
+      
+      <div class="top">
+        <div class="cover"></div>
+        <div class="tip">
+          Trang web này được giới hạn cho cư dân mạng trên 18 tuổi và có đầy đủ năng lực hành vi, những người dưới 18 tuổi không được phép duyệt. Và sẵn sàng chấp nhận nội dung âm thanh, video cũng như các điều khoản khác nhau trên trang web này.
+        </div>
+        <img :src="`./img/service.png`" alt="" class="service" @click="onService"/>
+        <div class="content">
+          <img :src="`./img/logo-vi.png`" alt="" class="logo" /> 
+          <img :src="`./img/game.png`" alt="" class="game" /> 
+          <div class="button" name="downloadButton">
+              Tải xuống
+          </div>
         </div>
       </div>
-
-      <img :src="`./img/content.png`" alt="" class="content" />
     </div>
     <script src="./js/indexBF.js"></script>
     <!-- Google Tag Manager (noscript) -->

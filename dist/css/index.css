@@ -2,6 +2,11 @@ html {
     font-size: 50px;
 }
 
+body {
+    overflow: hidden;
+    
+}
+
 *,
 *:before,
 *:after {
@@ -21,91 +26,98 @@ div {
 
 .page-wrap {
     width: 100vw;
-    background-image: url(../img/bg.png);
-    background-repeat: no-repeat;
-    background-size: cover;
+    height: 100vh;
+    position: absolute;
+}
+.bg-long {
+    position: absolute;
+    width: 100vw;
+    height: 1300px;
+    object-fit: inherit;
+    z-index: 1;
+}
+.top {
+    width: 100vw;
+    height: 100vh;
+    position: fixed;
+    z-index: 2;
+}
+.cover {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.68);
+    z-index: 3;
+}
+
+.tip {
+    position: absolute;
+    bottom: 0.5rem;
+    z-index: 3;
+    margin-left: 0.28rem;
+    margin-right: 0.28rem;
+    color: #FFF;
+    text-align: center;
+    font-family: "PingFang SC";
+    font-size: 12px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: normal;
+}
+.service {
+    width: 44px;
+    height: 44px;
+    position: absolute;
+    right: 0.2rem;
+    top: 1.4rem;
+    z-index: 4;
+}
+
+.content {
     display: flex;
     flex-direction: column;
     align-items: center;
     justify-content: center;
-    z-index: 1;
-    position: relative;
+    z-index: 4;
+    margin-top: 3.2rem;
 }
-
 .logo {
-    height: 1.24rem;
-    margin-top: 0.4rem;
+    width: 110px;
+    height: 132px;
+    z-index: 4;
 }
-
-.banner {
-    height: 2.4rem;
-    flex-shrink: 0;
-    margin-top: 0.4rem;
-}
-
-.download {
-    display: inline-flex;
-    height: 1rem;
-    width: 6.94rem;
-    justify-content: center;
-    align-items: center;
-    border-radius: 25px;
-    border: 1px solid #FFF;
-    background: linear-gradient(90deg, #FF4B94 0%, #FF56F4 100%);
-    margin-top: 0.4rem;
-    color: #FFF;
-    font-family: DINPro;
-    font-size: 28px;
-    font-style: normal;
-    font-weight: 700;
-    line-height: 28px;
-    z-index: 2;
-}
-.content {
-    width: 100%;
-    object-fit: cover;
-    margin-top: 30px;
-    margin-bottom: 2.5rem;
-    z-index: 1;
-}
-
 .game {
     height: 0.52rem;
     margin-top: 0.4rem;
+    z-index: 4;
 }
-
-.service {
-    width: 35px;
-    height: 35px;
-    position: absolute;
-    right: 0.2rem;
-    top: 1.2rem;
-}
-
-
-.download-div {
-    position: fixed;
-    display: flex;
-    align-items: center;
+.button {
+    z-index: 4;
+    width: 73%;
+    height: 1rem;
+    margin-top: 1.4rem;
     justify-content: center;
-    bottom: 0;
-    height: 1.8rem;
-    width: 100%;
-    z-index: 100;
-    background-color: rgba(255, 255, 255, 0.8);
+    border-radius: 25px;
+    background: #FF4C9D;
+    text-align: center;
+    color: #FFF;
+    font-family: Inter;
+    font-size: 20px;
+    font-style: normal;
+    font-weight: 700;
+    line-height: 1rem;
 }
 
-.download-button {
-    height: 1.12rem;
-    width: 91%;
-    line-height: 1.12rem;
-    border-radius: 28px;
-    background: linear-gradient(0deg, #FF0048 0%, #FF6A94 100%);
-    color: white;
-    text-align: center;
-    font-family: Chonburi;
-    font-size: 24px;
-    font-style: normal;
-    font-weight: 400;
-    text-transform: capitalize;
+.scroll img {
+    animation: scroll 5s linear 3s infinite alternate; /* 设置动画 */
 }
+    /* 定义动画 */
+@keyframes scroll {
+    from {
+        transform: translateY(0); /* 初始位置 */
+    }
+    to {
+        transform: translateY(calc(100vh - 100%)); /* 结束位置 */
+    }
+}
+
