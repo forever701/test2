@@ -98,29 +98,68 @@
       })(window, document, "script", "dataLayer", "GTM-54W4K5BH");
     </script>
     <!-- End Google Tag Manager -->
-
+    <!-- Meta Pixel Code -->
+    <script>
+      !(function (f, b, e, v, n, t, s) {
+        if (f.fbq) return;
+        n = f.fbq = function () {
+          n.callMethod
+            ? n.callMethod.apply(n, arguments)
+            : n.queue.push(arguments);
+        };
+        if (!f._fbq) f._fbq = n;
+        n.push = n;
+        n.loaded = !0;
+        n.version = "2.0";
+        n.queue = [];
+        t = b.createElement(e);
+        t.async = !0;
+        t.src = v;
+        s = b.getElementsByTagName(e)[0];
+        s.parentNode.insertBefore(t, s);
+      })(
+        window,
+        document,
+        "script",
+        "https://connect.facebook.net/en_US/fbevents.js"
+      );
+      fbq("init", "736080785115638");
+      fbq("track", "PageView");
+    </script>
+    <noscript
+      ><img
+        height="1"
+        width="1"
+        style="display: none"
+        src="https://www.facebook.com/tr?id=736080785115638&ev=PageView&noscript=1"
+    /></noscript>
+    <!-- End Meta Pixel Code -->
   </head>
 
   <body>
     <div class="page-wrap" id="app">
-
-
       <div class="scroll">
-        <img :src="`./img/bg-long.png`" alt="" class="bg-long" /> 
+        <img :src="`./img/bg-long.png`" alt="" class="bg-long" />
       </div>
-      
+
       <div class="top">
         <div class="cover"></div>
         <div class="tip">
-          Trang web này được giới hạn cho cư dân mạng trên 18 tuổi và có đầy đủ năng lực hành vi, những người dưới 18 tuổi không được phép duyệt. Và sẵn sàng chấp nhận nội dung âm thanh, video cũng như các điều khoản khác nhau trên trang web này.
+          Trang web này được giới hạn cho cư dân mạng trên 18 tuổi và có đầy đủ
+          năng lực hành vi, những người dưới 18 tuổi không được phép duyệt. Và
+          sẵn sàng chấp nhận nội dung âm thanh, video cũng như các điều khoản
+          khác nhau trên trang web này.
         </div>
-        <img :src="`./img/service.png`" alt="" class="service" @click="onService"/>
+        <img
+          :src="`./img/service.png`"
+          alt=""
+          class="service"
+          @click="onService"
+        />
         <div class="content">
-          <img :src="`./img/logo-vi.png`" alt="" class="logo" /> 
-          <img :src="`./img/game.png`" alt="" class="game" /> 
-          <div class="button" name="downloadButton">
-              Tải xuống
-          </div>
+          <img :src="`./img/logo-vi.png`" alt="" class="logo" />
+          <img :src="`./img/game.png`" alt="" class="game" />
+          <div class="button" name="downloadButton">Tải xuống</div>
         </div>
       </div>
     </div>
