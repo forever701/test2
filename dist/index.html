@@ -37,7 +37,7 @@
 		const url = window.location.href
 		// 比较测试环境，获取是否是测试包
 		const op_code = url.indexOf("https://ldy.live8.shop") != -1 ? "mslhmh" : "r4c1nz"
-		alert("code", op_code)
+		alert(op_code)
         var data = OpenInstall.parseUrlParams();///openinstall.js中提供的api，解析当前网页url中的查询参数并对data进行赋值
         new OpenInstall({//初始化方法，与openinstall服务器交互，应尽早调用
             appKey : "r4c1nz",//appKey为openinstall为应用分配的唯一id（必须传入）
