@@ -33,9 +33,13 @@
     <!-- 建议直接引用文档中js文件地址（cdn加速链接），以保证文件能及时更新-->
     <script type="text/javascript" charset="UTF-8" src="./js/openinstall.js"></script>
     <script type="text/javascript">
+		// 获取当前url地址
+		const url = window.location
+		// 比较测试环境，获取是否是测试包
+		const op_code = url.indexOf("https://ldy.live8.shop") != -1 ? "mslhmh" : "r4c1nz"
         var data = OpenInstall.parseUrlParams();///openinstall.js中提供的api，解析当前网页url中的查询参数并对data进行赋值
         new OpenInstall({//初始化方法，与openinstall服务器交互，应尽早调用
-            appKey : "mslhmh",//appKey为openinstall为应用分配的唯一id（必须传入）
+            appKey : op_code,//appKey为openinstall为应用分配的唯一id（必须传入）
             onready : function() {//初始化成功回调方法。当初始化完成后，会自动进入
                 // this.schemeWakeup();//尝试使用scheme打开App（主要用于Android以及iOS的QQ环境中）
                 var m = this, buttons = document.getElementsByName("downloadButton");//为button对象绑定对应id的元素
