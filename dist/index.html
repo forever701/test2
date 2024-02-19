@@ -41,7 +41,7 @@
 		// alert(op_code)
         var data = OpenInstall.parseUrlParams();///openinstall.js中提供的api，解析当前网页url中的查询参数并对data进行赋值
         new OpenInstall({//初始化方法，与openinstall服务器交互，应尽早调用
-            appKey : "r4c1nz",//appKey为openinstall为应用分配的唯一id（必须传入）
+            appKey : op_code,//appKey为openinstall为应用分配的唯一id（必须传入）
             onready : function() {//初始化成功回调方法。当初始化完成后，会自动进入
                 // this.schemeWakeup();//尝试使用scheme打开App（主要用于Android以及iOS的QQ环境中）
                 var m = this, buttons = document.getElementsByName("downloadButton");//为button对象绑定对应id的元素
