@@ -52,11 +52,7 @@ new Vue({
   },
   mounted() {
     document.title = this.allData[this.lang].appName;
-    this.$nextTick(i => {
-        let pageInfo = this.getWindowConfig()
-        document.getElementById('ActiveIframe').style.height = (pageInfo.pageHeight - 46) + 'px'
-        document.getElementById('frameContainer').style.height = (pageInfo.pageHeight - 46) + 'px'
-      })                         
+                
     this.handleIcoCreate(`./img/logo-icon-${this.lang}.png`);
     this.bindSwiper();
   },
@@ -76,23 +72,7 @@ new Vue({
         spaceBetween: 25,
       });
     },
-    getWindowConfig() {
-      let windowWidth = window.innerWidth;
-      let windowHeight = window.innerHeight;
-      if (typeof windowWidth !== "number") {
-        if (document.compatMode === "CSS1Compat") {
-          windowWidth = document.documentElement.clientWidth;
-          windowHeight = document.documentElement.clientHeight;
-        } else {
-          windowWidth = document.body.clientWidth;
-          windowHeight = window.body.clientHeight;
-        }
-      }
-      return {
-        windowWidth: windowWidth,
-        windowHeight: windowHeight,
-      };
-    },
+    
     onService() {
       window.open(this.serviceCustomerUrl);
     },
