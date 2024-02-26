@@ -69,7 +69,7 @@ new Vue({
         slidesPerView: "auto",
         observer: true,
         observeParents: true,
-        spaceBetween: 25,
+        spaceBetween: 30,
       });
     },
     
