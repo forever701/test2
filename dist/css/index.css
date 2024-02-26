@@ -4,7 +4,7 @@ html {
 
 body {
     overflow: hidden;
-    
+
 }
 
 /* 这个是51统计中有样式问题，https://js.users.51.la/21836125.js  如果去掉这个统计，就可以把这个样式删除掉，以免引起不必要的麻烦 */
@@ -35,6 +35,7 @@ div {
     height: 100vh;
     position: absolute;
 }
+
 .bg-long {
     position: absolute;
     width: 100vw;
@@ -42,12 +43,14 @@ div {
     object-fit: inherit;
     z-index: 1;
 }
+
 .top {
     width: 100vw;
     height: 100vh;
     position: fixed;
     z-index: 2;
 }
+
 .cover {
     position: absolute;
     width: 100%;
@@ -70,6 +73,7 @@ div {
     font-weight: 400;
     line-height: normal;
 }
+
 .service {
     width: 44px;
     height: 44px;
@@ -87,16 +91,42 @@ div {
     z-index: 4;
     margin-top: 3.2rem;
 }
+
 .logo {
     width: 110px;
     height: 132px;
     z-index: 4;
 }
+
 .game {
     height: 0.52rem;
     margin-top: 0.4rem;
+    margin-bottom: 0.4rem;
     z-index: 4;
 }
+
+.swiper-content {
+    width: 100%;
+    height: 2.88rem;
+    padding: 0 0.4rem;
+    margin: 0;
+    z-index: 4;
+}
+
+/* #swiper-container {
+    width: 100%;
+    height: 2.88rem;
+    padding: 0;
+    margin: 0;
+    z-index: 4;
+} */
+
+.swiper-slide {
+    width: 100%;
+    height: 100%;
+    z-index: 4;
+}
+
 .button {
     z-index: 4;
     width: 73%;
@@ -115,15 +145,19 @@ div {
 }
 
 .scroll img {
-    animation: scroll 5s linear 3s infinite alternate; /* 设置动画 */
-}
-    /* 定义动画 */
-@keyframes scroll {
-    from {
-        transform: translateY(0); /* 初始位置 */
-    }
-    to {
-        transform: translateY(calc(100vh - 100%)); /* 结束位置 */
-    }
+    animation: scroll 5s linear 3s infinite alternate;
+    /* 设置动画 */
 }
 
+/* 定义动画 */
+@keyframes scroll {
+    from {
+        transform: translateY(0);
+        /* 初始位置 */
+    }
+
+    to {
+        transform: translateY(calc(100vh - 100%));
+        /* 结束位置 */
+    }
+}

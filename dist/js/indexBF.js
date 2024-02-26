@@ -46,9 +46,27 @@ new Vue({
       
         document.title = this.allData[this.lang].appName
         this.handleIcoCreate(`./img/logo-icon-${this.lang}.png`);
+        this.bindSwiper()
         
     },
     methods: {
+        bindSwiper() {
+            var mySwiper = new Swiper (document.getElementById("swiper-container"), {
+                loop: true,
+                autoplay: {
+                    delay: 1500
+                },
+                speed:1500,
+                nextButton: 'null',
+                prevButton: 'null',
+                slidesPerView : "auto",
+                observer:true,
+                observeParents:true,
+                spaceBetween: 25,
+            
+
+              });     
+        },
         onService() {
             window.open(this.serviceCustomerUrl)
         },
