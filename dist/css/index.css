@@ -4,7 +4,6 @@ html {
 
 body {
     overflow: hidden;
-    padding-bottom: 46px;
 
 }
 
@@ -62,7 +61,7 @@ div {
 
 .tip {
     position: absolute;
-    bottom: 0.5rem;
+    bottom: 1rem;
     z-index: 3;
     margin-left: 0.28rem;
     margin-right: 0.28rem;
