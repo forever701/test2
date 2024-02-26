@@ -42,6 +42,7 @@
     <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
     <!-- <script charset="UTF-8" id="LA_COLLECT" src="//sdk.51.la/js-sdk-pro.min.js"></script> -->
     <!-- <script>LA.init({ id: "3GvcwDP0AUhX1gXM", ck: "3GvcwDP0AUhX1gXM" })</script> -->
+    <link rel="stylesheet" href="./css/swiper.css">
     <link rel="stylesheet" href="./css/index.css" />
     <script
       charset="UTF-8"
@@ -195,10 +196,19 @@
         <div class="content">
           <img :src="`./img/logo-vi.png`" alt="" class="logo" />
           <img :src="`./img/game.png`" alt="" class="game" />
+          <div class="swiper-content">
+            <div id="swiper-container">
+              <div class="swiper-wrapper">
+                <img src="./img/banner1.png" alt="" class="swiper-slide" />
+                <img src="./img/banner2.png" alt="" class="swiper-slide" />
+              </div>
+            </div>
+          </div>
           <div class="button" name="downloadButton">Tải xuống</div>
         </div>
       </div>
     </div>
+    <script src="./js/swiper.js"></script>
     <script src="./js/indexBF.js"></script>
     <!-- Google Tag Manager (noscript) -->
     <noscript>
