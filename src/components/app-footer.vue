@@ -14,9 +14,10 @@ export default {
 <style scoped lang="less">
 // 底部区域
 .footer {
+    margin-top: 40px;
     width: 100%;
     height: 52px;
-    background-color: red;
+    background: #E33E84;
     display: flex;
     justify-content: space-between;
     align-items: center;

@@ -4,8 +4,8 @@
     <img class="logo" src="../assets/images/test.png" alt="" />
     <!-- 右边文字tab -->
     <ul class="tab">
-      <li><a href="javascript:;">HOME</a></li>
-      <li><a href="javascript:;">ABOUT</a></li>
+      <li><RouterLink to="/">HOME</RouterLink></li>
+      <li><RouterLink to="/about">ABOUT</RouterLink></li>
     </ul>
   </div>
 </template>
@@ -25,7 +25,7 @@ export default {
     min-width: none;
     align-items: center;
     justify-content: space-between;
-    background-color: red;
+    background: #E33E84;
     padding-left: 155px;
     padding-right: 155px;
     @media (max-width: 750px) {

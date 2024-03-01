@@ -84,11 +84,19 @@ export default {
 
 <style scoped lang="less">
 .collapse {
+  margin-top: 40px;
   // 标题
   .title {
+    color: #000;
+    font-family: Inter;
+    font-size: 42px;
+    font-style: normal;
+    font-weight: 700;
+    line-height: 56px; /* 133.333% */
   }
 
   .tab {
+    margin-top: 40px;
     ::v-deep .el-collapse-item__arrow {
       display: none;
     }
