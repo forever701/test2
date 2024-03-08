@@ -35,7 +35,7 @@ export default {
   },
   setup() {
     const getImageUrl = (icon) => {
-      return require(`@/assets/images/${icon}.png`);
+      return require(`@/assets/images/${icon}.jpg`);
     };
 
     return {

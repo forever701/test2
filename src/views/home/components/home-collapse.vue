@@ -7,7 +7,7 @@
     <div class="tab">
       <el-collapse v-model="activeName" accordion>
         <el-collapse-item v-for="(item, index) in dataLit" :name="index">
-          <template #title>
+          <template #title> 
             <div class="collapse-title">
               <img src="../../../assets/images/ic-plus.png" alt="" srcset="" />
               <div class="ellipsis-2">
@@ -40,35 +40,35 @@ export default {
     // 数据列表
     const dataLit = ref([
       {
-        title: "Hot51 App là gì?",
+        title: "Dâu Tây App là gì?",
         content:
-          "Hot51 App là một ứng dụng di động phổ biến tại Việt Nam, cung cấp thông tin về những địa điểm hot, sự kiện, và hoạt động giải trí hàng ngày trong cả nước.",
-      },
+          "Dâu Tây App là một ứng dụng di động phổ biến tại Việt Nam, cung cấp thông tin về những địa điểm hot, sự kiện, và hoạt động giải trí hàng ngày trong cả nước.",
+      }, 
       {
-        title: "Làm thế nào để tải Hot51 App?",
+        title: "Làm thế nào để tải Dâu Tây App?",
         content:
-          "Bạn có thể tải Hot51 App từ cửa hàng ứng dụng trên điện thoại của mình, chẳng hạn như App Store cho người dùng iOS hoặc Google Play cho người dùng Android.",
+          "Bạn có thể tải Dâu Tây App từ cửa hàng ứng dụng trên điện thoại của mình, chẳng hạn như App Store cho người dùng iOS hoặc Google Play cho người dùng Android.",
       },
       {
         title:
-          "Hot51 có tính năng nổi bật nào giúp người dùng tìm kiếm thông tin dễ dàng?",
+          "Dâu Tây có tính năng nổi bật nào giúp người dùng tìm kiếm thông tin dễ dàng?",
         content:
-          "Có, Hot51 App tích hợp một hệ thống tìm kiếm thông minh, giúp người dùng dễ dàng tìm thấy những địa điểm và sự kiện hot theo đúng sở thích của họ.",
+          "Có, Dâu Tây App tích hợp một hệ thống tìm kiếm thông minh, giúp người dùng dễ dàng tìm thấy những địa điểm và sự kiện hot theo đúng sở thích của họ.",
       },
       {
-        title: "Làm thế nào để đăng ký tài khoản trên Hot51 App?",
+        title: "Làm thế nào để đăng ký tài khoản trên Dâu Tây App?",
         content:
           "Để đăng ký, bạn chỉ cần nhập thông tin cơ bản như email và mật khẩu, sau đó làm theo các bước hướng dẫn trên ứng dụng để hoàn tất quá trình đăng ký.",
       },
       {
         title:
-          "Hot51 có tính năng chia sẻ thông tin về sự kiện hay địa điểm với bạn bè không?",
+          "Dâu Tây có tính năng chia sẻ thông tin về sự kiện hay địa điểm với bạn bè không?",
         content:
-          "Có, Hot51 App cho phép người dùng chia sẻ thông tin về sự kiện và địa điểm qua các mạng xã hội hoặc tin nhắn trực tiếp với bạn bè.",
+          "Có, Dâu Tây App cho phép người dùng chia sẻ thông tin về sự kiện và địa điểm qua các mạng xã hội hoặc tin nhắn trực tiếp với bạn bè.",
       },
       {
         title:
-          "Làm thế nào để đề xuất một sự kiện mới hoặc địa điểm hot cho Hot51?",
+          "Làm thế nào để đề xuất một sự kiện mới hoặc địa điểm hot cho Dâu Tây?",
         content:
           "Bạn có thể đề xuất sự kiện hoặc địa điểm mới bằng cách sử dụng tính năng đặc biệt trên ứng dụng, thường được đặt ở mục “Đề xuất sự kiện” hoặc tương tự.",
       },

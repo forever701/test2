@@ -1,7 +1,7 @@
 <template>
   <div class="header">
     <!-- logo -->
-    <img class="logo" src="../assets/images/test.png" alt="" />
+    <img class="logo" src="../assets/images/ic-logo.png" alt="" />
     <!-- 右边文字tab -->
     <ul class="tab">
       <li><RouterLink to="/">HOME</RouterLink></li>
