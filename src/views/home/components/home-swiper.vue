@@ -9,8 +9,14 @@
     @swiper="onSwiper"
     @slide-change="onSlideChange"
   >
-    <swiper-slide class="slide" v-for="index in 3" :key="index">
+    <swiper-slide class="slide">
         <img class="level-main" src="../../../assets/images/ic-banner-1.jpg" />
+    </swiper-slide>
+    <swiper-slide class="slide">
+        <img class="level-main" src="../../../assets/images/ic-banner-2.jpg" />
+    </swiper-slide>
+    <swiper-slide class="slide">
+        <img class="level-main" src="../../../assets/images/ic-banner-3.jpg" />
     </swiper-slide>
   </swiper>
 </template>
