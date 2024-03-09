@@ -17,9 +17,8 @@
     <!-- 显示的图片 -->
     <div
       v-if="item.images && item.images.length"
-      :class="item.images.length == 2 ? 'images-two' : 'images-one'"
-    >
-      <img v-for="images in item.images" :src="getImageUrl(images)" />
+      :class="item.images.length == 2 ? 'images-two' : 'images-one'">
+      <img v-for="images in item.images" :src="getImageUrl(images)" class="images-style" />
     </div>
     <!-- <div class="images" v-if="item.images && item.images.length == 2">
       <el-image v-for="images in item.images" :src="images" :fit="cover" />
@@ -78,6 +77,9 @@ export default {
     margin-top: 40px;
     height: 600px;
     width: 100%;
+    .images-style {
+      .hoverShadow ();
+    }
   }
 
   // 两张图片的情况
@@ -87,6 +89,10 @@ export default {
     display: grid;
     grid-template-columns: 1fr 1fr;
     grid-column-gap: 10px;
+    .images-style {
+      .hoverShadow ();
+    }
+    
   }
 }
 </style>

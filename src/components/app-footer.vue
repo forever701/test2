@@ -1,6 +1,6 @@
 <template>
   <div class="footer">
-    <h5>Copyright © 2024 HOT51 - All Rights Reserved.</h5>
+    <h5>Copyright © 2024 Dâu Tây - All Rights Reserved.</h5>
     <h6><a href="javascript:;">Privacy Policy</a></h6>
   </div>
 </template>
