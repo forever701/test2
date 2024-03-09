@@ -7,6 +7,7 @@
       <li><RouterLink to="/">HOME</RouterLink></li>
       <li><RouterLink to="/about">ABOUT</RouterLink></li>
     </ul>
+    <img class="more" src="../assets/images/ic-header-more.png" alt="" />
   </div>
 </template>
 
@@ -59,6 +60,9 @@ export default {
     margin: 0;
     padding: 0;
     align-items: center;
+    @media (max-width: 1280px) {
+      display: none;
+    }
     li {
       margin: auto 0 auto 30px;
       height: 80px;
