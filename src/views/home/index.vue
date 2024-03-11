@@ -1,6 +1,6 @@
 <template>
   <!-- 首页部分 -->
-  <div class="container">
+  <div class="container">    
     <!-- 轮播图部分 -->
     <HomeSwiper />
     <div class="wrapper">
@@ -38,10 +38,10 @@ import HomeCollapse from "./components/home-collapse";
 import HomeDownloadAPP from "./components/home-download-app";
 import HomeArticle from "./components/home-article";
 import HomeSwiper from "./components/home-swiper";
-import { ref } from "vue";
+import { reactive, ref } from "vue";
 
 export default {
-  name: "Home",
+  name: "Home", 
   components: {
     HomeCollapse,
     HomeDownloadAPP,
@@ -49,7 +49,7 @@ export default {
     HomeSwiper, 
   },
   setup() {
-    const dataList = ref([
+    const dataList = reactive([
       {
         // 标题
         title: "Dâu Tây - Tải xuống Dâu Tây Live phát trực tiếp mới nhất 2024",
@@ -111,8 +111,11 @@ export default {
       },
     ]);
 
+    const drawer = ref(false)
+
     return {
       dataList,
+      drawer,
     };
   },
 };
