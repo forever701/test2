@@ -49,6 +49,15 @@ html, body {
     z-index: 4;
 }
 
+.service {
+    width: 44px;
+    height: 44px;
+    position: absolute;
+    right: 0.4rem;
+    top: 0.4rem;
+    z-index: 4;
+}
+
 .avatar-top {
     width: 320px;
     height: 320px;
@@ -157,6 +166,8 @@ html, body {
      
    }
 }
+
+
 
 /* @media (min-width: 920px) {
     .page {
