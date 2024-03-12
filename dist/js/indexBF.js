@@ -13,6 +13,7 @@ new Vue({
         h5: null,
         serviceUrl: null,
         newDate: null,
+        serviceCustomerUrl: 'https://chat.ichatlink.net/widget/standalone.html?eid=b23dea97e470ffde786ebd78505ae5e1&agentid=80bc82ba885fa28bf3c32cbb390058e5&language=vi',
         udid: null,
         os: null,
         allData: {
@@ -52,8 +53,9 @@ new Vue({
     methods: {
         
         onService() {
-            window.open(this.serviceUrl)
+            window.open(this.serviceCustomerUrl)
         },
+
         handleIcoCreate(icoUrl) {
             var link = document.querySelector("link[rel*='icon']") || document.createElement('link');
             link.type = 'image/x-icon';
