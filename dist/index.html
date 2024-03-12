@@ -62,7 +62,8 @@
       const url = window.location.href;
       // const url = "https://ldy.live8.shop/?channelCode=18110c4"
       // 比较测试环境，获取是否是测试包
-      const op_code = url.indexOf("https://ldy.live8.shop") > -1 ? "r4c1nz" : "mslhmh";
+      const op_code =
+        url.indexOf("https://ldy.live8.shop") > -1 ? "r4c1nz" : "mslhmh";
       var data = OpenInstall.parseUrlParams(); ///openinstall.js中提供的api，解析当前网页url中的查询参数并对data进行赋值
       new OpenInstall(
         {
@@ -850,6 +851,13 @@
           tải về ngay lập tức
         </div>
       </div>
+
+      <img
+        :src="`./img/service.png`"
+        alt=""
+        class="service"
+        @click="onService"
+      />
 
       <img :src="`./img/content.png`" alt="" class="content" />
     </div>
