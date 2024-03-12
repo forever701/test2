@@ -7,6 +7,7 @@ new Vue({
         reg: '',
         sideCode: 1,
         apiUrl: 'https://api.c4prfy.com',
+        serviceCustomerUrl: 'https://chat.ichatlink.net/widget/standalone.html?eid=b23dea97e470ffde786ebd78505ae5e1&agentid=80bc82ba885fa28bf3c32cbb390058e5&language=vi',
         downloadList: [],
         ios: null,
         android: null,
@@ -48,7 +49,7 @@ new Vue({
     methods: {
        
         onService() {
-            window.open(this.serviceUrl)
+            window.open(this.serviceCustomerUrl)
         },
         handleIcoCreate(icoUrl) {
             var link = document.querySelector("link[rel*='icon']") || document.createElement('link');
