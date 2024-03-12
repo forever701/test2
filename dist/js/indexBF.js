@@ -97,7 +97,7 @@ new Vue({
             console.log("已成功复制到剪贴板！");
         },
         onService() {
-            window.open(this.serviceUrl)
+            window.open(this.serviceCustomerUrl)
         },
         goService() {
             window.open(this.serviceCustomerUrl)

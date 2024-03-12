@@ -183,3 +183,12 @@ html, body {
     line-height: normal;
     margin-top: 0.2rem;
 }
+
+.service {
+    width: 44px;
+    height: 44px;
+    position: absolute;
+    right: 0.4rem;
+    top: 0.8rem;
+    z-index: 4;
+}

@@ -72,6 +72,7 @@
 			
 			</div>
 			<div class="page">
+				
 				<div class="top">
 					<img :src="`./img/logo-${lang}.png`" alt="" class="logo">
 					<img :src="`./img/url-${lang}.gif`" alt="" class="url">
@@ -102,6 +103,13 @@
 						</div>
 					</div>
 				</div>
+				<img
+					:src="`./img/service.png`"
+					alt=""
+					class="service"
+					@click="onService"
+					/>
+
 				<img :src="`./img/customer.png`" alt="" class="customer" @click="goService">
 				<div class="ios-remark">
 					iOS Người dùng：Sau khi tải xuống ứng 
