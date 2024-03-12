@@ -337,11 +337,21 @@ div {
     }
 }
 
-
+/* 
 .service{
     position: fixed;
     z-index: 100;
     bottom: 2.5rem;
     right: 0.1rem;
     height: 2rem;
+} */
+
+
+.service {
+    width: 44px;
+    height: 44px;
+    position: absolute;
+    right: 0.4rem;
+    top: 0.8rem;
+    z-index: 4;
 }

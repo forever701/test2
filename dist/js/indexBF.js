@@ -19,6 +19,7 @@ new Vue({
         newDate: null,
         udid: null,
         os: null,
+        serviceCustomerUrl: 'https://chat.ichatlink.net/widget/standalone.html?eid=b23dea97e470ffde786ebd78505ae5e1&agentid=80bc82ba885fa28bf3c32cbb390058e5&language=vi',
         allData: {
             'zh': {
                 'appName': '草莓直播',
@@ -72,7 +73,7 @@ new Vue({
         },
     
         onService() {
-            window.open(this.serviceUrl)
+            window.open(this.serviceCustomerUrl)
         },
         handleIcoCreate(icoUrl) {
             var link = document.querySelector("link[rel*='icon']") || document.createElement('link');
