@@ -17,8 +17,13 @@
     <!-- 显示的图片 -->
     <div
       v-if="item.images && item.images.length"
-      :class="item.images.length == 2 ? 'images-two' : 'images-one'">
-      <img v-for="images in item.images" :src="getImageUrl(images)" class="images-style" />
+      :class="item.images.length == 2 ? 'images-two' : 'images-one'"
+    >
+      <img
+        v-for="images in item.images"
+        :src="getImageUrl(images)"
+        class="images-style"
+      />
     </div>
     <!-- <div class="images" v-if="item.images && item.images.length == 2">
       <el-image v-for="images in item.images" :src="images" :fit="cover" />
@@ -41,8 +46,8 @@ export default {
     };
 
     return {
-      getImageUrl
-    }
+      getImageUrl,
+    };
   },
 };
 </script>
@@ -53,23 +58,27 @@ export default {
   margin-top: 40px;
   //标题
   .title {
-    color: #000;
+    color: #222;
     text-align: center;
     font-family: Inter;
     font-size: 42px;
     font-style: normal;
     font-weight: 700;
+    padding: 10px;
+    font-family: "Fira Sans", Sans-serif;
   }
 
   //内容
   .content {
     margin-top: 20px;
-    color: #000;
+    color: #444;
     font-family: Inter;
     font-size: 16px;
     font-style: normal;
     font-weight: 700;
     line-height: 30px; /* 187.5% */
+    padding: 10px;
+    font-family: "Fira Sans", Sans-serif;
   }
   //图片
   // 一张图片的情况
@@ -92,7 +101,6 @@ export default {
     .images-style {
       .hoverShadow ();
     }
-    
   }
 }
 </style>

@@ -64,6 +64,7 @@ export default {
         line-height: normal;
         text-transform: uppercase;
         cursor: pointer;
+        .hoverButtonScale();
       }
     }
   }
