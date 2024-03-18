@@ -10,13 +10,13 @@
     @slide-change="onSlideChange"
   >
     <swiper-slide class="slide">
-        <img class="level-main" src="../../../assets/images/ic-banner-1.jpg" />
+      <img class="level-main" src="../../../assets/images/ic-banner-1.jpg" />
     </swiper-slide>
     <swiper-slide class="slide">
-        <img class="level-main" src="../../../assets/images/ic-banner-2.jpg" />
+      <img class="level-main" src="../../../assets/images/ic-banner-2.jpg" />
     </swiper-slide>
     <swiper-slide class="slide">
-        <img class="level-main" src="../../../assets/images/ic-banner-3.jpg" />
+      <img class="level-main" src="../../../assets/images/ic-banner-3.jpg" />
     </swiper-slide>
   </swiper>
 </template>
@@ -50,13 +50,17 @@ const onSwiper = (swiper) => {
       object-fit: cover;
     }
   }
-}
 
-@media (min-width: 1150px) {
+  @media (max-width: 1020px) {
+    height: 515px;
+    padding-left: 10%;
+    padding-right: 10%;
+  }
 
-}
 
-@media (min-width: 1120px) {
-
+  @media (max-width: 765px) {
+    padding-left: 0%;
+    padding-right: 0%;
+  }
 }
 </style>
