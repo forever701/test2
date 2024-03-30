@@ -16,14 +16,15 @@
     <div class="content" v-html="item.content"></div>
     <!-- 显示的图片 -->
     <div
-      v-if="item.images && item.images.length"
-      :class="item.images.length == 2 ? 'images-two' : 'images-one'"
+      v-if="item.images && item.images.length" class="images-one"
     >
-      <img
-        v-for="images in item.images"
+    <el-row :gutter="10">
+    <el-col v-for="images in item.images" :span="24/item.images.length" :sx="24" :sm="24" :md="24/item.images.length" :lg="24/item.images.length" :xl="24/item.images.length" ><img
         :src="getImageUrl(images)"
         class="images-style"
-      />
+      /></el-col>
+    </el-row>
+      
     </div>
     <!-- <div class="images" v-if="item.images && item.images.length == 2">
       <el-image v-for="images in item.images" :src="images" :fit="cover" />
@@ -81,26 +82,16 @@ export default {
     font-family: "Fira Sans", Sans-serif;
   }
   //图片
-  // 一张图片的情况
   .images-one {
     margin-top: 40px;
-    height: 600px;
+    display: flex;
     width: 100%;
+    object-fit: cover;
     .images-style {
       .hoverShadow ();
     }
   }
 
-  // 两张图片的情况
-  .images-two {
-    margin-top: 40px;
-    height: 295px;
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    grid-column-gap: 10px;
-    .images-style {
-      .hoverShadow ();
-    }
-  }
+
 }
 </style>

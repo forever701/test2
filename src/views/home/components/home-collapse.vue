@@ -7,10 +7,15 @@
     <div class="tab">
       <el-collapse v-model="activeName" accordion>
         <el-collapse-item v-for="(item, index) in dataLit" :name="index">
-          <template #title> 
+          <template #title>
             <div class="collapse-title">
               <img src="../../../assets/images/ic-plus.png" alt="" srcset="" />
-              <div class="ellipsis-2">
+              <img
+                src="../../../assets/images/ic-plus-white.png"
+                alt=""
+                srcset=""
+              />
+              <div class="ellipsis">
                 {{ item.title }}
               </div>
               <img
@@ -20,7 +25,7 @@
               />
             </div>
           </template>
-          <div>
+          <div class="content">
             {{ item.content }}
           </div>
         </el-collapse-item>
@@ -43,7 +48,7 @@ export default {
         title: "Dâu Tây App là gì?",
         content:
           "Dâu Tây App là một ứng dụng di động phổ biến tại Việt Nam, cung cấp thông tin về những địa điểm hot, sự kiện, và hoạt động giải trí hàng ngày trong cả nước.",
-      }, 
+      },
       {
         title: "Làm thế nào để tải Dâu Tây App?",
         content:
@@ -112,12 +117,27 @@ export default {
       &:hover {
         background-color: #b588ed;
         color: white;
+        // 标题图片
+        img:nth-child(1) {
+          display: none;
+        }
+        // 标题图片
+        img:nth-child(2) {
+          display: inline;
+        }
       }
       // 标题图片
-      img:first-child {
+      img:nth-child(1) {
         width: 16px;
         height: 16px;
         margin-left: 24px;
+      }
+      // 标题图片
+      img:nth-child(2) {
+        width: 16px;
+        height: 16px;
+        margin-left: 24px;
+        display: none;
       }
       // 箭头
       img:last-child {
@@ -131,6 +151,10 @@ export default {
         flex: 1;
         text-align: start;
       }
+    }
+
+    .content {
+      margin: 0 20px;
     }
   }
 }

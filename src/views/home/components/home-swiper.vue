@@ -1,24 +1,37 @@
 <template>
-  <swiper
-    class="swiper"
-    :space-between="8"
-    slides-per-view="auto"
-    :observer="true"
-    :loop="true"
-    :auto-play="ture"
-    @swiper="onSwiper"
-    @slide-change="onSlideChange"
-  >
-    <swiper-slide class="slide">
-      <img class="level-main" src="../../../assets/images/ic-banner-1.jpg" />
-    </swiper-slide>
-    <swiper-slide class="slide">
-      <img class="level-main" src="../../../assets/images/ic-banner-2.jpg" />
-    </swiper-slide>
-    <swiper-slide class="slide">
-      <img class="level-main" src="../../../assets/images/ic-banner-3.jpg" />
-    </swiper-slide>
-  </swiper>
+  <el-row>
+    <el-col>
+      <swiper
+        class="swiper"
+        :space-between="8"
+        slides-per-view="auto"
+        :observer="true"
+        :loop="true"
+        :auto-play="ture"
+        @swiper="onSwiper"
+        @slide-change="onSlideChange"
+      >
+        <swiper-slide class="slide">
+          <img
+            class="level-main"
+            src="../../../assets/images/ic-banner-1.jpg"
+          />
+        </swiper-slide>
+        <swiper-slide class="slide">
+          <img
+            class="level-main"
+            src="../../../assets/images/ic-banner-2.jpg"
+          />
+        </swiper-slide>
+        <swiper-slide class="slide">
+          <img
+            class="level-main"
+            src="../../../assets/images/ic-banner-3.jpg"
+          />
+        </swiper-slide>
+      </swiper>
+    </el-col>
+  </el-row>
 </template>
 
 <script setup>
@@ -33,7 +46,6 @@ const onSwiper = (swiper) => {
 
 <style scoped lang="less">
 .swiper {
-  height: 262px;
   width: 100%;
   padding-left: 30%;
   padding-right: 30%;
@@ -47,16 +59,13 @@ const onSwiper = (swiper) => {
     .level-main {
       height: 100%;
       width: 100%;
-      object-fit: cover;
     }
   }
 
   @media (max-width: 1020px) {
-    height: 515px;
     padding-left: 10%;
     padding-right: 10%;
   }
-
 
   @media (max-width: 765px) {
     padding-left: 0%;
